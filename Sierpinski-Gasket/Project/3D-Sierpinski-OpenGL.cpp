@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowSize(500, 500);
   glutInitWindowPosition(0, 0);
-  glutCreateWindow("Sierpinski Tetrahedron");
+  glutCreateWindow("Sierpinski Gasket Tetrahedron Example - by Andrew Esch & Evan Lee");
   glutDisplayFunc(display);
   glutReshapeFunc(reshape);
   glutIdleFunc(generateMorePoints);

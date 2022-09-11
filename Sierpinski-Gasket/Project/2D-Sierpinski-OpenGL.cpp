@@ -23,10 +23,11 @@ void display() {
 
   glClear(GL_COLOR_BUFFER_BIT);
 
-  static Point vertices[] = {Point(0, 0), Point(200, 500), Point(500, 0)};
+  // static Point vertices[] = {Point(0, 0), Point(250, 500), Point(500, 0)};
+  static Point vertices[] = {Point(100, 100), Point(250, 500), Point(400, 100)};
 
   // Compute and plot 100000 new points, starting (arbitrarily) with one of
-  // the vertices. Each point is hsalfway between the previous point and a
+  // the vertices. Each point is halfway between the previous point and a
   // randomly chosen vertex.
   static Point p = vertices[0];
   glBegin(GL_POINTS);
@@ -57,9 +58,9 @@ void init() {
 int main(int argc, char** argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-  glutInitWindowSize(500, 500);
-  glutInitWindowPosition(40, 40);
-  glutCreateWindow("Sierpinski Triangle");
+  glutInitWindowSize(750, 750);
+  glutInitWindowPosition(0, 0);
+  glutCreateWindow("2D Sierpinski Gasket Example - by Andrew Esch & Evan Lee");
   glutDisplayFunc(display);
   init();
   glutMainLoop();
