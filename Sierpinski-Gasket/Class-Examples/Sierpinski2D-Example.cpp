@@ -26,7 +26,7 @@ void display() {
   static Point vertices[] = {Point(0, 0), Point(200, 500), Point(500, 0)};
 
   // Compute and plot 100000 new points, starting (arbitrarily) with one of
-  // the vertices. Each point is halfway between the previous point and a
+  // the vertices. Each point is hsalfway between the previous point and a
   // randomly chosen vertex.
   static Point p = vertices[0];
   glBegin(GL_POINTS);
