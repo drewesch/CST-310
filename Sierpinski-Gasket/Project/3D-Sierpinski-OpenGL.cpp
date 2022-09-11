@@ -45,10 +45,10 @@ void generateMorePoints() {
   // The tetrahedron has four vertices.  We also have to keep track of the
   // current point during the plotting.
   static Point vertices[4] = {
-    Point(-250, -225, -200),
-    Point(-150, -225, -700),
-    Point(250, -225, -275),
-    Point(0, 450, -500)
+    Point(-350, -225, -200),
+    Point(-150, -400, -600),
+    Point(250, -225, -300),
+    Point(0, 450, -400)
   };
   static Point lastPoint = vertices[0];
 
@@ -59,9 +59,9 @@ void generateMorePoints() {
   // 700 to any z-value and then dividing by 500, we get values in the range
   // 0 to 1 - just perfect for coloring.
   glBegin(GL_POINTS);
-  for (int i = 0; i <= 500; i++) {
+  for (int i = 0; i <= 1000; i++) {
     lastPoint = lastPoint.midpoint(vertices[rand() % 4]);
-    GLfloat intensity = (700 + lastPoint.z) / 500.0;
+    GLfloat intensity = (600 + lastPoint.z) / 400.0;
     glColor3f(intensity, intensity, 0.25);
     glVertex3f(lastPoint.x, lastPoint.y, lastPoint.z);
   }
@@ -73,6 +73,10 @@ void generateMorePoints() {
 // do depth buffering, which has to be explicitly enabled in OpenGL.
 void init() {
   glEnable(GL_DEPTH_TEST);
+
+  // Set a blue background
+  glClearColor(0.0, 0.0, 1.0, 1.0);
+  glColor3f(1.0, 1.0, 1.0);
 }
 
 // Initializes GLUT, the display mode, and main window; registers callbacks;
@@ -80,7 +84,7 @@ void init() {
 int main(int argc, char** argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
-  glutInitWindowSize(500, 500);
+  glutInitWindowSize(750, 750);
   glutInitWindowPosition(0, 0);
   glutCreateWindow("Sierpinski Gasket Tetrahedron Example - by Andrew Esch & Evan Lee");
   glutDisplayFunc(display);
