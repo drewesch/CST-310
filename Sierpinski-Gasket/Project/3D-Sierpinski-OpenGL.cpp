@@ -34,13 +34,9 @@ void display() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color buffer bit and depth (for 3D Gasket)
 }
 
-// Draws the "next 500 points".  The function contains locally the definitions
-// of the vertices and the current point as static objects so that their values
-// are retained between calls.
 void generatePoints() {
-
-
-  static Point vertices[4] = { // Create a random set of points within the window, this is the verticies for the main tetrahedron
+  // Create a random set of points within the window, this is the verticies for the main tetrahedron
+  static Point vertices[4] = { 
     Point(-350, -225, -200),
     Point(-150, -400, -600),
     Point(250, -225, -300),
@@ -78,7 +74,6 @@ int main(int argc, char** argv) {
   glutInitWindowPosition(0, 0); // Set window position to 0, 0; can be modified by user
   glutCreateWindow("Sierpinski Gasket Tetrahedron Example - by Andrew Esch & Evan Lee");
   glutDisplayFunc(display); // Load display function as register callback
-  glutMainLoop(); // Run OpenGL as register callback until the user closes the window 
   glutReshapeFunc(reshape); // Initialize reshape function
   glutIdleFunc(generatePoints);
   init(); // Run initial function
