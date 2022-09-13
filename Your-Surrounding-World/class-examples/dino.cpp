@@ -7,6 +7,7 @@
 
 void display();
 
+int moveNum = 500;
 
 void drawPolyLineFile(const char * fileName) {
 
@@ -25,7 +26,9 @@ void drawPolyLineFile(const char * fileName) {
 		glBegin(GL_LINE_STRIP);	     // draw the next polyline
 		for (int i = 0; i < numLines; i++) {
 			inStream >> x >> y;        // read the next x, y pair
-			glVertex2f(x, y);
+            if (0 < i < 200){ glVertex2f(x+moveNum+100, y); }
+            else {glVertex2f(x+moveNum, y); printf("test");} //not run
+			
 		}
 		glFlush();
 		glEnd();
@@ -42,8 +45,12 @@ int main(int argc, char** argv) {
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Dinosaur");
 
-	glutDisplayFunc(display);
-	glutMainLoop();
+    
+
+	    glutDisplayFunc(display);
+	    glutMainLoop();
+        
+    
 
 	return(0);
 
@@ -56,12 +63,15 @@ void setWindow(float left, float right, int bottom, int top) {
 }
 
 void display() {
+    while(moveNum > 0){
 
-	glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-	setWindow(0, 1024.0, 0, 768.0);
-	drawPolyLineFile("dino.dat");
+        setWindow(0, 1024.0, 0, 768.0);
+        drawPolyLineFile("dino.dat");
+        moveNum = moveNum-1;
+        glFlush();
 
-	glFlush();
+    }
 
 }
