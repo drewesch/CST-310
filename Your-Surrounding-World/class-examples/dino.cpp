@@ -26,7 +26,7 @@ void drawPolyLineFile(const char * fileName) {
 		glBegin(GL_LINE_STRIP);	     // draw the next polyline
 		for (int i = 0; i < numLines; i++) {
 			inStream >> x >> y;        // read the next x, y pair
-            if (0 < i < 200){ glVertex2f(x+moveNum+100, y); }
+            if (0 < i < 200){ glVertex2f(x+moveNum, y); }
             else {glVertex2f(x+moveNum, y); printf("test");} //not run
 			
 		}
