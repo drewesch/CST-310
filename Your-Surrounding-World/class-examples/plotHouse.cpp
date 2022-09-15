@@ -44,8 +44,12 @@ void myDisplay(void)
 	glEnd();
 
 	// Draw left-side of roof
-	glBegin(GL_LINES);
+	glBegin(GL_LINE_STRIP);
 	glVertex2d(100, 200);
+	glVertex2d(120, 210);
+	glVertex2d(120, 230);
+	glVertex2d(130, 230);
+	glVertex2d(130, 215);
 	glVertex2d(200, 250);
 	glEnd();
 
@@ -53,6 +57,39 @@ void myDisplay(void)
 	glBegin(GL_LINES);
 	glVertex2d(300, 200);
 	glVertex2d(200, 250);
+	glEnd();
+
+	// Draw bottom-side window
+	glBegin(GL_LINES);
+	glVertex2d(225, 150);
+	glVertex2d(275, 150);
+	glEnd();
+
+	// Draw left side window
+	glBegin(GL_LINES);
+	glVertex2d(225, 150);
+	glVertex2d(225, 175);
+	glEnd();
+
+	// Draw top side window
+	glBegin(GL_LINES);
+	glVertex2d(225, 175);
+	glVertex2d(275, 175);
+	glEnd();
+
+	// Draw right side window
+	glBegin(GL_LINES);
+	glVertex2d(275, 150);
+	glVertex2d(275, 175);
+	glEnd();
+
+	// Draw right side window
+	glBegin(GL_LINE_STRIP);
+	glVertex2d(125, 100);
+	glVertex2d(125, 161);
+	glVertex2d(175, 161);
+	glVertex2d(175, 100);
+
 	glEnd();
 
 	glEnd();	
