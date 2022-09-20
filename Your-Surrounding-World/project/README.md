@@ -1,4 +1,4 @@
-# Project 1: Your-Surrounding-World
+# Project 2: Your-Surrounding-World
 Authors: Andrew Esch and Evan Lee
 
 Date: 9-13-2022
