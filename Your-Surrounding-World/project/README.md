@@ -1,7 +1,7 @@
 # Project 2: Your-Surrounding-World
 Authors: Andrew Esch and Evan Lee
 
-Date: 9-13-2022
+Date: 9-20-2022
 
 ## Software Requirements and Installation Guide
 This program is designed to run in C on the Linux platform. To compile and run the program in Ubuntu 20.04, install the latest version of the g++ compiler, run the following command in an terminal window (with sudo permissions):
@@ -20,9 +20,10 @@ After installing and updating the G++ compiler to the latest version, please ins
 - mesa-common-dev
 - libglu1-mesa-dev
 - libglew-dev
+- libglfw3-dev
 
 To install all of the package requirements for this program in one line, run the following command below:
-- sudo apt-get install freeglut3-dev mesa-common-dev libglu1-mesa-dev libglew-dev
+- sudo apt-get install freeglut3-dev mesa-common-dev libglu1-mesa-dev libglew-dev libglfw3-dev
 
 ### Additional Installation Instructions for WSL2 on Windows 10
 Linux environments on WSL2 have been tested and verified to run all project files. However, the setup process for running program files in this project is different between Windows 10 and Windows 11.
@@ -36,6 +37,9 @@ To see more instructions on setting up the WSL2 environment for Windows 10, refe
 ## Compiling and Running the Program
 To compile the program properly, open a terminal window and use g++ to compile the program by using the following command:
 - g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglut -lGLU -lGL
+
+To compile the program using GLSL, use:
+- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW (-lglut if adding code)
 
 A new compiled file will appear within the directory that the user is currently located in.
 
