@@ -21,9 +21,11 @@ After installing and updating the G++ compiler to the latest version, please ins
 - libglu1-mesa-dev
 - libglew-dev
 - libglfw3-dev
+- libsoil-dev
+- libglm-dev
 
 To install all of the package requirements for this program in one line, run the following command below:
-- sudo apt-get install freeglut3-dev mesa-common-dev libglu1-mesa-dev libglew-dev libglfw3-dev
+- sudo apt-get install freeglut3-dev mesa-common-dev libglu1-mesa-dev libglew-dev libglfw3-dev libsoil-dev libglm-dev
 
 ### Additional Installation Instructions for WSL2 on Windows 10
 Linux environments on WSL2 have been tested and verified to run all project files. However, the setup process for running program files in this project is different between Windows 10 and Windows 11.
@@ -40,6 +42,9 @@ To compile the program properly, open a terminal window and use g++ to compile t
 
 To compile the program using GLSL, use:
 - g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW (-lglut if adding code)
+
+To compile the program using GLM, use:
+- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW -lSOIL
 
 A new compiled file will appear within the directory that the user is currently located in.
 
