@@ -27,6 +27,9 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 // The MAIN function, from here we start the application and run the game loop
 int main()
 {
+
+    //vec2 position = glm::vec2(0,0);
+
     // Init GLFW
     glfwInit();
     // Set all the required options for GLFW
@@ -109,7 +112,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
     int width, height;
-    unsigned char* image = SOIL_load_image("Container1.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    unsigned char* image = SOIL_load_image("mug.jpeg", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image);
@@ -126,7 +129,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
-    image = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGB);
+    image = SOIL_load_image("mug.jpeg", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image);
@@ -158,11 +161,33 @@ int main()
 
         // Create transformations
         glm::mat4 transform = glm::mat4(1.0f);
-        transform = glm::translate(transform, glm::vec3(0.5f,-0.5f, 0.0f));
-        //transform = glm::translate(transform, glm::vec3(0.05f,0.05f, 0.0f));
+        //transform = glm::translate(transform, glm::vec3(0.5f,-0.5f, 0.0f));
+
+
+        //move up
+        if(0.0f <= ((GLfloat)glfwGetTime()) % 4 <= 1.0f){
+            transform = glm::translate(transform, glm::vec3(0.0f,0.1f * (GLfloat)glfwGetTime(), 0.0f));
+        }
+
+        //move down
+        if((GLfloat)glfwGetTime()==2.0f){
+        transform = glm::translate(transform, glm::vec3(0.0f,-0.1f * (GLfloat)glfwGetTime(), 0.0f));
+        }
+
+        //move right
+        if((GLfloat)glfwGetTime()==3.0f){
+        transform = glm::translate(transform, glm::vec3(0.1f * (GLfloat)glfwGetTime(),0.0f, 0.0f));
+        }
+
+        //move left
+        if((GLfloat)glfwGetTime()==4.0f){
+        transform = glm::translate(transform, glm::vec3(-0.1f * (GLfloat)glfwGetTime(),0.0f, 0.0f));
+        }
+
+        //transform = glm::translate(transform, glm::vec3(0.1f*(GLfloat)glfwGetTime(),0.1f * (GLfloat)glfwGetTime(), 0.0f));
         //transform = glm::translate(transform, glm::vec3(0.0f,0.0f, 1.0f));
 
-        //transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 50.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+        //transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 5.0f, glm::vec3(0.0f, 0.0f, 1.0f));
         
         //transform = glm::scale(transform, glm::vec3(0.5, 0.5, 0.5));
         transform = glm::scale(transform, glm::vec3(1.0, 1.0, 1.0));
