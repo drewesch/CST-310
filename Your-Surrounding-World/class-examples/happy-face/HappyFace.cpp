@@ -106,10 +106,8 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
     int width, height;
-    int scope = 0;
-    width = 1000;
-    height = 1000;
-    unsigned char* image = SOIL_load_image("mug.jpeg", &width, &height, &scope, SOIL_LOAD_RGB);
+    
+    unsigned char* image = SOIL_load_image("mug.jpeg", &width,&height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image);
@@ -129,10 +127,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
 
-    scope = 1;
-    (width) = 100;
-    height = 100;
-    image = SOIL_load_image("mug.jpeg", &width, &height, &scope, SOIL_LOAD_RGB);
+    image = SOIL_load_image("white.jpg", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image);
