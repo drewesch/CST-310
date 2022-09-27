@@ -28,6 +28,7 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 int main()
 {
 
+    float temptime;
     //vec2 position = glm::vec2(0,0);
 
     // Init GLFW
@@ -135,7 +136,7 @@ int main()
     SOIL_free_image_data(image);
     glBindTexture(GL_TEXTURE_2D, 0);
 
-
+    glm::mat4 transform = glm::mat4(1.0f);
     // Game loop
     while (!glfwWindowShouldClose(window))
     {
@@ -160,28 +161,29 @@ int main()
         ourShader.Use();       
 
         // Create transformations
-        glm::mat4 transform = glm::mat4(1.0f);
+        //glm::mat4 transform = glm::mat4(1.0f);
         //transform = glm::translate(transform, glm::vec3(0.5f,-0.5f, 0.0f));
 
+        temptime = (int)glfwGetTime()%4;
 
         //move up
-        if(0.0f <= ((GLfloat)glfwGetTime()) % 4 <= 1.0f){
-            transform = glm::translate(transform, glm::vec3(0.0f,0.1f * (GLfloat)glfwGetTime(), 0.0f));
+        if(0 <= temptime && temptime < 1){
+            transform = glm::translate(transform, glm::vec3(0.0f,0.001f * (GLfloat)glfwGetTime(), 0.0f));
         }
 
         //move down
-        if((GLfloat)glfwGetTime()==2.0f){
-        transform = glm::translate(transform, glm::vec3(0.0f,-0.1f * (GLfloat)glfwGetTime(), 0.0f));
+        if(1 <= temptime && temptime < 2){
+        transform = glm::translate(transform, glm::vec3(0.0f,-0.001f * (GLfloat)glfwGetTime(), 0.0f));
         }
 
         //move right
-        if((GLfloat)glfwGetTime()==3.0f){
-        transform = glm::translate(transform, glm::vec3(0.1f * (GLfloat)glfwGetTime(),0.0f, 0.0f));
+        if(2 <= temptime && temptime < 3){
+        transform = glm::translate(transform, glm::vec3(0.001f * (GLfloat)glfwGetTime(),0.0f, 0.0f));
         }
 
         //move left
-        if((GLfloat)glfwGetTime()==4.0f){
-        transform = glm::translate(transform, glm::vec3(-0.1f * (GLfloat)glfwGetTime(),0.0f, 0.0f));
+        if(3 <= temptime && temptime < 4){
+        transform = glm::translate(transform, glm::vec3(-0.001f * (GLfloat)glfwGetTime(),0.0f, 0.0f));
         }
 
         //transform = glm::translate(transform, glm::vec3(0.1f*(GLfloat)glfwGetTime(),0.1f * (GLfloat)glfwGetTime(), 0.0f));
