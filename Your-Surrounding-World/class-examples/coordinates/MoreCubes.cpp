@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+using namespace std;
 
 // GLEW
 #define GLEW_STATIC
@@ -24,9 +26,18 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
 
+GLfloat randNums[10];
+
 // The MAIN function, from here we start the application and run the game loop
 int main()
 {
+    // Generate rand numbers
+    srand(time(NULL));
+    for (GLuint i = 0; i < 10; i++) {
+        randNums[i] = rand() % 360;
+        cout << randNums[i] << endl;
+    }
+
     // Init GLFW
     glfwInit();
     // Set all the required options for GLFW
@@ -212,16 +223,18 @@ int main()
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
         glBindVertexArray(VAO);
+
         for (GLuint i = 0; i < 10; i++)
         {
             // Calculate the model matrix for each object and pass it to shader before drawing
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             
-            GLfloat angle = 20.0f * i;
-            model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f)); // this won't make rotate
-            
-            //model = glm::rotate(model, (GLfloat)glfwGetTime() * 50.0f, glm::vec3(0.5f, 1.0f, 0.0f)); // this will make rotate
+            GLfloat angle = randNums[i];
+
+            // model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f)); // this won't make rotate
+
+            model = glm::rotate(model, (GLfloat)glfwGetTime() * angle * 0.1f, glm::vec3(0.5f, 1.0f, 0.0f)); // this will make rotate
             
             glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
