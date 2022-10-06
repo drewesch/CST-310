@@ -2,6 +2,41 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
 
+void background(){
+    //---------------------Walls+Floor----------------------------
+    //Back left wall
+    glColor3f(0.8431373f, 0.8156863f, 0.7529413f); 
+    glBegin(GL_QUADS);
+    glVertex3f(0.0f,67.0f, 0.0f);		//Bottom Left
+    glVertex3f(0.0f,540.0f, 0.0f);		//Top Left
+    glVertex3f(922.0f,540.0f, 0.0f);	//Top Right
+    glVertex3f(889.0f,127.0f, 0.0f);	//Bottom Right
+
+    //Back left strip
+    glColor3f(0.1f, 0.1f, 0.1f); 
+    glBegin(GL_QUADS);
+    glVertex3f(0.0f,42.0f, 0.0f);		//Bottom Left
+    glVertex3f(0.0f,67.0f, 0.0f);		//Top Left
+    glVertex3f(889.0f,127.0f, 0.0f);	//Top Right
+    glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Right
+
+    //Back right wall
+    glColor3f(0.6431373f, 0.6156863f, 0.5529413f); 
+    glBegin(GL_QUADS);
+    glVertex3f(888.0f,127.0f, 0.0f);	//Bottom Left
+    glVertex3f(919.0f,540.0f, 0.0f);	//Top Left
+    glVertex3f(959.0f,540.0f, 0.0f);	//Top Right
+    glVertex3f(959.0f,102.0f, 0.0f);	//Bottom Right
+
+    //Back right strip
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glBegin(GL_QUADS);
+    glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Left
+    glVertex3f(889.0f,127.0f, 0.0f);	//Top Left
+    glVertex3f(959.0f,102.0f, 0.0f);	//Top Right
+    glVertex3f(959.0f,83.0f, 0.0f);		//Bottom Right
+}
+
 void drawTV(){
     //TV screen border
     glColor3f(0.0f, 0.0f, 0.0f); 
@@ -91,3 +126,150 @@ void drawPS4(){
     glVertex3f(700.0f,155.0f, 0.0f);	//Top Right
     glVertex3f(700.0f,137.0f, 0.0f);	//Bottom Right
 }
+
+void infinityBox(){
+    //---------------------Rack Infinity Box Object --------------------------------
+    // Front Side
+    glColor3f(0.1490196f, 0.1411765f, 0.2f); 
+    glBegin(GL_QUADS);
+    glVertex3f(302.0f,252.0f, 0.0f); //Bottom Left
+    glVertex3f(300.0f,275.0f, 0.0f); //Top Left
+    glVertex3f(400.0f,277.0f, 0.0f); //Top Right
+    glVertex3f(400.0f,255.0f, 0.0f); //Bottom Right
+
+    // Left Side
+    glColor3f(0.5019608f, 0.4745098f, 0.4313726f); 
+    glBegin(GL_QUADS);
+    glVertex3f(298.0f,261.0f, 0.0f); //Bottom Left
+    glVertex3f(297.0f,279.0f, 0.0f); //Top Left
+    glVertex3f(301.0f,275.0f, 0.0f); //Top Right
+    glVertex3f(302.0f,252.0f, 0.0f); //Bottom Right
+
+    // Top Side
+    glColor3f(0.9607844f, 0.937255f, 0.9215687f);
+    glBegin(GL_QUADS);
+    glVertex3f(298.0f,279.0f, 0.0f); //Bottom Left
+    glVertex3f(388.0f,281.0f, 0.0f); //Top Left
+    glVertex3f(400.0f,278.0f, 0.0f); //Top Right
+    glVertex3f(300.0f,276.0f, 0.0f); //Bottom Right
+
+    // Grey Tag on Box Top
+    glColor3f(0.5647059f, 0.5254902f, 0.5058824f);
+    glBegin(GL_QUADS);
+    glVertex3f(313.0f,276.0f, 0.0f); //Bottom Left
+    glVertex3f(310.0f,279.0f, 0.0f); //Top Left
+    glVertex3f(320.0f,279.0f, 0.0f); //Top Right
+    glVertex3f(324.0f,276.0f, 0.0f); //Bottom Right
+}
+
+
+
+
+void dumbells(){
+    //---------------------Right Dumbbell Object --------------------------------
+    // Dumbbell Back (top half)
+    glColor3f(0.1607843f, 0.1411765f, 0.1411765f);
+    glBegin(GL_QUADS);
+    glVertex3f(263.0f+13.0f,264.0f+3.0f, 0.0f); //Bottom Left
+    glVertex3f(215.0f+13.0f,266.0f+3.0f, 0.0f); //Top Left
+    glVertex3f(227.0f+13.0f,281.0f+3.0f, 0.0f); //Top Right
+    glVertex3f(251.0f+13.0f,280.0f+3.0f, 0.0f); //Bottom Right
+
+    // Dumbbell Back (bottom half)
+    glColor3f(0.1607843f, 0.1411765f, 0.1411765f);
+    glBegin(GL_QUADS);
+    glVertex3f(227.0f+13.0f,250.0f+3.0f, 0.0f); //Bottom Left
+    glVertex3f(215.0f+13.0f,266.0f+3.0f, 0.0f); //Top Left
+    glVertex3f(263.0f+13.0f,264.0f+3.0f, 0.0f); //Top Right
+    glVertex3f(251.0f+13.0f,250.0f+3.0f, 0.0f); //Bottom Right
+
+    // Dumbbell Front (top half)
+    glColor3f(0.1921569f, 0.1882353f, 0.1803922f);
+    glBegin(GL_QUADS);
+    glVertex3f(263.0f,264.0f, 0.0f); //Bottom Left
+    glVertex3f(215.0f,266.0f, 0.0f); //Top Left
+    glVertex3f(227.0f,281.0f, 0.0f); //Top Right
+    glVertex3f(251.0f,280.0f, 0.0f); //Bottom Right
+
+    // Dumbbell Front (bottom half)
+    glColor3f(0.1921569f, 0.1882353f, 0.1803922f);
+    glBegin(GL_QUADS);
+    glVertex3f(227.0f,250.0f, 0.0f); //Bottom Left
+    glVertex3f(215.0f,266.0f, 0.0f); //Top Left
+    glVertex3f(263.0f,264.0f, 0.0f); //Top Right
+    glVertex3f(251.0f,250.0f, 0.0f); //Bottom Right
+
+    // Dumbbell Front-Back Side (top)
+    glColor3f(0.4509804f, 0.4470589f, 0.4156863f);
+    glBegin(GL_QUADS);
+    glVertex3f(227.0f,281.0f, 0.0f); //Bottom Left
+    glVertex3f(236.0f,282.0f, 0.0f); //Top Left
+    glVertex3f(256.0f,281.0f, 0.0f); //Top Right
+    glVertex3f(251.0f,280.0f, 0.0f); //Bottom Right
+
+    // Dumbbell Front-Back Side (middle)
+    glColor3f(0.4509804f, 0.4470589f, 0.4156863f);
+    glBegin(GL_QUADS);
+    glVertex3f(263.0f,264.0f, 0.0f); //Bottom Left
+    glVertex3f(251.0f,280.0f, 0.0f); //Top Left
+    glVertex3f(255.0f,281.0f, 0.0f); //Top Right
+    glVertex3f(267.0f,266.0f, 0.0f); //Bottom Right
+
+    // Dumbbell Front-Back Side (bottom)
+    glColor3f(0.172549f, 0.1686275f, 0.1607843f);
+    glBegin(GL_QUADS);
+    glVertex3f(249.0f,251.0f, 0.0f); //Bottom Left
+    glVertex3f(263.0f,264.0f, 0.0f); //Top Left
+    glVertex3f(267.0f,266.0f, 0.0f); //Top Right
+    glVertex3f(256.0f,252.0f, 0.0f); //Bottom Right
+
+    //---------------------Left Dumbbell Object --------------------------------
+    // Dumbbell Back (top half)
+    glColor3f(0.1921569f, 0.1568628f, 0.1529412f);
+    glBegin(GL_QUADS);
+    glVertex3f(159.0f+3.0f,263.0f+5.0f, 0.0f);	//Bottom Left
+    glVertex3f(173.0f+3.0f,279.0f+5.0f, 0.0f);	//Top Left
+    glVertex3f(197.0f+3.0f,280.0f+5.0f, 0.0f);	//Top Right
+    glVertex3f(211.0f+3.0f,265.0f+5.0f, 0.0f);	//Bottom Right
+
+    // Dumbbell Back (bottom half)
+    glColor3f(0.1921569f, 0.1568628f, 0.1529412f);
+    glBegin(GL_QUADS);
+    glVertex3f(173.0f+3.0f,248.0f+5.0f, 0.0f);	//Bottom Left
+    glVertex3f(159.0f+3.0f,263.0f+5.0f, 0.0f);	//Top Left
+    glVertex3f(211.0f+3.0f,265.0f+5.0f, 0.0f);	//Top Right
+    glVertex3f(200.0f+3.0f,248.0f+5.0f, 0.0f);	//Bottom Right
+
+    // Dumbbell Front (top half)
+    glColor3f(0.1921569f, 0.1882353f, 0.1803922f);
+    glBegin(GL_QUADS);
+    glVertex3f(159.0f,263.0f, 0.0f);	//Bottom Left
+    glVertex3f(173.0f,279.0f, 0.0f);	//Top Left
+    glVertex3f(197.0f,280.0f, 0.0f);	//Top Right
+    glVertex3f(211.0f,265.0f, 0.0f);	//Bottom Right
+
+    // Dumbbell Front (bottom half)
+    glColor3f(0.1921569f, 0.1882353f, 0.1803922f);
+    glBegin(GL_QUADS);
+    glVertex3f(173.0f,248.0f, 0.0f);	//Bottom Left
+    glVertex3f(159.0f,263.0f, 0.0f);	//Top Left
+    glVertex3f(211.0f,265.0f, 0.0f);	//Top Right
+    glVertex3f(200.0f,248.0f, 0.0f);	//Bottom Right
+
+    // Dumbbell Front-Back Side (top)
+    glColor3f(0.4117647f, 0.3921569f, 0.3529412f);
+    glBegin(GL_QUADS);
+    glVertex3f(173.0f,279.0f, 0.0f);	//Bottom Left
+    glVertex3f(174.0f,281.0f, 0.0f);	//Top Left
+    glVertex3f(199.0f,281.0f, 0.0f);	//Top Right
+    glVertex3f(197.0f,279.0f, 0.0f);	//Bottom Right
+
+    // Dumbbell Front-Back Side (middle)
+    glColor3f(0.3882353f, 0.3764706f, 0.3647059f);
+    glBegin(GL_QUADS);
+    glVertex3f(198.0f,281.0f, 0.0f);	//Bottom Left
+    glVertex3f(210.0f,269.0f, 0.0f);	//Top Left
+    glVertex3f(210.0f,267.0f, 0.0f);	//Top Right
+    glVertex3f(197.0f,279.0f, 0.0f);	//Bottom Right
+}
+

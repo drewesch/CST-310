@@ -28,39 +28,8 @@ void myDisplay(void)
 	glClear(GL_COLOR_BUFFER_BIT);     // clear the screen 
 //---------------------Objects--------------------------------
 
-//---------------------Walls+Floor----------------------------
-//Back left wall
-glColor3f(0.8431373f, 0.8156863f, 0.7529413f); 
-glBegin(GL_QUADS);
-glVertex3f(0.0f,67.0f, 0.0f);		//Bottom Left
-glVertex3f(0.0f,540.0f, 0.0f);		//Top Left
-glVertex3f(922.0f,540.0f, 0.0f);	//Top Right
-glVertex3f(889.0f,127.0f, 0.0f);	//Bottom Right
 
-//Back left strip
-glColor3f(0.1f, 0.1f, 0.1f); 
-glBegin(GL_QUADS);
-glVertex3f(0.0f,42.0f, 0.0f);		//Bottom Left
-glVertex3f(0.0f,67.0f, 0.0f);		//Top Left
-glVertex3f(889.0f,127.0f, 0.0f);	//Top Right
-glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Right
-
-//Back right wall
-glColor3f(0.6431373f, 0.6156863f, 0.5529413f); 
-glBegin(GL_QUADS);
-glVertex3f(888.0f,127.0f, 0.0f);	//Bottom Left
-glVertex3f(919.0f,540.0f, 0.0f);	//Top Left
-glVertex3f(959.0f,540.0f, 0.0f);	//Top Right
-glVertex3f(959.0f,102.0f, 0.0f);	//Bottom Right
-
-//Back right strip
-glColor3f(0.0f, 0.0f, 0.0f);
-glBegin(GL_QUADS);
-glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Left
-glVertex3f(889.0f,127.0f, 0.0f);	//Top Left
-glVertex3f(959.0f,102.0f, 0.0f);	//Top Right
-glVertex3f(959.0f,83.0f, 0.0f);		//Bottom Right
-
+background();
 
 //---------------------Main Objects--------------------------------
 drawTVStandLower();
@@ -68,6 +37,9 @@ drawTVStandMiddle();
 drawPS4();
 drawTVStandTop();
 drawTV();
+
+dumbells();
+infinityBox();
 
 
 
