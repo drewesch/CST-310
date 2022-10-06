@@ -35,6 +35,24 @@ void background(){
     glVertex3f(889.0f,127.0f, 0.0f);	//Top Left
     glVertex3f(959.0f,102.0f, 0.0f);	//Top Right
     glVertex3f(959.0f,83.0f, 0.0f);		//Bottom Right
+
+    //Floor left
+    glColor3f(0.33f, 0.33f, 0.6f);
+    glBegin(GL_QUADS);
+    glVertex3f(0.0f,0.0f, 0.0f);	    //Bottom Left
+    glVertex3f(0.0f,42.0f, 0.0f);   	//Top Left
+    glVertex3f(886.0f,107.0f, 0.0f);	//Top Right
+    glVertex3f(950.0f,0.0f, 0.0f);		//Bottom Right
+
+    //Floor right
+    glColor3f(0.93f, 0.33f, 0.6f);
+    glBegin(GL_TRIANGLES);
+    glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
+    glVertex3f(959.0f,83.0f, 0.0f);   	//Middle Right
+    glVertex3f(886.0f,107.0f, 0.0f);	//Top
+    glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
+
+
 }
 
 void drawTV(){
@@ -57,7 +75,7 @@ void drawTV(){
     //TV bottom light
     glColor3f(0.9f, 0.9f, 0.9f);
     glBegin(GL_QUADS);
-    glVertex3f(708.0f,192.0f, 0.0f);	//Bottom Left
+    glVertex3f(708.0f,193.0f, 0.0f);	//Bottom Left
     glVertex3f(708.0f,197.0f, 0.0f);	//Top Left
     glVertex3f(723.0f,196.0f, 0.0f);	//Top Right
     glVertex3f(723.0f,193.0f, 0.0f);	//Bottom Right
@@ -105,26 +123,36 @@ void drawPS4(){
     //Lighter Front of PS4
     glColor3f(0.2745f, 0.2745f, 0.2745f); 
     glBegin(GL_QUADS);
-    glVertex3f(616.0f,127.0f, 0.0f);	//Bottom Left
-    glVertex3f(617.0f,138.0f, 0.0f);	//Top Left
-    glVertex3f(700.0f,136.0f, 0.0f);	//Top Right
-    glVertex3f(701.0f,125.0f, 0.0f);	//Bottom Right
+    glVertex3f(616.0f,129.0f, 0.0f);	//Bottom Left
+    glVertex3f(619.0f,142.0f, 0.0f);	//Top Left
+    glVertex3f(699.0f,137.0f, 0.0f);	//Top Right
+    glVertex3f(696.0f,125.0f, 0.0f);	//Bottom Right
 
     //Darker Front of PS4
     glColor3f(0.02f, 0.02f, 0.02f); 
     glBegin(GL_QUADS);
     glVertex3f(616.0f,134.0f, 0.0f);	//Bottom Left
     glVertex3f(617.0f,136.0f, 0.0f);	//Top Left
-    glVertex3f(701.0f,133.0f, 0.0f);	//Top Right
-    glVertex3f(701.0f,131.0f, 0.0f);	//Bottom Right
+    glVertex3f(696.0f,131.0f, 0.0f);	//Top Right
+    glVertex3f(699.0f,129.0f, 0.0f);	//Bottom Right
+
 
     //Top of PS4
     glColor3f(0.02f, 0.02f, 0.02f); 
     glBegin(GL_QUADS);
-    glVertex3f(616.0f,139.0f, 0.0f);	//Bottom Left
-    glVertex3f(618.0f,158.0f, 0.0f);	//Top Left
-    glVertex3f(700.0f,155.0f, 0.0f);	//Top Right
+    glVertex3f(618.0f,141.0f, 0.0f);	//Bottom Left
+    glVertex3f(629.0f,158.0f, 0.0f);	//Top Left
+    glVertex3f(707.0f,155.0f, 0.0f);	//Top Right
     glVertex3f(700.0f,137.0f, 0.0f);	//Bottom Right
+    
+    //Side of PS4
+    glColor3f(0.1f, 0.1f, 0.1f); 
+    //glColor3f(1.0f, 0.1f, 0.1f); 
+    glBegin(GL_QUADS);
+    glVertex3f(696.0f,125.0f, 0.0f);	//Bottom Left
+    glVertex3f(698.0f,138.0f, 0.0f);	//Top Left
+    glVertex3f(707.0f,155.0f, 0.0f);	//Top Right
+    glVertex3f(707.0f,145.0f, 0.0f);	//Bottom Right
 }
 
 void infinityBox(){
