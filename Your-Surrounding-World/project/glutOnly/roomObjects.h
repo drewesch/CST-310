@@ -37,7 +37,7 @@ void background(){
     glVertex3f(959.0f,83.0f, 0.0f);		//Bottom Right
 
     //Floor left
-    glColor3f(0.33f, 0.33f, 0.6f);
+    glColor3f(0.64f, 0.576f, 0.482f);
     glBegin(GL_QUADS);
     glVertex3f(0.0f,0.0f, 0.0f);	    //Bottom Left
     glVertex3f(0.0f,42.0f, 0.0f);   	//Top Left
@@ -45,7 +45,7 @@ void background(){
     glVertex3f(950.0f,0.0f, 0.0f);		//Bottom Right
 
     //Floor right
-    glColor3f(0.93f, 0.33f, 0.6f);
+    glColor3f(0.64f, 0.576f, 0.482f);
     glBegin(GL_TRIANGLES);
     glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
     glVertex3f(959.0f,83.0f, 0.0f);   	//Middle Right
