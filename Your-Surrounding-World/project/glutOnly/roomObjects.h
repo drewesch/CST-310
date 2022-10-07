@@ -93,30 +93,132 @@ void drawTVStandTop(){
     //TV stand front
     glColor3f(0.05f, 0.05f, 0.05f); 
     glBegin(GL_QUADS);
-    glVertex3f(544.0f,175.0f, 0.0f);	//Bottom Left
+    glVertex3f(544.0f,170.0f, 0.0f);	//Bottom Left
     glVertex3f(544.0f,179.0f, 0.0f);	//Top Left
     glVertex3f(910.0f,168.0f, 0.0f);	//Top Right
-    glVertex3f(910.0f,163.0f, 0.0f);	//Bottom Right
+    glVertex3f(908.0f,158.0f, 0.0f);	//Bottom Right
 }
 
 void drawTVStandMiddle(){
     //Middle TV stand top layer
     glColor3f(0.153f, 0.149f, 0.133f); 
     glBegin(GL_QUADS);
-    glVertex3f(594.0f,125.0f, 0.0f);	//Bottom Left
+    glVertex3f(590.0f,125.0f, 0.0f);	//Bottom Left
     glVertex3f(590.0f,153.0f, 0.0f);	//Top Left
     glVertex3f(818.0f,145.0f, 0.0f);	//Top Right
     glVertex3f(854.0f,116.0f, 0.0f);	//Bottom Right
+
+    //Middle TV stand front layer
+    glColor3f(0.05f, 0.05f, 0.05f); 
+    glBegin(GL_QUADS);
+    glVertex3f(590.0f,121.0f, 0.0f);	//Bottom Left
+    glVertex3f(590.0f,125.0f, 0.0f);	//Top Left
+    glVertex3f(854.0f,116.0f, 0.0f);	//Top Right
+    glVertex3f(854.0f,112.0f, 0.0f);	//Bottom Right
+}
+
+void drawTVLegs(){
+    glBegin(GL_QUADS);
+
+    //front left leg
+    glColor3f(0.5f, 0.5f, 0.5f); 
+    glVertex3f(553.0f,182.0f, 0.0f);	//Bottom Left
+    glVertex3f(572.0f,197.0f, 0.0f);	//Top Left
+    glVertex3f(578.0f,197.0f, 0.0f);	//Top Right
+    glVertex3f(558.0f,182.0f, 0.0f);	//Bottom Right
+
+    //front right leg
+    glColor3f(0.5f, 0.5f, 0.5f); 
+    glVertex3f(887.0f,173.0f, 0.0f);	//Bottom Left
+    glVertex3f(860.0f,191.0f, 0.0f);	//Top Left
+    glVertex3f(868.0f,190.0f, 0.0f);	//Top Right
+    glVertex3f(893.0f,173.0f, 0.0f);	//Bottom Right
+
+    //back right leg
+    glColor3f(0.3f, 0.3f, 0.3f); 
+    glVertex3f(848.0f,188.0f, 0.0f);	//Bottom Left
+    glVertex3f(855.0f,190.0f, 0.0f);	//Top Left
+    glVertex3f(860.0f,190.0f, 0.0f);	//Top Right
+    glVertex3f(852.0f,185.0f, 0.0f);	//Bottom Right
 }
 
 void drawTVStandLower(){
     //Lower TV stand top layer
     glColor3f(0.153f, 0.149f, 0.133f); 
     glBegin(GL_QUADS);
-    glVertex3f(544.0f,60.0f, 0.0f);		//Bottom Left
+    glVertex3f(544.0f,50.0f, 0.0f);		//Bottom Left
     glVertex3f(550.0f,92.0f, 0.0f);		//Top Left
     glVertex3f(860.0f,81.0f, 0.0f);		//Top Right
-    glVertex3f(900.0f,41.0f, 0.0f);		//Bottom Right
+    glVertex3f(900.0f,31.0f, 0.0f);		//Bottom Right
+
+    //Rounded TV stand left
+    glColor3f(0.153f, 0.149f, 0.133f); 
+    glBegin(GL_QUADS);
+    glVertex3f(544.0f,45.0f, 0.0f);		//Bottom Left
+    glVertex3f(544.0f,50.0f, 0.0f);		//Top Left
+    glVertex3f(725.0f,75.0f, 0.0f);		//Top Right
+    glVertex3f(721.0f,30.0f, 0.0f);		//Bottom Right
+
+    //Rounded TV stand right
+    glColor3f(0.153f, 0.149f, 0.133f); 
+    glBegin(GL_QUADS);
+    glVertex3f(721.0f,30.0f, 0.0f);		//Bottom Left
+    glVertex3f(725.0f,75.0f, 0.0f);		//Top Left
+    glVertex3f(900.0f,31.0f, 0.0f);		//Top Right
+    glVertex3f(900.0f,26.0f, 0.0f);		//Bottom Right
+}
+
+
+void drawLowerTVStandLegs(){
+    
+    glBegin(GL_QUADS);
+
+    //left leg
+    glColor3f(0.6176471f, 0.5588236f, 0.5882353f); 
+    glVertex3f(594.0f,60.0f, 0.0f);	//Bottom Left
+    glVertex3f(594.0f,123.0f, 0.0f);	//Top Left
+    glVertex3f(603.0f,122.0f, 0.0f);	//Top Right
+    glVertex3f(603.0f,59.0f, 0.0f);	//Bottom Right
+
+    //middle leg
+    glColor3f(0.5176471f, 0.4588236f, 0.4882353f); 
+    glVertex3f(696.0f,83.0f, 0.0f);	//Bottom Left
+    glVertex3f(696.0f,125.0f, 0.0f);	//Top Left
+    glVertex3f(703.0f,125.0f, 0.0f);	//Top Right
+    glVertex3f(703.0f,83.0f, 0.0f);	//Bottom Right
+
+    //right leg
+    glColor3f(0.6176471f, 0.5588236f, 0.5882353f); 
+    glVertex3f(834.0f,48.0f, 0.0f);	//Bottom Left
+    glVertex3f(832.0f,115.0f, 0.0f);	//Top Left
+    glVertex3f(840.0f,115.0f, 0.0f);	//Top Right
+    glVertex3f(842.0f,49.0f, 0.0f);	//Bottom Right
+}
+
+void drawMiddleTVStandLegs(){
+    
+    glBegin(GL_QUADS);
+
+    //left leg
+    glColor3f(0.6176471f, 0.5588236f, 0.5882353f); 
+    glVertex3f(594.0f,128.0f, 0.0f);	//Bottom Left 
+    glVertex3f(594.0f,200.0f, 0.0f);	//Top Left 
+    glVertex3f(603.0f,200.0f, 0.0f);	//Top Right
+    glVertex3f(603.0f,127.0f, 0.0f);	//Bottom Right
+
+    //middle leg
+    glColor3f(0.4176471f, 0.3588236f, 0.3882353f); 
+    glVertex3f(696.0f,140.0f, 0.0f);	//Bottom Left
+    glVertex3f(696.0f,200.0f, 0.0f);	//Top Left
+    glVertex3f(703.0f,200.0f, 0.0f);	//Top Right
+    glVertex3f(703.0f,140.0f, 0.0f);	//Bottom Right
+
+    //right leg
+    glColor3f(0.6176471f, 0.5588236f, 0.5882353f); 
+    glVertex3f(832.0f,120.0f, 0.0f);	//Bottom Left
+    glVertex3f(827.0f,200.0f, 0.0f);	//Top Left
+    glVertex3f(835.0f,200.0f, 0.0f);	//Top Right
+    glVertex3f(840.0f,120.0f, 0.0f);	//Bottom Right
 }
 
 void drawPS4(){

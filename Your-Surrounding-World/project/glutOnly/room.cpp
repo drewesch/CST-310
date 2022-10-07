@@ -33,9 +33,15 @@ background();
 
 //---------------------Main Objects--------------------------------
 drawTVStandLower();
+drawLowerTVStandLegs();
+
 drawTVStandMiddle();
+drawMiddleTVStandLegs();
 drawPS4();
+
 drawTVStandTop();
+
+drawTVLegs();
 drawTV();
 
 dumbells();
