@@ -32,6 +32,7 @@ void myDisplay(void)
 background();
 
 //---------------------Main Objects--------------------------------
+drawBackRackStands();
 drawTVStandLower();
 drawLowerTVStandLegs();
 
@@ -46,6 +47,7 @@ drawTV();
 
 dumbells();
 infinityBox();
+drawFrontRackStands();
 
 
 

@@ -55,6 +55,27 @@ void background(){
 
 }
 
+void drawBackRackStands() {
+    // Right Front Back Stand
+    glColor3f(0.0f, 0.0f, 0.0f); 
+    glBegin(GL_QUADS);
+    glVertex3f(425.0f,35.0f, 0.0f);	//Bottom Left
+    glVertex3f(419.0f,379.0f, 0.0f);	//Top Left
+    glVertex3f(425.0f,378.0f, 0.0f);	//Top Right
+    glVertex3f(431.0f,35.0f, 0.0f);	//Bottom Right
+
+}
+
+void drawFrontRackStands() {
+    // Right Back Rack Stand
+    glColor3f(0.0f, 0.0f, 0.0f); 
+    glBegin(GL_QUADS);
+    glVertex3f(407.0f,70.0f, 0.0f);	//Bottom Left
+    glVertex3f(401.0f,372.0f, 0.0f);	//Top Left
+    glVertex3f(407.0f,372.0f, 0.0f);	//Top Right
+    glVertex3f(414.0f,71.0f, 0.0f);	//Bottom Right
+}
+
 void drawTV(){
     //TV screen border
     glColor3f(0.0f, 0.0f, 0.0f); 
