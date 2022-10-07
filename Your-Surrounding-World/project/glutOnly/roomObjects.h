@@ -52,11 +52,11 @@ void background(){
     glVertex3f(886.0f,107.0f, 0.0f);	//Top
     glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
 
-
 }
 
 void drawBackRackStands() {
-    // Left Back Rack Stand
+    //---------Left Back Rack Stand---------
+    // Stand Leg
     glColor3f(0.1607843f, 0.1411765f, 0.1294118f); 
     glBegin(GL_QUADS);
     glVertex3f(129.0f,49.0f, 0.0f);	//Bottom Left
@@ -64,14 +64,81 @@ void drawBackRackStands() {
     glVertex3f(114.0f,377.0f, 0.0f);	//Top Right
     glVertex3f(134.0f,51.0f, 0.0f);	//Bottom Right
 
+    // Bottom Tab
+    glColor3f(0.1019608f, 0.08627451f, 0.09019608f); 
+    glBegin(GL_QUADS);
+    glVertex3f(127.0f,60.0f, 0.0f);	//Bottom Left
+    glVertex3f(125.0f,71.0f, 0.0f);	//Top Left
+    glVertex3f(135.0f,72.0f, 0.0f);	//Top Right
+    glVertex3f(135.0f,61.0f, 0.0f);	//Bottom Right
 
-    // Right Back Rack Stand
+    // Next Tab Up
+    glColor3f(0.1019608f, 0.08627451f, 0.09019608f); 
+    glBegin(GL_QUADS);
+    glVertex3f(120.0f,162.0f, 0.0f);	//Bottom Left
+    glVertex3f(120.0f,171.0f, 0.0f);	//Top Left
+    glVertex3f(129.0f,172.0f, 0.0f);	//Top Right
+    glVertex3f(129.0f,163.0f, 0.0f);	//Bottom Right
+
+
+    // Next Tab Up
+    glColor3f(0.1019608f, 0.08627451f, 0.09019608f); 
+    glBegin(GL_QUADS);
+    glVertex3f(113.0f,247.0f, 0.0f);	//Bottom Left
+    glVertex3f(112.0f,258.0f, 0.0f);	//Top Left
+    glVertex3f(125.0f,258.0f, 0.0f);	//Top Right
+    glVertex3f(125.0f,246.0f, 0.0f);	//Bottom Right
+
+    // Top Tab
+    glColor3f(0.1019608f, 0.08627451f, 0.09019608f); 
+    glBegin(GL_QUADS);
+    glVertex3f(108.0f,343.0f, 0.0f);	//Bottom Left
+    glVertex3f(108.0f,354.0f, 0.0f);	//Top Left
+    glVertex3f(117.0f,354.0f, 0.0f);	//Top Right
+    glVertex3f(118.0f,343.0f, 0.0f);	//Bottom Right
+
+
+    //---------Right Back Rack Stand---------
+    // Stand Leg
     glColor3f(0.1607843f, 0.1411765f, 0.1294118f); 
     glBegin(GL_QUADS);
     glVertex3f(407.0f,70.0f, 0.0f);	//Bottom Left
     glVertex3f(401.0f,372.0f, 0.0f);	//Top Left
     glVertex3f(407.0f,372.0f, 0.0f);	//Top Right
     glVertex3f(414.0f,71.0f, 0.0f);	//Bottom Right
+    
+    // Bottom Tab
+    glColor3f(0.08235294f, 0.07843138f, 0.07058824f); 
+    glBegin(GL_QUADS);
+    glVertex3f(406.0f,84.0f, 0.0f);	//Bottom Left
+    glVertex3f(405.0f,95.0f, 0.0f);	//Top Left
+    glVertex3f(414.0f,96.0f, 0.0f);	//Top Right
+    glVertex3f(414.0f,83.0f, 0.0f);	//Bottom Right
+
+    // Next Tab Up
+    glColor3f(0.08235294f, 0.07843138f, 0.07058824f); 
+    glBegin(GL_QUADS);
+    glVertex3f(406.0f,174.0f, 0.0f);	//Bottom Left
+    glVertex3f(405.0f,184.0f, 0.0f);	//Top Left
+    glVertex3f(412.0f,184.0f, 0.0f);	//Top Right
+    glVertex3f(412.0f,173.0f, 0.0f);	//Bottom Right
+
+    // Next Tab Up
+    glColor3f(0.08235294f, 0.07843138f, 0.07058824f); 
+    glBegin(GL_QUADS);
+    glVertex3f(403.0f,253.0f, 0.0f);	//Bottom Left
+    glVertex3f(404.0f,264.0f, 0.0f);	//Top Left
+    glVertex3f(410.0f,264.0f, 0.0f);	//Top Right
+    glVertex3f(411.0f,254.0f, 0.0f);	//Bottom Right
+
+    // Top Tab
+    glColor3f(0.08235294f, 0.07843138f, 0.07058824f); 
+    glBegin(GL_QUADS);
+    glVertex3f(401.0f,342.0f, 0.0f);	//Bottom Left
+    glVertex3f(401.0f,351.0f, 0.0f);	//Top Left
+    glVertex3f(408.0f,352.0f, 0.0f);	//Top Right
+    glVertex3f(408.0f,342.0f, 0.0f);	//Bottom Right
+
 }
 
 void drawFrontRackStands() {
