@@ -33,6 +33,7 @@ background();
 
 //---------------------Main Objects--------------------------------
 drawBackRackStands();
+drawRackBackLines();
 drawTVStandLower();
 drawLowerTVStandLegs();
 
@@ -47,6 +48,7 @@ drawTV();
 
 dumbells();
 infinityBox();
+drawRackFrontLines();
 drawFrontRackStands();
 
 

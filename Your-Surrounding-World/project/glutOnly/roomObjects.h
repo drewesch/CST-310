@@ -141,6 +141,248 @@ void drawBackRackStands() {
 
 }
 
+void drawRackBackLines() {
+    //---------Bottom Row---------
+    // Back Side Lines
+    // GL_LINES
+    // Don't use LINE_LOOP to get the other cascading lines here, too complex
+
+    // Left Side Lines
+    // GL_LINES
+
+    // Right Side Lines
+    // GL_LINES
+
+    // Horizontal Cascading Lines
+
+    // Vertical Cascading Lines
+
+    //---------Next Row Up---------
+    // Back Side Lines
+    // GL_LINES
+    // Don't use LINE_LOOP to get the other cascading lines here, too complex
+
+    // Left Side Lines
+
+    // Right Side Lines
+
+    // Horizontal Cascading Lines
+
+    // Vertical Cascading Lines
+
+    //---------Next Row Up---------
+    // Back Side Lines
+    // GL_LINES
+    // Don't use LINE_LOOP to get the other cascading lines here, too complex
+
+    // Left Side Lines
+
+    // Right Side Lines
+
+    // Horizontal Cascading Lines
+
+    // Vertical Cascading Lines
+
+    //---------Top Row---------
+    // Back Side Lines
+    // GL_LINES
+    // Don't use LINE_LOOP to get the other cascading lines here, too complex
+    
+    // Left Side Lines
+
+    // Right Side Lines
+
+    // Horizontal Cascading Lines
+
+    // Vertical Cascading Lines
+
+}
+
+void drawRackFrontLines() {
+    //---------Bottom Row---------
+    // Front Lines
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINES);
+    glVertex3f(112.0f,24.0f,0.0f);	// Bottom Left
+    glVertex3f(425.0f,54.0f,0.0f);	// Bottom Right
+    glVertex3f(112.0f,30.0f, 0.0f);	//Top Left
+    glVertex3f(425.0f,62.0f, 0.0f);	//Top Right
+    glEnd();
+
+    // Cascading Lines (from left to right)
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(121.0f,24.0f, 0.0f);	//Bottom Left
+    glVertex3f(128.0f,32.0f, 0.0f);	//Top Left
+    glVertex3f(139.0f,27.0f, 0.0f);	//Top Right
+    glVertex3f(151.0f,32.0f, 0.0f);	//Bottom Right
+    glVertex3f(163.0f,28.0f, 0.0f);	//Bottom Left
+    glVertex3f(173.0f,35.0f, 0.0f);	//Top Left
+    glVertex3f(186.0f,31.0f, 0.0f);	//Top Right
+    glVertex3f(197.0f,37.0f, 0.0f);	//Bottom Right
+    glVertex3f(209.0f,34.0f, 0.0f);	//Bottom Left
+    glVertex3f(221.0f,39.0f, 0.0f);	//Top Left
+    glVertex3f(232.0f,35.0f, 0.0f);	//Top Right
+    glVertex3f(243.0f,42.0f, 0.0f);	//Bottom Right
+    glVertex3f(255.0f,38.0f, 0.0f);	//Bottom Left
+    glVertex3f(264.0f,43.0f, 0.0f);	//Top Left
+    glVertex3f(277.0f,40.0f, 0.0f);	//Top Right
+    glVertex3f(288.0f,45.0f, 0.0f);	//Bottom Right
+    glVertex3f(299.0f,42.0f, 0.0f);	//Bottom Left
+    glVertex3f(309.0f,48.0f, 0.0f);	//Top Left
+    glVertex3f(319.0f,44.0f, 0.0f);	//Top Right
+    glVertex3f(330.0f,50.0f, 0.0f);	//Bottom Right
+    glVertex3f(342.0f,46.0f, 0.0f);	//Bottom Left
+    glVertex3f(351.0f,52.0f, 0.0f);	//Top Left
+    glVertex3f(362.0f,49.0f, 0.0f);	//Top Right
+    glVertex3f(372.0f,55.0f, 0.0f);	//Bottom Right
+    glVertex3f(382.0f,50.0f, 0.0f);	//Bottom Left
+    glVertex3f(393.0f,57.0f, 0.0f);	//Top Left
+    glVertex3f(403.0f,52.0f, 0.0f);	//Top Right
+    glVertex3f(412.0f,59.0f, 0.0f);	//Bottom Right
+    glVertex3f(420.0f,55.0f, 0.0f);	//Bottom Left
+    glEnd();
+
+
+    //---------Next Row Up---------
+    // Front Lines
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINES);
+    glVertex3f(105.0f,142.0f, 0.0f);	//Top Right
+    glVertex3f(423.0f,160.0f, 0.0f);	//Bottom Right
+    glVertex3f(104.0f,149.0f, 0.0f);	//Bottom Left
+    glVertex3f(423.0f,166.0f, 0.0f);	//Top Left
+    glEnd();
+
+
+    // Cascading Lines (from left to right)
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(114.0f,143.0f, 0.0f);	//Top Left
+    glVertex3f(121.0f,148.0f, 0.0f);	//Top Right
+    glVertex3f(133.0f,143.0f, 0.0f);	//Bottom Right
+    glVertex3f(145.0f,149.0f, 0.0f);	//Bottom Left
+    glVertex3f(158.0f,145.0f, 0.0f);	//Top Left
+    glVertex3f(169.0f,151.0f, 0.0f);	//Top Right
+    glVertex3f(181.0f,145.0f, 0.0f);	//Bottom Right
+    glVertex3f(194.0f,152.0f, 0.0f);	//Bottom Left
+    glVertex3f(205.0f,148.0f, 0.0f);	//Top Left
+    glVertex3f(217.0f,153.0f, 0.0f);	//Top Right
+    glVertex3f(229.0f,149.0f, 0.0f);	//Bottom Right
+    glVertex3f(240.0f,154.0f, 0.0f);	//Bottom Left
+    glVertex3f(251.0f,150.0f, 0.0f);	//Top Left
+    glVertex3f(263.0f,156.0f, 0.0f);	//Top Right
+    glVertex3f(273.0f,152.0f, 0.0f);	//Bottom Right
+    glVertex3f(284.0f,157.0f, 0.0f);	//Bottom Left
+    glVertex3f(296.0f,153.0f, 0.0f);	//Top Left
+    glVertex3f(306.0f,159.0f, 0.0f);	//Top Right
+    glVertex3f(318.0f,155.0f, 0.0f);	//Bottom Right
+    glVertex3f(328.0f,160.0f, 0.0f);	//Bottom Left
+    glVertex3f(338.0f,155.0f, 0.0f);	//Top Left
+    glVertex3f(349.0f,160.0f, 0.0f);	//Top Right
+    glVertex3f(359.0f,157.0f, 0.0f);	//Bottom Right
+    glVertex3f(370.0f,161.0f, 0.0f);	//Bottom Left
+    glVertex3f(380.0f,157.0f, 0.0f);	//Top Left
+    glVertex3f(390.0f,163.0f, 0.0f);	//Top Right
+    glVertex3f(400.0f,160.0f, 0.0f);	//Bottom Right
+    glVertex3f(412.0f,164.0f, 0.0f);	//Bottom Left
+    glVertex3f(418.0f,160.0f, 0.0f);	//Top Left
+    glEnd();
+
+
+    //---------Next Row Up---------
+    // Front Lines
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINES);
+    glVertex3f(99.0f,241.0f, 0.0f);	//Top Right
+    glVertex3f(422.0f,249.0f, 0.0f);	//Bottom Right
+    glVertex3f(100.0f,247.0f, 0.0f);	//Bottom Left
+    glVertex3f(423.0f,255.0f, 0.0f);	//Top Left
+    glEnd();
+
+
+    // Cascading Lines (from left to right)
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(106.0f,242.0f, 0.0f);	//Top Right
+    glVertex3f(115.0f,246.0f, 0.0f);	//Bottom Right
+    glVertex3f(129.0f,241.0f, 0.0f);	//Bottom Left
+    glVertex3f(140.0f,247.0f, 0.0f);	//Top Left
+    glVertex3f(153.0f,242.0f, 0.0f);	//Top Right
+    glVertex3f(165.0f,247.0f, 0.0f);	//Bottom Right
+    glVertex3f(177.0f,243.0f, 0.0f);	//Bottom Left
+    glVertex3f(189.0f,248.0f, 0.0f);	//Top Left
+    glVertex3f(202.0f,244.0f, 0.0f);	//Top Right
+    glVertex3f(212.0f,249.0f, 0.0f);	//Bottom Right
+    glVertex3f(225.0f,244.0f, 0.0f);	//Bottom Left
+    glVertex3f(235.0f,250.0f, 0.0f);	//Top Left
+    glVertex3f(247.0f,244.0f, 0.0f);	//Top Right
+    glVertex3f(259.0f,250.0f, 0.0f);	//Bottom Right
+    glVertex3f(271.0f,245.0f, 0.0f);	//Bottom Left
+    glVertex3f(281.0f,251.0f, 0.0f);	//Top Left
+    glVertex3f(293.0f,246.0f, 0.0f);	//Top Right
+    glVertex3f(303.0f,251.0f, 0.0f);	//Bottom Right
+    glVertex3f(315.0f,247.0f, 0.0f);	//Bottom Left
+    glVertex3f(325.0f,251.0f, 0.0f);	//Top Left
+    glVertex3f(336.0f,247.0f, 0.0f);	//Top Right
+    glVertex3f(348.0f,253.0f, 0.0f);	//Bottom Right
+    glVertex3f(357.0f,248.0f, 0.0f);	//Bottom Left
+    glVertex3f(369.0f,253.0f, 0.0f);	//Top Left
+    glVertex3f(378.0f,248.0f, 0.0f);	//Top Right
+    glVertex3f(389.0f,254.0f, 0.0f);	//Bottom Right
+    glVertex3f(398.0f,249.0f, 0.0f);	//Bottom Left
+    glVertex3f(409.0f,254.0f, 0.0f);	//Top Left
+    glVertex3f(415.0f,249.0f, 0.0f);	//Top Right
+    glEnd();
+
+
+    //---------Top Row---------
+    // Front Lines
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINES);
+    glVertex3f(91.0f,349.0f, 0.0f);	//Top Right
+    glVertex3f(422.0f,345.0f, 0.0f);	//Bottom Right
+    glVertex3f(90.0f,356.0f, 0.0f);	//Bottom Left
+    glVertex3f(420.0f,351.0f, 0.0f);	//Top Left
+    glEnd();
+
+
+    // Cascading Lines (from left to right)
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(124.0f,346.0f, 0.0f);	//Bottom Left
+    glVertex3f(131.0f,354.0f, 0.0f);	//Top Left
+    glVertex3f(143.0f,346.0f, 0.0f);	//Top Right
+    glVertex3f(154.0f,354.0f, 0.0f);	//Bottom Right
+    glVertex3f(164.0f,345.0f, 0.0f);	//Bottom Left
+    glVertex3f(174.0f,353.0f, 0.0f);	//Top Left
+    glVertex3f(185.0f,346.0f, 0.0f);	//Top Right
+    glVertex3f(195.0f,353.0f, 0.0f);	//Bottom Right
+    glVertex3f(207.0f,344.0f, 0.0f);	//Bottom Left
+    glVertex3f(219.0f,353.0f, 0.0f);	//Top Left
+    glVertex3f(226.0f,344.0f, 0.0f);	//Top Right
+    glVertex3f(236.0f,352.0f, 0.0f);	//Bottom Right
+    glVertex3f(247.0f,344.0f, 0.0f);	//Bottom Left
+    glVertex3f(256.0f,353.0f, 0.0f);	//Top Left
+    glVertex3f(268.0f,343.0f, 0.0f);	//Top Right
+    glVertex3f(278.0f,353.0f, 0.0f);	//Bottom Right
+    glVertex3f(286.0f,344.0f, 0.0f);	//Bottom Left
+    glVertex3f(297.0f,352.0f, 0.0f);	//Top Left
+    glVertex3f(305.0f,343.0f, 0.0f);	//Top Right
+    glVertex3f(315.0f,353.0f, 0.0f);	//Bottom Right
+    glVertex3f(325.0f,344.0f, 0.0f);	//Bottom Left
+    glVertex3f(334.0f,352.0f, 0.0f);	//Top Left
+    glVertex3f(343.0f,342.0f, 0.0f);	//Top Right
+    glVertex3f(353.0f,351.0f, 0.0f);	//Bottom Right
+    glVertex3f(362.0f,343.0f, 0.0f);	//Bottom Left
+    glVertex3f(369.0f,351.0f, 0.0f);	//Top Left
+    glVertex3f(379.0f,342.0f, 0.0f);	//Top Right
+    glVertex3f(390.0f,351.0f, 0.0f);	//Bottom Right
+    glVertex3f(403.0f,343.0f, 0.0f);	//Bottom Left
+    glEnd();
+
+}
+
 void drawFrontRackStands() {
     //---------Left Front Rack Stand---------
     // Stand Leg
