@@ -335,7 +335,6 @@ void drawRackMiddleLines() {
 
 
     //lower middle horizontal lines
-    glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(108.0f,153.0f, 0.0f);	//Bottom Left
     glVertex3f(421.0f,169.0f, 0.0f);	//Top Left
     
@@ -349,7 +348,21 @@ void drawRackMiddleLines() {
     glVertex3f(417.0f,179.0f, 0.0f);	//Top Left
 
     //upper middle horizontal lines
+    glVertex3f(100.0f,250.0f, 0.0f);	//Bottom Left
+    glVertex3f(418.0f,258.0f, 0.0f);	//Top Left
     
+    glVertex3f(107.0f,252.0f, 0.0f);	//Bottom Left
+    glVertex3f(413.0f,260.0f, 0.0f);	//Top Left
+    
+    glVertex3f(110.0f,254.0f, 0.0f);	//Bottom Left
+    glVertex3f(410.0f,262.0f, 0.0f);	//Top Left
+
+    //top horizontal lines
+    glVertex3f(90.0f,352.0f, 0.0f);	//Bottom Left
+    glVertex3f(420.0f,347.0f, 0.0f);	//Top Left
+
+    glVertex3f(90.0f,354.0f, 0.0f);	//Bottom Left
+    glVertex3f(420.0f,349.0f, 0.0f);	//Top Left
 
 
     glEnd();
