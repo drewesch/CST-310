@@ -32,14 +32,19 @@ void myDisplay(void)
 background();
 
 //---------------------Main Objects--------------------------------
-drawBackRackStands();
+drawRackBackStands();
 drawRackBackLines();
+
+drawRackMiddleLines();
+
 drawTVStandLower();
 drawLowerTVStandLegs();
+drawPrinterBox();
 
 drawTVStandMiddle();
 drawMiddleTVStandLegs();
 drawPS4();
+drawPS4Games();
 
 drawTVStandTop();
 
@@ -49,7 +54,7 @@ drawTV();
 dumbells();
 infinityBox();
 drawRackFrontLines();
-drawFrontRackStands();
+drawRackFrontStands();
 
 
 
@@ -64,7 +69,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // set display mode
 	glutInitWindowSize(screenWidth, screenHeight); // set window size
 	glutInitWindowPosition(100, 150); // set window position on screen
-	glutCreateWindow("my first attempt"); // open the screen window
+	glutCreateWindow("Andrew and Evan's Apartment"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register redraw function
 	myInit();                   
 	glutMainLoop(); 		     // go into a perpetual loop
