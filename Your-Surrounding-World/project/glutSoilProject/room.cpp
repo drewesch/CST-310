@@ -61,6 +61,7 @@ drawTVLegs();
 drawTV();
 
 dumbells();
+drawDumbbellCircle(239.0f, 265.0f, 6.0f, 100);
 infinityBox();
 drawRackFrontLines();
 drawRackFrontStands();

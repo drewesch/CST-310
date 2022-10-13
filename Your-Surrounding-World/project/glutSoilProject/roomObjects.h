@@ -1151,6 +1151,20 @@ void dumbells(){
     glEnd();
 }
 
+void drawDumbbellCircle(float cx, float cy, float r, int num_segments) {
+    glColor3f(0.16f, 0.16f, 0.16f);
+    glBegin(GL_POLYGON);
+    glLineWidth(2.0);
+    for (int ii = 0; ii < num_segments; ii++)   {
+        float theta = 2.0f * 3.1415f * float(ii) / float(num_segments);//get the current angle 
+        float x = r * cosf(theta);//calculate the x component 
+        float y = r * sinf(theta);//calculate the y component 
+        glVertex2f(x + cx, y + cy);//output vertex 
+    }
+    glEnd();
+    glLineWidth(1.0);
+}
+
 void showTVPic(){
     GLuint tex_2d;
     GLdouble eyex,eyey,eyez = 0;
