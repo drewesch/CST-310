@@ -1,81 +1,126 @@
-#include <iostream>
-
-// GLEW
-#define GLEW_STATIC
-#include <GL/glew.h>
-
-// GLFW
-#include <GLFW/glfw3.h>
-
-// Other Libs
+#include <stdlib.h>
+#include <math.h>
+#include <GL/glut.h>
 #include <SOIL/SOIL.h>
+#include <stdio.h>
 
-// Other includes
-#include "Shader.h"
+float _angle = 0.0;
+GLuint _textureBrick;
 
-bool* keyStates = new bool[256];
-GLuint texture[0];
-
-void resize(int height, int width) {
+static void resize(int width, int height)
+{
     const float ar = (float) width / (float) height;
-    glViewport(0, 10, width, height);
+    glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-
-    glFrustum(-ar, ar, -1.0, 1.0, 2.0, 90.0);
-    //gluLookAt(0, 2, 0, -1, 1, -3, 0, 1, 0);
+    glFrustum(-ar, ar, -1.0, 1.0, 1.0, 100.0);
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity() ;
-}
-void keyOperations (void) {
-    if (!keyStates['a']) {}
-}
-static void Draw(void)
-{
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    glTranslatef(0.0f,0.0f,-5.0f);
-    texture[0] = SOIL_load_OGL_texture // load an image file directly as a new OpenGL texture
-    (
-        "foto.png",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-    );
-// allocate a texture name
+}
 
-    glBindTexture(GL_TEXTURE_2D, texture[0]);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
-    glEnd();
+void renderScene(void)
+{
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_TEXTURE_2D);
+
+    // Front side brick wall
+    glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, _textureBrick);
+        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR); 
+        glTranslatef(0,0,-6);
+        glRotatef(_angle, 0.0, 1.0, 0.0);
+        glBegin(GL_QUADS);  // Wall
+            glTexCoord3f(-50.0,2.0,0.1);  glVertex3f(-50,0,1);
+            glTexCoord3f(50.0,2.0,0.1);  glVertex3f(50,0,1);
+            glTexCoord3f(50.0,0.0,0.1);  glVertex3f(50,-1.5,1);
+            glTexCoord3f(-50.0,0.0,0.1);  glVertex3f(-50,-1.5,1);
+        glEnd();
+    glPopMatrix();
+
     glutSwapBuffers();
 }
-void keyPressed (unsigned char key, int x, int y) {
-    keyStates[key] = false;
+
+void mySpecialFunc(int key, int x, int y){
+    switch (key) {
+    case GLUT_KEY_RIGHT:
+        _angle += 1;
+        if (_angle > 360) _angle = 0.0;
+        break;
+    case GLUT_KEY_LEFT:
+        _angle -= 1;
+        if (_angle > 360) _angle = 0.0;
+        break;
+    }
+    glutPostRedisplay();
 }
-void keyUp (unsigned char key, int x, int y) {
-    keyStates[key] = true;
+
+GLuint loadTex(const char* texname)
+{
+    GLuint texture = SOIL_load_OGL_texture
+                    (
+                        texname,
+                        SOIL_LOAD_AUTO,
+                        SOIL_CREATE_NEW_ID,
+                        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+
+                    );
+
+    if( 0 == texture )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
+
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
+
+    glColor3f (1.0,1.0,1.0);
+    glBegin(GL_POLYGON);
+    
+    glTexCoord2f(0.0f, 0.0f); glVertex2f(0.0f, 0.0f);
+    glTexCoord2f(1.0f, 0.0f); glVertex2f(1.0f, 0.0f);
+    glTexCoord2f(1.0f, 1.0f); glVertex2f(1.0f, 1.0f);
+    glTexCoord2f(0.0f, 1.0f); glVertex2f(0.0f, 1.0f);
+
+    glEnd();   
+    glDisable(GL_TEXTURE_2D);
+
+    return texture;
 }
+
+void Initialize() {
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-100.0, 100.0, -100.0, 100.0, -100.0, 100.0);
+
+    _textureBrick = loadTex("/home/droo/CST-310/Your-Surrounding-World/class-examples/glutSOILexample/TVSCREEN.PNG");
+}
+
 int main(int argc, char **argv)
 {
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInit(&argc, argv);
-    glutInitWindowSize(600, 600);
-    glutCreateWindow("ugh fml");
-    glutReshapeFunc(resize);
-    glutDisplayFunc(Draw);
-    glutKeyboardFunc(keyPressed);
-    glutKeyboardUpFunc(keyUp);
-    /////////////////////////////////////
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+    glutInitWindowPosition(0,0);
+    glutInitWindowSize(600,600);
+    glutCreateWindow("Textured House");
+    // glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
-    glShadeModel(GL_SMOOTH);
-    glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
-    glClearDepth(1.0f);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+    glutReshapeFunc(resize);
+    glutSpecialFunc(mySpecialFunc);
+    glutDisplayFunc(renderScene);
+    Initialize();
+
     glutMainLoop();
+
+    return 0;
 }
