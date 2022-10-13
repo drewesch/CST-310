@@ -1,4 +1,4 @@
-# Your-Surrounding-World README
+# Project 4: Your-Surrounding-World
 Authors: Andrew Esch and Evan Lee
 
 Date: 10-9-2022
@@ -38,15 +38,9 @@ To see more instructions on setting up the WSL2 environment for Windows 10, refe
 
 ## Compiling and Running the Program
 To compile the program properly, open a terminal window and use g++ to compile the program by using the following command:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglut -lGLU -lGL
-
-To compile the program using GLSL, use:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW (-lglut if adding code)
-
-To compile the program using GLM, use:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW -lSOIL
+- g++ room.cpp -o run -lglut -lGLU -lGL
 
 A new compiled file will appear within the directory that the user is currently located in.
 
 To run the program after compiling it, change the terminal directory to match the directory location of the compiled file and use the following to run it:
-- ./{compiled-file-name}
+- ./run
