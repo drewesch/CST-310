@@ -34,10 +34,10 @@ void renderScene(void)
         glTranslatef(0,0,-6);
         glRotatef(_angle, 0.0, 1.0, 0.0);
         glBegin(GL_QUADS);  // Wall
-            glTexCoord3f(-50.0,2.0,0.1);  glVertex3f(-50,0,1);
-            glTexCoord3f(50.0,2.0,0.1);  glVertex3f(50,0,1);
-            glTexCoord3f(50.0,0.0,0.1);  glVertex3f(50,-1.5,1);
-            glTexCoord3f(-50.0,0.0,0.1);  glVertex3f(-50,-1.5,1);
+            glTexCoord3f(-1.0,1.0,0.1);  glVertex3f(-5,0,1);
+            glTexCoord3f(0,1.0,0.1);  glVertex3f(0,0,1);
+            glTexCoord3f(0.0,0.0,0.1);  glVertex3f(0,-1.5,1);
+            glTexCoord3f(-1.0,0.0,0.1);  glVertex3f(-5,-1.5,1);
         glEnd();
     glPopMatrix();
 
@@ -76,11 +76,11 @@ GLuint loadTex(const char* texname)
 
     glBindTexture(GL_TEXTURE_2D, texture);
 
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
 
     glColor3f (1.0,1.0,1.0);
     glBegin(GL_POLYGON);
@@ -112,8 +112,7 @@ int main(int argc, char **argv)
     glutInitWindowPosition(0,0);
     glutInitWindowSize(600,600);
     glutCreateWindow("Textured House");
-    // glEnable(GL_DEPTH_TEST);
-    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
 
     glutReshapeFunc(resize);
     glutSpecialFunc(mySpecialFunc);
