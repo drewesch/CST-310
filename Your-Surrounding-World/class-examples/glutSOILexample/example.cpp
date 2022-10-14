@@ -102,7 +102,7 @@ void Initialize() {
     glLoadIdentity();
     glOrtho(-100.0, 100.0, -100.0, 100.0, -100.0, 100.0);
 
-    _textureBrick = loadTex("/home/droo/CST-310/Your-Surrounding-World/class-examples/glutSOILexample/TVSCREEN.PNG");
+    _textureBrick = loadTex("./TVSCREEN.PNG");
 }
 
 int main(int argc, char **argv)
