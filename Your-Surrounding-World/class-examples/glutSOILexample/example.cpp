@@ -4,6 +4,8 @@
 #include <SOIL/SOIL.h>
 #include <stdio.h>
 
+#include "test.h"
+
 float _angle = 0.0;
 GLuint _textureBrick;
 
@@ -21,27 +23,55 @@ static void resize(int width, int height)
 void renderScene(void)
 {
 
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    
+
     glEnable(GL_TEXTURE_2D);
 
     // Front side brick wall
     glPushMatrix();
+    
+
+
+
         glBindTexture(GL_TEXTURE_2D, _textureBrick);
+   
         // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR); 
         glTranslatef(0,0,-6);
-        glRotatef(_angle, 0.0, 1.0, 0.0);
-        glBegin(GL_QUADS);  // Wall
-            glTexCoord3f(-1.0,1.0,0.1);  glVertex3f(-5,0,1);
-            glTexCoord3f(0,1.0,0.1);  glVertex3f(0,0,1);
-            glTexCoord3f(0.0,0.0,0.1);  glVertex3f(0,-1.5,1);
-            glTexCoord3f(-1.0,0.0,0.1);  glVertex3f(-5,-1.5,1);
+
+                         glColor3f(0.0f, 1.0f, 0.02f); 
+        glBegin(GL_QUADS);
+        glVertex3f(-10.0f,-10.0f, 0.0f);	//Bottom Left
+        glVertex3f(-10.0f,10.0f, 0.0f);	//Top Left
+        glVertex3f(10.0f,10.0f, 0.0f);	//Top Right
+        glVertex3f(10.0f,-10.0f, 0.0f);	//Bottom Right
         glEnd();
+        glColor3f(1.0f,1.0f,1.0f);
+
+        // glRotatef(_angle, 0.0, 1.0, 0.0);
+        // glBegin(GL_QUADS);  // Wall
+        //     glTexCoord3f(-1.0,1.0,0.1);  glVertex3f(-5,0,1);
+        //     glTexCoord3f(0,1.0,0.1);  glVertex3f(0,0,1);
+        //     glTexCoord3f(0.0,0.0,0.1);  glVertex3f(0,-1.5,1);
+        //     glTexCoord3f(-1.0,0.0,0.1);  glVertex3f(-5,-1.5,1);
+        // glEnd();
+
+
+        
+
+        
     glPopMatrix();
 
-    glutSwapBuffers();
+    //glDisable(GL_TEXTURE_2D);
+    
+
+    //glutSwapBuffers();
+    glFlush();
 }
 
 void mySpecialFunc(int key, int x, int y){
@@ -100,7 +130,8 @@ void Initialize() {
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-100.0, 100.0, -100.0, 100.0, -100.0, 100.0);
+    gluOrtho2D(0.0, (GLdouble)1000, 0.0, (GLdouble)700);
+    //glOrtho(-100.0, 100.0, -100.0, 100.0, -100.0, 100.0);
 
     _textureBrick = loadTex("./TVSCREEN.PNG");
 }
@@ -108,11 +139,11 @@ void Initialize() {
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
     glutInitWindowPosition(0,0);
     glutInitWindowSize(600,600);
     glutCreateWindow("Textured House");
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
 
     glutReshapeFunc(resize);
     glutSpecialFunc(mySpecialFunc);
