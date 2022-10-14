@@ -1,17 +1,18 @@
 
 #include <math.h>
-#include <GL/gl.h>
-#include <GL/glut.h>
 #include <SOIL/SOIL.h>
-#include "roomObjects.h"
 
 #define GLEW_STATIC
 #include <GL/glew.h>
+
+#include <GL/gl.h>
+#include <GL/glut.h>
 
 // GLFW
 #include <GLFW/glfw3.h>
 // Other includes
 #include "Shader.h"
+#include "roomObjects.h"
 
 using namespace std;
 const int screenWidth = 950;	   // width of screen window in pixels 
@@ -65,8 +66,6 @@ drawDumbbellCircle(239.0f, 265.0f, 6.0f, 100);
 infinityBox();
 drawRackFrontLines();
 drawRackFrontStands();
-
-showTVPic();
 
 
 //--------------------------------------------------

@@ -1,20 +1,3 @@
-#include <math.h>
-#include <stdio.h>
-#include <GL/gl.h>
-#include <GL/glut.h>
-#include <SOIL/SOIL.h>
-
-#define GLEW_STATIC
-#include <GL/glew.h>
-
-// GLFW
-#include <GLFW/glfw3.h>
-
-#include <iostream>
-
-// Other includes
-#include "Shader.h"
-
 
 void background(){
     //---------------------Walls+Floor----------------------------
@@ -1036,6 +1019,16 @@ void infinityBox(){
     glVertex3f(310.0f,279.0f, 0.0f); //Top Left
     glVertex3f(320.0f,279.0f, 0.0f); //Top Right
     glVertex3f(324.0f,276.0f, 0.0f); //Bottom Right
+
+    //---------------------Rack Infinity Box Object --------------------------------
+    // "I" Text
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(327.0f,261.0f, 0.0f);	//Bottom Left
+    glVertex3f(327.0f,267.0f, 0.0f);	//Top Left
+    glVertex3f(329.0f,267.0f, 0.0f);	//Top Right
+    glVertex3f(329.0f,261.0f, 0.0f);	//Bottom Right
+
     glEnd();
 }
 
@@ -1163,69 +1156,4 @@ void drawDumbbellCircle(float cx, float cy, float r, int num_segments) {
     }
     glEnd();
     glLineWidth(1.0);
-}
-
-void showTVPic(){
-    GLuint tex_2d;
-    GLdouble eyex,eyey,eyez = 0;
-    GLdouble centerx,centerz = 0;
-    GLdouble centery = 1;
-    glMatrixMode (GL_MODELVIEW);
-    glLoadIdentity ();
-    glClear (GL_COLOR_BUFFER_BIT);
-    glClearColor (1.0,1.0,1.0,1.0);
-    //gluLookAt (eyex,eyey,eyez,centerx,centery,centerz,0,1,0);
-    gluLookAt (0,0,0,0,1,0,0,1,0);
-
-    glEnable(GL_TEXTURE_2D);
-     tex_2d = SOIL_load_OGL_texture
-    (
-        "glutSoilProject/TVSCREEN.PNG",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-    );
-     if( 0 == tex_2d )
-    {
-        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
-        exit(1);
-    }
-
-   glBindTexture(GL_TEXTURE_2D, tex_2d);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
-
-    glColor3f (1.0,1.0,1.0);
-    glBegin(GL_POLYGON);
-
-                       glTexCoord2f(0.0f, 0.0f); glVertex2f(0.0f, 0.0f);
-                       glTexCoord2f(1.0f, 0.0f); glVertex2f(1.0f, 0.0f);
-                       glTexCoord2f(1.0f, 1.0f); glVertex2f(1.0f, 1.0f);
-                       glTexCoord2f(0.0f, 1.0f); glVertex2f(0.0f, 1.0f);
-
-     glEnd();   
-    glDisable(GL_TEXTURE_2D);
-    glFlush ();
-    //glutSwapBuffers();
-}
-
-void showTVPic2(){
-    GLuint texture1;
-    glGenTextures(1, &texture1);
-    glBindTexture(GL_TEXTURE_2D, texture1); // All upcoming GL_TEXTURE_2D operations now have effect on our texture object
-    // Set our texture parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Set texture wrapping to GL_REPEAT
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // Set texture filtering
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // Load, create texture and generate mipmaps
-    int width, height;
-    
-    unsigned char* image = SOIL_load_image("Container1.jpg", &width, &height, 0, SOIL_LOAD_RGB);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    SOIL_free_image_data(image);
-    glBindTexture(GL_TEXTURE_2D, 0); // Unbind texture when done, so we won't accidentily mess up our texture.
 }
