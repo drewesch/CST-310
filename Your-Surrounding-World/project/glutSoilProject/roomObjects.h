@@ -1021,13 +1021,135 @@ void infinityBox(){
     glVertex3f(324.0f,276.0f, 0.0f); //Bottom Right
 
     //---------------------Rack Infinity Box Object --------------------------------
-    // "I" Text
+    // First "I" Letter
     glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
     glBegin(GL_QUADS);
-    glVertex3f(327.0f,261.0f, 0.0f);	//Bottom Left
-    glVertex3f(327.0f,267.0f, 0.0f);	//Top Left
-    glVertex3f(329.0f,267.0f, 0.0f);	//Top Right
-    glVertex3f(329.0f,261.0f, 0.0f);	//Bottom Right
+    glVertex3f(327.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(327.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(329.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(329.0f,262.0f, 0.0f);	//Bottom Right
+
+    // First "N" Letter
+    // Left Vertical Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(331.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(331.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(333.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(333.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Angled Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glVertex3f(336.0f,263.0f, 0.0f);	//Bottom Left
+    glVertex3f(331.0f,267.0f, 0.0f);	//Top Left
+    glVertex3f(333.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(338.0f,264.0f, 0.0f);	//Bottom Right
+
+    // Rigth Vertical Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glVertex3f(336.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(336.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(338.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(338.0f,262.0f, 0.0f);	//Bottom Right
+
+    // "F" Letter
+    // Vertical Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(340.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(340.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(342.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(342.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Bottom Horizontal Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glVertex3f(340.0f,265.0f, 0.0f);	//Bottom Left
+    glVertex3f(340.0f,266.0f, 0.0f);	//Top Left
+    glVertex3f(344.0f,266.0f, 0.0f);	//Top Right
+    glVertex3f(345.0f,265.0f, 0.0f);	//Bottom Right
+
+    // Top Horizontal Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glVertex3f(340.0f,267.0f, 0.0f);	//Bottom Left
+    glVertex3f(340.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(345.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(345.0f,267.0f, 0.0f);	//Bottom Right
+
+    // Second "I" Letter
+    glBegin(GL_QUADS);
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glVertex3f(347.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(347.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(349.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(349.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Second "N" Letter
+    // Left Vertical Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(351.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(351.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(353.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(353.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Angled Section
+    glVertex3f(355.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(351.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(353.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(356.0f,264.0f, 0.0f);	//Bottom Right
+
+    // Right Vertical Section
+    glVertex3f(355.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(355.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(357.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(357.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Third "I" Letter
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(359.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(359.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(361.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(361.0f,262.0f, 0.0f);	//Bottom Right
+
+
+    // "T" Letter
+    // Bottom Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(364.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(364.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(366.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(366.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Top Horizontal Section
+    glVertex3f(362.0f,266.5f, 0.0f);	//Bottom Left
+    glVertex3f(362.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(368.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(368.0f,266.5f, 0.0f);	//Bottom Right
+
+    // "Y" Letter
+    // Bottom Section
+    glColor3f(0.7529413f, 0.7333333f, 0.7490196f);
+    glBegin(GL_QUADS);
+    glVertex3f(371.0f,262.0f, 0.0f);	//Bottom Left
+    glVertex3f(371.0f,266.0f, 0.0f);	//Top Left
+    glVertex3f(373.0f,266.0f, 0.0f);	//Top Right
+    glVertex3f(373.0f,262.0f, 0.0f);	//Bottom Right
+
+    // Left Angle
+    glVertex3f(371.0f,265.0f, 0.0f);	//Bottom Left
+    glVertex3f(369.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(371.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(372.0f,266.0f, 0.0f);	//Bottom Right
+
+    // Right Angle
+    glVertex3f(372.0f,266.0f, 0.0f);	//Bottom Left
+    glVertex3f(373.0f,268.0f, 0.0f);	//Top Left
+    glVertex3f(375.0f,268.0f, 0.0f);	//Top Right
+    glVertex3f(373.0f,265.0f, 0.0f);	//Bottom Right
+
+
 
     glEnd();
 }
