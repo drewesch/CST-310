@@ -9,13 +9,13 @@ void background(){
     glVertex3f(922.0f,540.0f, 0.0f);	//Top Right
     glVertex3f(889.0f,127.0f, 0.0f);	//Bottom Right
 
-    //Back left strip
-    glColor3f(0.20f, 0.20f, 0.20f); 
-    glBegin(GL_QUADS);
-    glVertex3f(0.0f,42.0f, 0.0f);		//Bottom Left
-    glVertex3f(0.0f,67.0f, 0.0f);		//Top Left
-    glVertex3f(889.0f,127.0f, 0.0f);	//Top Right
-    glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Right
+    // //Back left strip
+    // glColor3f(0.20f, 0.20f, 0.20f); 
+    // glBegin(GL_QUADS);
+    // glVertex3f(0.0f,42.0f, 0.0f);		//Bottom Left
+    // glVertex3f(0.0f,67.0f, 0.0f);		//Top Left
+    // glVertex3f(889.0f,127.0f, 0.0f);	//Top Right
+    // glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Right
 
     //Back right wall
     glColor3f(0.6431373f, 0.6156863f, 0.5529413f); 
@@ -25,30 +25,30 @@ void background(){
     glVertex3f(959.0f,540.0f, 0.0f);	//Top Right
     glVertex3f(959.0f,102.0f, 0.0f);	//Bottom Right
 
-    //Back right strip
-    glColor3f(0.15f, 0.15f, 0.15f);
-    glBegin(GL_QUADS);
-    glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Left
-    glVertex3f(889.0f,127.0f, 0.0f);	//Top Left
-    glVertex3f(959.0f,102.0f, 0.0f);	//Top Right
-    glVertex3f(959.0f,83.0f, 0.0f);		//Bottom Right
+    // //Back right strip
+    // glColor3f(0.15f, 0.15f, 0.15f);
+    // glBegin(GL_QUADS);
+    // glVertex3f(886.0f,107.0f, 0.0f);	//Bottom Left
+    // glVertex3f(889.0f,127.0f, 0.0f);	//Top Left
+    // glVertex3f(959.0f,102.0f, 0.0f);	//Top Right
+    // glVertex3f(959.0f,83.0f, 0.0f);		//Bottom Right
 
-    //Floor left
-    glColor3f(0.64f, 0.576f, 0.482f);
-    glBegin(GL_QUADS);
-    glVertex3f(0.0f,0.0f, 0.0f);	    //Bottom Left
-    glVertex3f(0.0f,42.0f, 0.0f);   	//Top Left
-    glVertex3f(886.0f,107.0f, 0.0f);	//Top Right
-    glVertex3f(950.0f,0.0f, 0.0f);		//Bottom Right
+    // //Floor left
+    // glColor3f(0.64f, 0.576f, 0.482f);
+    // glBegin(GL_QUADS);
+    // glVertex3f(0.0f,0.0f, 0.0f);	    //Bottom Left
+    // glVertex3f(0.0f,42.0f, 0.0f);   	//Top Left
+    // glVertex3f(886.0f,107.0f, 0.0f);	//Top Right
+    // glVertex3f(950.0f,0.0f, 0.0f);		//Bottom Right
 
-    //Floor right
-    glColor3f(0.64f, 0.576f, 0.482f);
-    glBegin(GL_TRIANGLES);
-    glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
-    glVertex3f(959.0f,83.0f, 0.0f);   	//Middle Right
-    glVertex3f(886.0f,107.0f, 0.0f);	//Top
-    glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
-    glEnd();
+    // //Floor right
+    // glColor3f(0.64f, 0.576f, 0.482f);
+    // glBegin(GL_TRIANGLES);
+    // glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
+    // glVertex3f(959.0f,83.0f, 0.0f);   	//Middle Right
+    // glVertex3f(886.0f,107.0f, 0.0f);	//Top
+    // glVertex3f(950.0f,0.0f, 0.0f);		//Bottom
+    // glEnd();
 }
 
 void drawRackBackStands() {

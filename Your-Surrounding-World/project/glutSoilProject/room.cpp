@@ -12,6 +12,7 @@ const int screenWidth = 950;	   // width of screen window in pixels
 const int screenHeight = 1080/2;	   // height of screen window in pixels
 GLdouble A, B, C, D;               // values used for scaling and shifting
 GLuint _textureTV;
+GLuint _textureFloor;
 
 
 GLuint loadTex(const char* texname)
@@ -68,6 +69,7 @@ GLuint loadTex(const char* texname)
 		 B = 0.0;
 		 C = D = screenHeight / 2.0;
 	_textureTV = loadTex("./TVScreen.png");
+	_textureFloor = loadTex("./floor.jpg");
 }
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 void myDisplay(void)
@@ -75,6 +77,36 @@ void myDisplay(void)
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     // clear the screen 
 	
+	glEnable(GL_TEXTURE_2D);
+	glPushMatrix();
+		glEnd();
+		glBindTexture(GL_TEXTURE_2D, _textureFloor);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+    	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+		//glTranslatef(0,0,-100);
+        glColor3f(1.0f,1.0f,1.0f);
+		
+		glColor3f(0.0f, 1.0f, 0.02f); 
+        glBegin(GL_LINES);
+        glVertex3f(-10.0f,-10.0f, 0.0f);	//Bottom Left
+        glVertex3f(-10.0f,-11.0f, 0.0f);	//Top Left
+        glEnd();
+        glColor3f(1.0f,1.0f,1.0f);
+
+
+		glBegin(GL_POLYGON);  // Floor
+            glTexCoord3f(-1,0,0.1);  glVertex3f(0.0f,0.0f, 0.0f); //bottom left
+            glTexCoord3f(-1,.16,0.1);  glVertex3f(0.0f,67.0f, 0.0f);   //top left
+            glTexCoord3f(-0.10,0.26,0.1);  glVertex3f(889.0f,127.0f, 0.0f); //top right
+			glTexCoord3f(0.0,0.21,0.1); glVertex3f(959.0f,102.0f, 0.0f);   	//Middle Right
+			glTexCoord3f(0,0,0.1);  glVertex3f(950.0f,0.0f, 0.0f);		//Bottom //bottom right
+    	glEnd();
+		glDisable(GL_TEXTURE_2D);
+
+	glPopMatrix();
+
+
+
 	glPushMatrix();
 		//glColor3f(1.0f, 1.0f, 1.0f);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
@@ -137,6 +169,9 @@ void myDisplay(void)
             glTexCoord3f(-0.95,0.3,0.1);  glVertex3f(539.0f,199.0f, -1.0f); //bottom left
     	glEnd();
 		glDisable(GL_TEXTURE_2D);
+
+
+		
 		
 
 
