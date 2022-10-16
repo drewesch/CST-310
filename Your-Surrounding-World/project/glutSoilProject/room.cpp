@@ -111,7 +111,6 @@ void myDisplay(void)
 		drawRackFrontStands();
 		glEnd();	
 	glPopMatrix();
-	glTranslatef(100,0,0);
 	//glFlush();
 	
 	glEnable(GL_TEXTURE_2D);
@@ -132,10 +131,10 @@ void myDisplay(void)
 
 		
 		glBegin(GL_QUADS);  // Wall
-            glTexCoord3f(-.87,.9,0.1);  glVertex3f(542.0f,347.0f, -1.0f); //top left
-            glTexCoord3f(0,1.0,0.1);  glVertex3f(922.0f,348.0f, -1.0f); //top right
-            glTexCoord3f(0.0,0.0,0.1);  glVertex3f(910.0f,188.0f, -1.0f); //bottom right
-            glTexCoord3f(-1.0,0.0,0.1);  glVertex3f(539.0f,199.0f, -1.0f); //bottom left
+            glTexCoord3f(-.94,.92,0.1);  glVertex3f(542.0f,347.0f, -1.0f); //top left
+            glTexCoord3f(-0.04,0.93,0.1);  glVertex3f(922.0f,348.0f, -1.0f); //top right
+            glTexCoord3f(-0.07,0.26,0.1);  glVertex3f(910.0f,188.0f, -1.0f); //bottom right
+            glTexCoord3f(-0.95,0.3,0.1);  glVertex3f(539.0f,199.0f, -1.0f); //bottom left
     	glEnd();
 		glDisable(GL_TEXTURE_2D);
 		

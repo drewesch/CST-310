@@ -652,14 +652,14 @@ void drawTV(){
     glVertex3f(918.0f,344.0f, 0.0f);	//Top Right
     glVertex3f(906.0f,192.0f, 0.0f);	//Bottom Right
 
-    //TV bottom light
-    glColor3f(0.9f, 0.9f, 0.9f);
-    glBegin(GL_QUADS);
-    glVertex3f(708.0f,193.0f, 0.0f);	//Bottom Left
-    glVertex3f(708.0f,197.0f, 0.0f);	//Top Left
-    glVertex3f(723.0f,196.0f, 0.0f);	//Top Right
-    glVertex3f(723.0f,193.0f, 0.0f);	//Bottom Right
-    glEnd();
+    // //TV bottom light
+    // glColor3f(0.9f, 0.9f, 0.9f);
+    // glBegin(GL_QUADS);
+    // glVertex3f(708.0f,193.0f, 0.0f);	//Bottom Left
+    // glVertex3f(708.0f,197.0f, 0.0f);	//Top Left
+    // glVertex3f(723.0f,196.0f, 0.0f);	//Top Right
+    // glVertex3f(723.0f,193.0f, 0.0f);	//Bottom Right
+    // glEnd();
 }
 
 void drawTVStandTop(){
