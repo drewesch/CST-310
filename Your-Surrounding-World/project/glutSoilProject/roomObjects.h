@@ -751,6 +751,23 @@ void drawTVStandLower(){
     glVertex3f(900.0f,31.0f, 0.0f);		//Top Right
     glVertex3f(900.0f,26.0f, 0.0f);		//Bottom Right
     glEnd();
+
+    //Rounded TV stand left FRONT
+    glColor3f(0.05f, 0.05f, 0.05f); 
+    glBegin(GL_QUADS);
+    glVertex3f(544.0f,45.0f-4.0f, 0.0f);		//Bottom Left
+    glVertex3f(544.0f,50.0f-4.0f, 0.0f);		//Top Left
+    glVertex3f(725.0f,37.0f-4.0f, 0.0f);		//Top Right
+    glVertex3f(721.0f,32.0f-4.0f, 0.0f);		//Bottom Right
+
+    // Rounded TV stand right FRONT
+    glColor3f(0.05f, 0.05f, 0.05f); 
+    glBegin(GL_QUADS);
+    glVertex3f(721.0f,32.0f-4.0f, 0.0f);		//Bottom Left
+    glVertex3f(725.0f,37.0f-4.0f, 0.0f);		//Top Left
+    glVertex3f(900.0f,36.0f-4.0f, 0.0f);		//Top Right
+    glVertex3f(900.0f,31.0f-4.0f, 0.0f);		//Bottom Right
+    // glEnd();
 }
 
 
