@@ -5,14 +5,15 @@
 #include <stdio.h>
 
 #include "test.h"
+#include "roomObjects.h"
 
 float _angle = 0.0;
 GLuint _textureBrick;
 
 static void resize(int width, int height)
 {
-    const float ar = (float) width / (float) height;
-    glViewport(0, 0, width, height);
+    const float ar = (float) 950 / (float) 540;
+    glViewport(0, 0, 950, 540);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glFrustum(-ar, ar, -1.0, 1.0, 1.0, 100.0);
@@ -42,9 +43,9 @@ void renderScene(void)
         // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR); 
-        glTranslatef(0,0,-6);
+        glTranslatef(10,0,-30);
 
-                         glColor3f(0.0f, 1.0f, 0.02f); 
+        glColor3f(0.0f, 1.0f, 0.02f); 
         glBegin(GL_QUADS);
         glVertex3f(-10.0f,-10.0f, 0.0f);	//Bottom Left
         glVertex3f(-10.0f,10.0f, 0.0f);	//Top Left
@@ -53,18 +54,32 @@ void renderScene(void)
         glEnd();
         glColor3f(1.0f,1.0f,1.0f);
 
-        // glRotatef(_angle, 0.0, 1.0, 0.0);
-        // glBegin(GL_QUADS);  // Wall
-        //     glTexCoord3f(-1.0,1.0,0.1);  glVertex3f(-5,0,1);
-        //     glTexCoord3f(0,1.0,0.1);  glVertex3f(0,0,1);
-        //     glTexCoord3f(0.0,0.0,0.1);  glVertex3f(0,-1.5,1);
-        //     glTexCoord3f(-1.0,0.0,0.1);  glVertex3f(-5,-1.5,1);
-        // glEnd();
+        glRotatef(_angle, 0.0, 1.0, 0.0);
+        glBegin(GL_QUADS);  // Wall
+            glTexCoord3f(-1.0,1.0,0.1);  glVertex3f(-5,0,0);
+            glTexCoord3f(0,1.0,0.1);  glVertex3f(0,0,0);
+            glTexCoord3f(0.0,0.0,0.1);  glVertex3f(0,-1.5,0);
+            glTexCoord3f(-1.0,0.0,0.1);  glVertex3f(-5,-1.5,0);
+        glEnd();
+        glDisable(GL_TEXTURE_2D);
 
 
         
 
         
+    glPopMatrix();
+
+    glPushMatrix();
+    background();
+
+        glColor3f(0.0f, 1.0f, 0.02f); 
+        glBegin(GL_QUADS);
+        glVertex3f(-10.0f,-10.0f, 0.0f);	//Bottom Left
+        glVertex3f(-10.0f,10.0f, 0.0f);	//Top Left
+        glVertex3f(10.0f,10.0f, 0.0f);	//Top Right
+        glVertex3f(10.0f,-10.0f, 0.0f);	//Bottom Right
+        glEnd();
+        glColor3f(1.0f,1.0f,1.0f);
     glPopMatrix();
 
     //glDisable(GL_TEXTURE_2D);
@@ -141,7 +156,7 @@ int main(int argc, char **argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
     glutInitWindowPosition(0,0);
-    glutInitWindowSize(600,600);
+    glutInitWindowSize(1200,900);
     glutCreateWindow("Textured House");
     //glEnable(GL_DEPTH_TEST);
 
