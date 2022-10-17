@@ -11,12 +11,14 @@ using namespace std;
 const int screenWidth = 950;	   // width of screen window in pixels 
 const int screenHeight = 1080/2;	   // height of screen window in pixels
 GLdouble A, B, C, D;               // values used for scaling and shifting
-GLuint _textureTV;
-GLuint _textureFloor;
+GLuint _textureTV;					// value for storing TV texture
+GLuint _textureFloor;				// value for storing floor texture
 
+// Function call to load textures using SOIL and shaders
 GLuint loadTex(const char* texname)
 {
-    GLuint texture = SOIL_load_OGL_texture
+	// Format the texture for GLU and SOIL
+	GLuint texture = SOIL_load_OGL_texture
                     (
                         texname,
                         SOIL_LOAD_AUTO,
@@ -25,30 +27,34 @@ GLuint loadTex(const char* texname)
 
                     );
 
+	// If the teexture does not exist
     if( 0 == texture )
     {
-        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() ); // Throw a loading error
     }
 
+	// Bind texture to a GL shader
     glBindTexture(GL_TEXTURE_2D, texture);
 
+	// Set Texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
-
+	// Initialize the texture using polygons and complete color
     glColor3f (1.0,1.0,1.0);
     glBegin(GL_POLYGON);
     
-    glTexCoord2f(0.0f, 0.0f); glVertex2f(0.0f, 0.0f);
-    glTexCoord2f(1.0f, 0.0f); glVertex2f(1.0f, 0.0f);
-    glTexCoord2f(1.0f, 1.0f); glVertex2f(1.0f, 1.0f);
-    glTexCoord2f(0.0f, 1.0f); glVertex2f(0.0f, 1.0f);
+	// Set the texture vertexes and coordinates  
+    glTexCoord2f(0.0f, 0.0f); glVertex2f(0.0f, 0.0f); // Bottom left
+    glTexCoord2f(1.0f, 0.0f); glVertex2f(1.0f, 0.0f); // Top left
+    glTexCoord2f(1.0f, 1.0f); glVertex2f(1.0f, 1.0f); // Top right
+    glTexCoord2f(0.0f, 1.0f); glVertex2f(0.0f, 1.0f); // Bottom right
 
+	// End texture
     glEnd();   
     glDisable(GL_TEXTURE_2D);
 
+	// Return completed texture using SOIL and shaders
     return texture;
 }
 
@@ -67,8 +73,8 @@ GLuint loadTex(const char* texname)
 		 A = screenWidth / 4.0; // set values used for scaling and shifting
 		 B = 0.0;
 		 C = D = screenHeight / 2.0;
-	_textureTV = loadTex("./TVScreen.png");
-	_textureFloor = loadTex("./floor.jpg");
+	_textureTV = loadTex("./TVScreen.png"); // load TV screen texture
+	_textureFloor = loadTex("./floor.jpg"); // load floor texture
 }
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 void myDisplay(void)
@@ -76,23 +82,28 @@ void myDisplay(void)
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     // clear the screen 
 	
+	// Push textures to a new matrix
 	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 		glEnd();
+		
+		// Bind texture to a shader
 		glBindTexture(GL_TEXTURE_2D, _textureFloor);
+
+		// Formalize texture parameters
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
     	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-		//glTranslatef(0,0,-100);
+
         glColor3f(1.0f,1.0f,1.0f);
-		
 		glColor3f(0.0f, 1.0f, 0.02f); 
+		// Initialize the texture to 3D space
         glBegin(GL_LINES);
         glVertex3f(-10.0f,-10.0f, 0.0f);	//Bottom Left
         glVertex3f(-10.0f,-11.0f, 0.0f);	//Top Left
         glEnd();
         glColor3f(1.0f,1.0f,1.0f);
 
-
+		// Draw texture
 		glBegin(GL_POLYGON);  // Floor
             glTexCoord3f(-1,0,0.1);  glVertex3f(0.0f,0.0f, 0.0f); //bottom left
             glTexCoord3f(-1,.16,0.1);  glVertex3f(0.0f,67.0f, 0.0f);   //top left
@@ -102,12 +113,15 @@ void myDisplay(void)
     	glEnd();
 		glDisable(GL_TEXTURE_2D);
 
+	// Save matrix
 	glPopMatrix();
 
 
 
 	glPushMatrix();
 		//glColor3f(1.0f, 1.0f, 1.0f);
+
+		// Reload texture matrix in main matrix
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
     	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR); 
 	
@@ -141,19 +155,21 @@ void myDisplay(void)
 		infinityBox();
 		drawRackFrontLines();
 		drawRackFrontStands();
-		glEnd();	
+		glEnd();
+	// Save main matrix for objects	
 	glPopMatrix();
-	//glFlush();
 	
+	// Reinitalize texture matrixes to display in order
 	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 		glEnd();
 		
+		// Bind TV textures
 		glBindTexture(GL_TEXTURE_2D, _textureTV);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
     	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-		//glTranslatef(0,0,-100);
 
+		// Initalize in 3D space
         glColor3f(0.0f, 1.0f, 0.02f); 
         glBegin(GL_LINES);
         glVertex3f(-10.0f,-10.0f, 0.0f);	//Bottom Left
@@ -161,7 +177,7 @@ void myDisplay(void)
         glEnd();
         glColor3f(1.0f,1.0f,1.0f);
 
-		
+		// Draw texture coordinates
 		glBegin(GL_QUADS);  // Wall
             glTexCoord3f(-.94,.92,0.1);  glVertex3f(542.0f,347.0f, -1.0f); //top left
             glTexCoord3f(-0.04,0.93,0.1);  glVertex3f(922.0f,348.0f, -1.0f); //top right
@@ -175,35 +191,44 @@ void myDisplay(void)
 
 
 //--------------------------------------------------
+	// Save all graphics to a final matrix
 	glPopMatrix();
 	
 	glutSwapBuffers();		   // send all output to display 
 }
 
+// Handle camera movement using arrow key inputs
 void cameraMovement(int key, int x, int y){
 	float move = 2.0f;
     switch (key) {
     case GLUT_KEY_RIGHT:
+		// Move camera to the right, forces all matrix calculations to move correspondingly
 		glTranslatef(-move, 0.0, 0.0);
         break;
     case GLUT_KEY_LEFT:
+		// Move camera to the left, forces all matrix calculations to move correspondingly
 		glTranslatef(move, 0.0, 0.0);
         break;
 	case GLUT_KEY_UP:
+		// Move camera upwards, forces all matrix calculations to move correspondingly
 		glTranslatef(0.0, -move, 0.0);
         break;
     case GLUT_KEY_DOWN:
+		// Move camera downwards, forces all matrix calculations to move correspondingly
 		glTranslatef(0.0, move, 0.0);
         break;
 	}
     glutPostRedisplay();
 }
 
+// Handle rotations using "a" and "d", update ortho matrix
 void rotationHandler(unsigned char key, int x, int y) {
-	float rot = 0.5f;
+	float rot = 0.5f; // Rotation amount
 	if (key == 'a') {
+		// Rotate left
 		glRotatef(rot, 0.0, 0.0, -0.5);
 	} else if (key == 'd') {
+		// Rotate right
 		glRotatef(rot, 0.0, 0.0, 0.5);
 	}
 }

@@ -1283,16 +1283,19 @@ void dumbells(){
     glEnd();
 }
 
+// Draw a circle using math
 void drawDumbbellCircle(float cx, float cy, float r, int num_segments) {
+    // Setup drawing parameters
     glColor3f(0.16f, 0.16f, 0.16f);
-    glBegin(GL_POLYGON);
-    glLineWidth(2.0);
+    glBegin(GL_POLYGON); // Must be a polygon
+    glLineWidth(2.0); // Custom set line width
+    // Draw each segment of the circle
     for (int ii = 0; ii < num_segments; ii++)   {
-        float theta = 2.0f * 3.1415f * float(ii) / float(num_segments);//get the current angle 
-        float x = r * cosf(theta);//calculate the x component 
-        float y = r * sinf(theta);//calculate the y component 
-        glVertex2f(x + cx, y + cy);//output vertex 
+        float theta = 2.0f * 3.1415f * float(ii) / float(num_segments); // Get the current theta for the current segment
+        float x = r * cosf(theta); // Calculate x using cosf
+        float y = r * sinf(theta); // Calculate y using sinf
+        glVertex2f(x + cx, y + cy); // Output the vertex corresponding from the center of the circle
     }
-    glEnd();
-    glLineWidth(1.0);
+    glEnd(); // Stop drawing
+    glLineWidth(1.0); // Reset line width
 }
