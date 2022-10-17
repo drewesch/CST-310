@@ -222,6 +222,7 @@ void cameraMovement(int key, int x, int y){
 }
 
 // Handle rotations using "a" and "d", update ortho matrix
+/*
 void rotationHandler(unsigned char key, int x, int y) {
 	float rot = 0.5f; // Rotation amount
 	if (key == 'a') {
@@ -232,6 +233,7 @@ void rotationHandler(unsigned char key, int x, int y) {
 		glRotatef(rot, 0.0, 0.0, 0.5);
 	}
 }
+*/
 
 //<<<<<<<<<<<<<<<<<<<<<<<< main >>>>>>>>>>>>>>>>>>>>>>
 int main(int argc, char** argv)
@@ -243,7 +245,7 @@ int main(int argc, char** argv)
 	glutCreateWindow("Andrew and Evan's Apartment"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register redraw function
 	glutSpecialFunc(cameraMovement); // Handle GLUT keys for special inputs
-	glutKeyboardFunc(rotationHandler); // Handle non GLUT special key inputs
+	// glutKeyboardFunc(rotationHandler); // Handle non GLUT special key inputs
 	myInit();						// Call init function            
 	glutMainLoop(); 		     // go into a perpetual loop
 }
