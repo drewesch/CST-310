@@ -14,6 +14,14 @@ GLdouble A, B, C, D;               // values used for scaling and shifting
 GLuint _textureTV;
 GLuint _textureFloor;
 
+// float _angleHorizontal = 0.0;
+// float _angleVertical = 0.0;
+
+float xPos = 0.0;
+float yPos = 0.0;
+
+float xAngle = 0.0;
+float yAngle = 0.0;
 
 GLuint loadTex(const char* texname)
 {
@@ -180,6 +188,46 @@ void myDisplay(void)
 	
 	glutSwapBuffers();		   // send all output to display 
 }
+
+void keyboardRotate(int key, int x, int y){
+	float rot = 0.1f;
+    switch (key) {
+    case GLUT_KEY_RIGHT:
+		glRotatef(rot, 0.5, 0.0, 0.0);
+        break;
+    case GLUT_KEY_LEFT:
+		glRotatef(rot, -0.5, 0.0, 0.0);
+        break;
+	case GLUT_KEY_UP:
+		glRotatef(rot, 0.0, 0.5, 0.0);
+        break;
+    case GLUT_KEY_DOWN:
+		glRotatef(rot, 0.0, -0.5, 0.0);
+        break;
+    }
+    glutPostRedisplay();
+}
+
+
+void keyboardMovement(int key, int x, int y){
+	float move = 10.0f;
+    switch (key) {
+    case GLUT_KEY_RIGHT:
+		glTranslatef(move, 0.0, 0.0);
+        break;
+    case GLUT_KEY_LEFT:
+		glTranslatef(-move, 0.0, 0.0);
+        break;
+	case GLUT_KEY_UP:
+		glTranslatef(0.0, move, 0.0);
+        break;
+    case GLUT_KEY_DOWN:
+		glTranslatef(0.0, -move, 0.0);
+        break;
+    }
+    glutPostRedisplay();
+}
+
 //<<<<<<<<<<<<<<<<<<<<<<<< main >>>>>>>>>>>>>>>>>>>>>>
 int main(int argc, char** argv)
 {
@@ -189,6 +237,8 @@ int main(int argc, char** argv)
 	glutInitWindowPosition(100, 150); // set window position on screen
 	glutCreateWindow("Andrew and Evan's Apartment"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register redraw function
-	myInit();                   
+	glutSpecialFunc(keyboardMovement);
+	myInit();
+	//gluLookAt(0,0,-10,_angleHorizontal,_angleVertical,0,0,1,0);                   
 	glutMainLoop(); 		     // go into a perpetual loop
 }

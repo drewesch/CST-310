@@ -767,7 +767,7 @@ void drawTVStandLower(){
     glVertex3f(725.0f,37.0f-4.0f, 0.0f);		//Top Left
     glVertex3f(900.0f,36.0f-4.0f, 0.0f);		//Top Right
     glVertex3f(900.0f,31.0f-4.0f, 0.0f);		//Bottom Right
-    // glEnd();
+    glEnd();
 }
 
 
