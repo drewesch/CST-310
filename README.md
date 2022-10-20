@@ -46,6 +46,9 @@ To compile the program using GLSL, use:
 To compile the program using GLM, use:
 - g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW -lSOIL
 
+To compile the program using GLAD, use:
+- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -ldl
+
 A new compiled file will appear within the directory that the user is currently located in.
 
 To run the program after compiling it, change the terminal directory to match the directory location of the compiled file and use the following to run it:
