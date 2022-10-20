@@ -1,0 +1,16 @@
+total 316
+-rw-r--r-- 1 droo droo    161 Oct 20 11:54 1.colors.fs
+-rw-r--r-- 1 droo droo    195 Oct 20 11:54 1.colors.vs
+-rw-r--r-- 1 droo droo    116 Oct 20 11:55 1.light_cube.fs
+-rw-r--r-- 1 droo droo    195 Oct 20 11:54 1.light_cube.vs
+-rw-r--r-- 1 droo droo   4361 Oct 20 12:04 Camera.h
+drwxr-xr-x 2 droo droo   4096 Oct 20 11:41 KHR
+-rw-r--r-- 1 droo droo   2531 Oct 18 11:28 README.md
+-rw-r--r-- 1 droo droo   6706 Oct 20 12:05 Shader.h
+-rw-r--r-- 1 droo droo 194090 Oct 18 11:30 SpecularLightingDoc.PNG
+-rw-r--r-- 1 droo droo   9320 Oct 20 12:05 cubes.cpp
+drwxr-xr-x 2 droo droo   4096 Oct 20 11:41 glad
+-rw-r--r-- 1 droo droo  60265 Oct 20 12:05 glad.c
+-rw-r--r-- 1 droo droo   1706 Oct 20 11:17 lighting.frag
+-rw-r--r-- 1 droo droo   1173 Oct 20 11:17 lighting.vs
+-rw-r--r-- 1 droo droo      0 Oct 20 12:07 test.txt
