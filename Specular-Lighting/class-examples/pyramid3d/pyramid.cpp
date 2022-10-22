@@ -52,7 +52,7 @@ void display_pyramid()
 	glVertex3f(1.0f, -1.0f, 1.0f);
 	glEnd();
 
-
+	//3D Pyramid Mesh
 	glTranslatef(2.0f,0.0f,0.0f);
 	glBegin(GL_TRIANGLES);
 	glColor3f(0.2f, 0.9f, 0.6f);
