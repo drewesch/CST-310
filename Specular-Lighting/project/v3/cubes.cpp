@@ -126,7 +126,7 @@ int main()
             -0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
         };
 
-    x = 3;
+    x += 2;
     float vertices2[] = {
             -0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
             0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -171,6 +171,278 @@ int main()
             -0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
         };
 
+    x += 2;
+    float vertices3[] = {
+            -0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f + x, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+
+            -0.5f + x,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+            0.5f + x,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f + x, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+        };
+    
+    x += 2;
+    float vertices4[] = {
+            -0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f + x, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+
+            -0.5f + x,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+            0.5f + x,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f + x, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+        };
+
+    //SECOND ROW ---------------------------------------------------------------
+    x = 0;
+    int y = -2;
+    float vertices5[] = {
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f
+        };
+
+    x += 2;
+    float vertices6[] = {
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f
+        };
+
+    x += 2;
+    float vertices7[] = {
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f
+        };
+    
+    x += 2;
+    float vertices8[] = {
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f,  0.0f,  1.0f,
+
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f, -1.0f,  0.0f,  0.0f,
+
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f + x, -0.5f + y, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f + x,  0.5f + y, -0.5f,  0.0f,  1.0f,  0.0f
+        };
+
 
     //------------------------------------------------------------------------------------------------------    
     // first, configure the cube's VAO (and VBO)
@@ -201,13 +473,7 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-
-
-
 //------------------------------------------------------------------------------------------------------
-
-
-
 
     // first, configure the cube's VAO (and VBO)
     unsigned int cubeVAO2;
@@ -226,7 +492,118 @@ int main()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
+//------------------------------------------------------------------------------------------------------
 
+    // first, configure the cube's VAO (and VBO)
+    unsigned int cubeVAO3;
+    glGenVertexArrays(1, &cubeVAO3);
+    glGenBuffers(1, &VBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices3), vertices3, GL_STATIC_DRAW);
+
+    glBindVertexArray(cubeVAO3);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+//------------------------------------------------------------------------------------------------------
+
+    // first, configure the cube's VAO (and VBO)
+    unsigned int cubeVAO4;
+    glGenVertexArrays(1, &cubeVAO4);
+    glGenBuffers(1, &VBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices4), vertices4, GL_STATIC_DRAW);
+
+    glBindVertexArray(cubeVAO4);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    //------------------------------------------------------------------------------------------------------    
+    // first, configure the cube's VAO (and VBO)
+    unsigned int cubeVAO5;
+    glGenVertexArrays(1, &cubeVAO5);
+    glGenBuffers(1, &VBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices5), vertices5, GL_STATIC_DRAW);
+
+    glBindVertexArray(cubeVAO5);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+//------------------------------------------------------------------------------------------------------
+
+    // first, configure the cube's VAO (and VBO)
+    unsigned int cubeVAO6;
+    glGenVertexArrays(1, &cubeVAO6);
+    glGenBuffers(1, &VBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices6), vertices6, GL_STATIC_DRAW);
+
+    glBindVertexArray(cubeVAO6);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+//------------------------------------------------------------------------------------------------------
+
+    // first, configure the cube's VAO (and VBO)
+    unsigned int cubeVAO7;
+    glGenVertexArrays(1, &cubeVAO7);
+    glGenBuffers(1, &VBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices7), vertices7, GL_STATIC_DRAW);
+
+    glBindVertexArray(cubeVAO7);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+//------------------------------------------------------------------------------------------------------
+
+    // first, configure the cube's VAO (and VBO)
+    unsigned int cubeVAO8;
+    glGenVertexArrays(1, &cubeVAO8);
+    glGenBuffers(1, &VBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices8), vertices8, GL_STATIC_DRAW);
+
+    glBindVertexArray(cubeVAO8);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
 //------------------------------------------------------------------------------------------------------
     // render loop
@@ -269,6 +646,18 @@ int main()
         glBindVertexArray(cubeVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(cubeVAO2);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(cubeVAO3);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(cubeVAO4);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(cubeVAO5);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(cubeVAO6);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(cubeVAO7);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(cubeVAO8);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
