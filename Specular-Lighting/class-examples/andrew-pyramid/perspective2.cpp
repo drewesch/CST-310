@@ -51,7 +51,7 @@ void display()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // These 2 Flags Clears the frame buffer and depth Buffer
     glLoadIdentity(); // Resets Previous Frame
 
-    glTranslatef(-1.0,-3.0,-10.0); //Here origin -8.0 is far away from the camera so that we can see
+    glTranslatef(-3.0,-1.0,-7.0); //Here origin -8.0 is far away from the camera so that we can see
     // glRotatef(angle, 0.0, 1.0, 0.0);
     //draw
 
