@@ -654,31 +654,31 @@ int main()
         glBindVertexArray(cubeVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightingShader.setInt("shininess", 4);
+        lightingShader.setInt("shininess", 128);
         glBindVertexArray(cubeVAO2);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightingShader.setInt("shininess", 8);
+        // lightingShader.setInt("shininess", 8);
         glBindVertexArray(cubeVAO3);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightingShader.setInt("shininess", 16);
+        // lightingShader.setInt("shininess", 16);
         glBindVertexArray(cubeVAO4);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightingShader.setInt("shininess", 32);
+        // lightingShader.setInt("shininess", 32);
         glBindVertexArray(cubeVAO5);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightingShader.setInt("shininess", 64);
+        // lightingShader.setInt("shininess", 64);
         glBindVertexArray(cubeVAO6);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightingShader.setInt("shininess", 128);
+        // lightingShader.setInt("shininess", 128);
         glBindVertexArray(cubeVAO7);
         glDrawArrays(GL_TRIANGLES, 0, 36);
         
-        lightingShader.setInt("shininess", 256);
+        // lightingShader.setInt("shininess", 256);
         glBindVertexArray(cubeVAO8);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
