@@ -9,9 +9,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "ft2build.h"
+#include <ft2build.h>
 #include FT_FREETYPE_H
-// "./freetype/freetype.h"
+
 #include "Shader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
