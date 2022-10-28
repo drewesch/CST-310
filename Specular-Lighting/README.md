@@ -39,7 +39,7 @@ To see more instructions on setting up the WSL2 environment for Windows 10, refe
 
 ## Compiling and Running the Program
 To compile the program properly, open a terminal window and use g++ to compile the program by using the following command:
-- g++ room.cpp -o run -lglut -lGLU -lGL -lSOIL
+- g++ text.cpp -o run -lglfw -lGL -ldl -I/usr/include/freetype2 -L/usr/local/lib -lfreetype
 
 A new compiled file will appear within the directory that the user is currently located in.
 
