@@ -23,6 +23,9 @@ After installing and updating the G++ compiler to the latest version, please ins
 - libglfw3-dev
 - libsoil-dev
 - libglm-dev
+- libfreetype-dev
+- libfreetype6
+- libfreetype6-dev
 
 To install all of the package requirements for this program in one line, run the following command below:
 - sudo apt-get install freeglut3-dev mesa-common-dev libglu1-mesa-dev libglew-dev libglfw3-dev libsoil-dev libglm-dev
