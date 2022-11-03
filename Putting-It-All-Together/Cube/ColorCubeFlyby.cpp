@@ -64,7 +64,11 @@ void timer(int v) {
   static GLfloat u = 0.0;
   u += 0.01;
   glLoadIdentity();
+  
+  //IMPORTANT --> moving the camera. Will need to change to stop and rotate.
   gluLookAt(8*cos(u), 7*cos(u)-1, 4*cos(u/3)+2, .5, .5, .5, cos(u), 1, 0);
+  //gluLookAt(8, 7, 4, .5, .5, .5, cos(u), 1, 0); //Ex. Static camera position looking at positon .5,.5,.5
+  
   glutPostRedisplay();
   glutTimerFunc(1000/60.0, timer, v);
 }
