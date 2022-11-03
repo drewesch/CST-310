@@ -1,7 +1,7 @@
-# Your-Surrounding-World README
+# Project 6: Specular Lighting, Objects, Illumination and Shaders
 Authors: Andrew Esch and Evan Lee
 
-Date: 10-9-2022
+Date: 10-30-2022
 
 ## Software Requirements and Installation Guide
 This program is designed to run in C on the Linux platform. To compile and run the program in Ubuntu 20.04, install the latest version of the g++ compiler, run the following command in an terminal window (with sudo permissions):
@@ -23,9 +23,13 @@ After installing and updating the G++ compiler to the latest version, please ins
 - libglfw3-dev
 - libsoil-dev
 - libglm-dev
+- libfreetype-dev
+- libfreetype6
+- libfreetype6-dev
 
 To install all of the package requirements for this program in one line, run the following command below:
 - sudo apt-get install freeglut3-dev mesa-common-dev libglu1-mesa-dev libglew-dev libglfw3-dev libsoil-dev libglm-dev
+- sudo apt-get install libfreetype-dev libfreetype6 libfreetype6-dev
 
 ### Additional Installation Instructions for WSL2 on Windows 10
 Linux environments on WSL2 have been tested and verified to run all project files. However, the setup process for running program files in this project is different between Windows 10 and Windows 11.
@@ -38,18 +42,9 @@ To see more instructions on setting up the WSL2 environment for Windows 10, refe
 
 ## Compiling and Running the Program
 To compile the program properly, open a terminal window and use g++ to compile the program by using the following command:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglut -lGLU -lGL
-
-To compile the program using GLSL, use:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW (-lglut if adding code)
-
-To compile the program using GLM, use:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -lGLEW -lSOIL
-
-To compile the program using GLAD, use:
-- g++ {c-program-file-name.c} -o {insert-new-compiled-file-name-here} -lglfw -lGL -ldl
+- g++ cubes.cpp -o run -lglfw -lGL -ldl
 
 A new compiled file will appear within the directory that the user is currently located in.
 
 To run the program after compiling it, change the terminal directory to match the directory location of the compiled file and use the following to run it:
-- ./{compiled-file-name}
+- ./run
