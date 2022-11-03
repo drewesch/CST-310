@@ -19,6 +19,12 @@ GLubyte texture[][3] = {
     yellow, red,
 };
 
+GLfloat rotate = 0.0f;
+GLfloat pause = 1.0f;
+GLfloat zoom = 1.0f;
+//GLfloat height = -1.0f;
+bool keys[1024];
+
 // Fixes up camera and remaps texture when window reshaped.
 void reshape(int width, int height) {
   glViewport(0, 0, width, height);
@@ -42,11 +48,26 @@ void reshape(int width, int height) {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
+void update(int value)
+{
+rotate+=3.0f*pause;
+if(rotate>360.f)
+{
+rotate-=360;
+}
+glutPostRedisplay();
+glutTimerFunc(25,update,0);
+}
+
 // Draws three textured triangles.  Each triangle uses the same texture,
 // but the mappings of texture coordinates to vertex coordinates is
 // different in each triangle.
 void display() {
   glClear(GL_COLOR_BUFFER_BIT);
+  glPushMatrix();
+  glRotatef( rotate, 0.0, 0.0, 1.0 );
+  glScalef(zoom,zoom,zoom);
+  
   glBegin(GL_TRIANGLES);
     glTexCoord2f(0.5, 1.0);    glVertex2f(-3, 3);
     glTexCoord2f(0.0, 0.0);    glVertex2f(-3, 0);
@@ -60,7 +81,23 @@ void display() {
     glTexCoord2f(0.0, 0.0);    glVertex2f(-1.5, -3);
     glTexCoord2f(4, 0.0);      glVertex2f(1.5, -3);
   glEnd();
+  glPopMatrix();
   glFlush();
+  
+}
+
+// Moves the camera according to the key pressed, then ask to refresh the
+// display.
+void special(unsigned char key, int, int) {
+  switch (key) {
+    case 'p': pause = 0.0f; break;
+    case 'c': pause = 1.0f; break;
+    case '=': zoom += 0.2f; break;
+    case '-': zoom -= 0.2f; break;
+    //case 'u': height += 0.2f; break;
+    //case 'd': height -= 0.2f; break;
+  }
+  glutPostRedisplay();
 }
 
 // Initializes GLUT and enters the main loop.
@@ -69,7 +106,10 @@ int main(int argc, char** argv) {
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
   glutInitWindowSize(520, 390);
   glutCreateWindow("Textured Triangles");
+  //glutTimerFunc(100, timer, 0);
   glutDisplayFunc(display);
   glutReshapeFunc(reshape);
+  glutTimerFunc(25,update,0);
+  glutKeyboardFunc(special);
   glutMainLoop();
 }
