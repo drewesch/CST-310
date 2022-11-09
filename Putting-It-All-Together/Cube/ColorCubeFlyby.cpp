@@ -16,7 +16,7 @@ GLfloat WHITE[] = {1, 1, 1};
 GLfloat RED[] = {1, 0, 0};
 GLfloat GREEN[] = {0, 1, 0};
 GLfloat MAGENTA[] = {1, 0, 1};
-
+GLfloat rotateCube = 0.0f;
 GLfloat zoom = 1.0f;
 
 //GLfloat rotate = 0.0f;
@@ -62,6 +62,7 @@ GLfloat vertexColors[NUM_VERTICES][3] = {
 
 void draw() {
   glPushMatrix();
+  glRotatef(rotateCube,1,1,1);
   glScalef(zoom,zoom,zoom);
   glBegin(GL_QUADS);
   for (int i = 0; i < NUM_FACES; i++) {
@@ -133,6 +134,7 @@ public:
     glColor3f(0,0,1);
 
     glPushMatrix();
+    
     glRotatef(angle,0,1,0);
     
     glBegin(GL_QUADS);
@@ -235,11 +237,7 @@ void special(unsigned char key, int, int) {
     case 'c': stopped = false; pause = 1.0f; break;
     case '=': zoom += 0.6f; break;
     case '-': zoom -= 0.6f; break;
-    case 'r': break;
-    // case GLUT_KEY_LEFT: camera.moveLeft(); break;
-    // case GLUT_KEY_RIGHT: camera.moveRight(); break;
-    // case GLUT_KEY_UP: camera.moveUp(); break;
-    // case GLUT_KEY_DOWN: camera.moveDown(); break;
+    case 'r': rotateCube += 35.0f; break;
   }
   glutPostRedisplay();
 }
