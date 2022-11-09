@@ -11,6 +11,16 @@
 #include <cmath>
 #include <iostream>
 
+// Colors
+GLfloat WHITE[] = {1, 1, 1};
+GLfloat RED[] = {1, 0, 0};
+GLfloat GREEN[] = {0, 1, 0};
+GLfloat MAGENTA[] = {1, 0, 1};
+
+GLfloat zoom = 1.0f;
+
+//GLfloat rotate = 0.0f;
+
 // A camera.  It moves horizontally in a circle centered at the origin of
 // radius 10.  It moves vertically straight up and down.
 class Camera {
@@ -19,14 +29,14 @@ class Camera {
   double dTheta;     // increment in theta for swinging the camera around
   double dy;         // increment in y for moving the camera up/down
 public:
-  Camera(): theta(0), y(0), dTheta(0.04), dy(0.2) {}
-  double getX() {return 10 * cos(theta) - 10;}
+  Camera(): theta(0), y(0), dTheta(0.04), dy(1) {}
+  double getX() {return (10 * cos(theta)) - 10;}
   double getY() {return y;}
   double getZ() {return 10 * sin(theta);}
   void moveRight() {theta += dTheta;}
   void moveLeft() {theta -= dTheta;}
   void moveUp() {y += dy;}
-  void moveDown() {if (y > dy) y -= dy;}
+  void moveDown() {y -= dy;}
 };
 
 // The cube has opposite corners at (0,0,0) and (1,1,1), which are black and
@@ -51,6 +61,8 @@ GLfloat vertexColors[NUM_VERTICES][3] = {
   {1.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {1.0, 1.0, 0.0}, {1.0, 1.0, 1.0}};
 
 void draw() {
+  glPushMatrix();
+  glScalef(zoom,zoom,zoom);
   glBegin(GL_QUADS);
   for (int i = 0; i < NUM_FACES; i++) {
     for (int j = 0; j < 4; j++) {
@@ -59,38 +71,87 @@ void draw() {
     }
   }
   glEnd();
+  glPopMatrix();
 }
 }
 
-// class Cube {
-//   const int NUM_VERTICES;
-//   const int NUM_FACES;
-// public:
-//   double centerx() {return 1 / 2;}
-//   double centerz() {return 1 / 2;}
-//   void create() {
-//     GLint vertices[NUM_VERTICES][3] = {
-//       {0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1},
-//       {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}};
+class BouncingCube {
+float xpos;
+float ypos;
+float zpos;
+float velocity = .1f;
 
-//     GLint faces[NUM_FACES][4] = {
-//       {1, 5, 7, 3}, {5, 4, 6, 7}, {4, 0, 2, 6},
-//       {3, 7, 6, 2}, {0, 1, 3, 2}, {0, 4, 5, 1}};
+GLint vertices[8][3] = {
+  {0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1},
+  {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}};
 
-//     GLfloat vertexColors[NUM_VERTICES][3] = {
-//       {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 1.0, 0.0}, {0.0, 1.0, 1.0},
-//       {1.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {1.0, 1.0, 0.0}, {1.0, 1.0, 1.0}};
+GLint faces[6][4] = {
+  {1, 5, 7, 3}, {5, 4, 6, 7}, {4, 0, 2, 6},
+  {3, 7, 6, 2}, {0, 1, 3, 2}, {0, 4, 5, 1}};
+
+GLfloat vertexColors[8][3] = {
+  {0.0, 1.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0},
+  {1.0, 0.0, 1.0}, {1.0, 0.0, 1.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 1.0}};
+
+public:
+  BouncingCube(float x, float y, float z): xpos(x), ypos(y), zpos(z) {}
+
+void draw() {
+  if (xpos > 10){
+    velocity *= -1;
+  }
+  else if(xpos < -10){
+    velocity *= -1;
+  }
+  xpos += velocity;
+  glPushMatrix();
+  glTranslatef(xpos,ypos,zpos);
+  glScalef(zoom,zoom,zoom);
+  glBegin(GL_QUADS);
+  for (int i = 0; i < 6; i++) {
+    for (int j = 0; j < 4; j++) {
+      glColor3fv((GLfloat*)&vertexColors[faces[i][j]]);
+      glVertex3iv((GLint*)&vertices[faces[i][j]]);
+    }
+  }
+  glEnd();
+  glPopMatrix();
+}
+};
+
+class Plane {
+  int displayListId;
+  int xpos;
+  int angle;
+public:
+  Plane(int xpos, int angle): xpos(xpos), angle(angle) {}
+  void create() {
+    displayListId = glGenLists(1);
+    glNewList(displayListId, GL_COMPILE);
+    GLfloat lightPosition[] = {4, 3, 7, 1};
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+    glColor3f(0,0,1);
+
+    glPushMatrix();
+    glRotatef(angle,0,1,0);
     
-//     glBegin(GL_QUADS);
-//     for (int i = 0; i < NUM_FACES; i++) {
-//       for (int j = 0; j < 4; j++) {
-//         glColor3fv((GLfloat*)&vertexColors[faces[i][j]]);
-//         glVertex3iv((GLint*)&vertices[faces[i][j]]);
-//       }
-//     }
-//     glEnd();
-//   }
-// };
+    glBegin(GL_QUADS);
+    glNormal3d(0, 1, 0);
+    
+    glVertex3d(xpos, 15, -15);
+    glVertex3d(xpos, 15, 15);
+    glVertex3d(xpos, -15, 15);
+    glVertex3d(xpos, -15, -15);
+
+       
+    glEnd();
+    glPopMatrix();
+    glEndList();
+  }
+  void draw() {
+    glCallList(displayListId);
+  }
+};
 
 // Display and Animation. To draw we just clear the window and draw the cube.
 // Because our main window is double buffered we have to swap the buffers to
@@ -102,11 +163,24 @@ void draw() {
 
 Camera camera;
 bool stopped = false;
+GLfloat pause = 1.0f;
+BouncingCube cube1 = BouncingCube(-5,3,-4);
+BouncingCube cube2 = BouncingCube(5,3,2);
+Plane plane1 = Plane(-18,0);
+Plane plane2 = Plane(-17,180);
+
 
 void display() {
   glClear(GL_COLOR_BUFFER_BIT);
   // gluLookAt(camera.getX(), camera.getY(), camera.getZ(), 1.0, 0.0, 1.0, 0.0, 1.0, 0.0);
   Cube::draw();
+
+  cube1.draw();
+  cube2.draw();
+  plane1.draw();
+  plane2.draw();
+  
+  
   glFlush();
   glutSwapBuffers();
 }
@@ -117,18 +191,22 @@ void display() {
 // a weird tumbling effect.
 void timer(int v) {
   static GLfloat u = 0.0;
-  u += 0.01;
+  u += 0.01*pause;
   glLoadIdentity();
   
   //IMPORTANT --> moving the camera. Will need to change to stop and rotate.
-  gluLookAt(8*cos(u), 7*cos(u)-1, 4*cos(u/3) + 2,
+  // gluLookAt(8*cos(u), 7*cos(u)-1, 2*cos(u/3) + 2,
+  //       .5 + camera.getX(), .5 + camera.getY(), .5 + camera.getZ(),
+  //       cos(u), 1, 0);
+  
+   gluLookAt(2*cos(u), -3, -30*sin(u),
         .5 + camera.getX(), .5 + camera.getY(), .5 + camera.getZ(),
-        cos(u), 1, 0);
-  if (stopped != 0) {
+        0, 1, 0);
 
-  } else {
 
-  }
+  
+
+  
   //gluLookAt(8, 7, 4, .5, .5, .5, cos(u), 1, 0); //Ex. Static camera position looking at positon .5,.5,.5
   // printf("Camera current pos: x - %f y - %f z - %f", camera.getX(), camera.getY(), camera.getZ());
 
@@ -153,8 +231,11 @@ void special(unsigned char key, int, int) {
   switch (key) {
     case 'u': if(stopped){camera.moveUp();} break;
     case 'd': if(stopped){camera.moveDown();} break;
-    case 's': stopped = true; break;
-    case 'c': stopped = false; break;
+    case 's': stopped = true; pause = 0.0f; break;
+    case 'c': stopped = false; pause = 1.0f; break;
+    case '=': zoom += 0.6f; break;
+    case '-': zoom -= 0.6f; break;
+    case 'r': break;
     // case GLUT_KEY_LEFT: camera.moveLeft(); break;
     // case GLUT_KEY_RIGHT: camera.moveRight(); break;
     // case GLUT_KEY_UP: camera.moveUp(); break;
@@ -169,10 +250,14 @@ void special(unsigned char key, int, int) {
 void init() {
   glEnable(GL_CULL_FACE);
   glCullFace(GL_BACK);
+  plane1.create();
+  plane2.create();
+  
 }
 
 // The usual main for a GLUT application.
 int main(int argc, char** argv) {
+  
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(500, 500);
