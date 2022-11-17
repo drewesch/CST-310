@@ -12,7 +12,8 @@ const int screenHeight = 800;	   // height of screen window in pixels
 GLdouble A, B, C, D;               // values used for scaling and shifting
 GLuint _textureEnemy;					// value for storing TV texture
 GLuint _textureSpaceship;				// value for storing floor texture
-GLfloat xShip = 0;
+float xShip = 0;
+int laserNum = 0;
 
 
 // Function call to load textures using SOIL and shaders
@@ -59,6 +60,33 @@ GLuint loadTex(const char* texname)
     return texture;
 }
 
+class Laser {
+    float xpos;
+    float ypos;
+    float velocity = 3.0f;
+
+    public:
+        Laser() {}
+        Laser(float x, float y): xpos(x), ypos(y){}
+    
+    void drawLaser(){
+        glColor3f(.8,.1,.1);
+        glPushMatrix();
+        
+        glBegin(GL_QUADS);
+            glVertex3f(xpos-2, ypos-5, 0); //bottom left
+            glVertex3f(xpos-2, ypos+5, 0); //top left
+            glVertex3f(xpos+2, ypos+5, 0); //top right
+            glVertex3f(xpos+2, ypos-5, 0);   //bottom right
+        glEnd();
+        glPopMatrix();
+
+        ypos += velocity;
+
+    }
+};
+
+Laser laserArr[5]; //create a array to hold laser objects
 
 //<<<<<<<<<<<<<<<<<<<<<<< myInit >>>>>>>>>>>>>>>>>>>>
  void myInit(void)
@@ -126,7 +154,10 @@ void myDisplay(void)
 
 //createEnemy(_textureEnemy,500,500);
 createShip(_textureSpaceship,xShip);
-	
+
+for (int i = 0; i < laserNum; i++){
+    laserArr[i].drawLaser();
+}
 
 		
 		
@@ -166,9 +197,7 @@ glutTimerFunc(25,update,0);
 
 void special(unsigned char key, int, int) {
   switch (key) {
-    case 'a': break;
-    case 'd': break;
-    case 'k': break;
+    case 's': laserArr[laserNum] = Laser(425+xShip,155.0f); laserNum++; break;
   }
   glutPostRedisplay();
 }
