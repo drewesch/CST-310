@@ -74,6 +74,8 @@ GLuint loadTex(const char* texname)
 		 C = D = screenHeight / 2.0;
 	_textureEnemy = loadTex("./enemy.png"); // load TV screen texture
 	_textureSpaceship = loadTex("./spaceship.png"); // load floor texture
+
+    
 }
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 void myDisplay(void)
@@ -94,12 +96,13 @@ void myDisplay(void)
 
     //------------------------------------------------------------------
     
-    GLfloat xpos = 0;
+ //createSwarm(_textureEnemy);
+ GLfloat xpos = 0;
     int counter = 0;
     GLfloat ypos = 0;
     int m,k = 1;
     
- for (int i = 8; i >= 1; i--){
+ 	for (int i = 2; i >= 1; i--){
 
         for (int j = 1; j <= m; j++){
             xpos += 50;
@@ -125,7 +128,7 @@ createShip(_textureSpaceship);
 
 //--------------------------------------------------
 
-	
+	glFlush();
 	glutSwapBuffers();		   // send all output to display 
 }
 
@@ -141,31 +144,26 @@ void cameraMovement(int key, int x, int y){
 		// Move camera to the left, forces all matrix calculations to move correspondingly
 		glTranslatef(move, 0.0, 0.0);
         break;
-	case GLUT_KEY_UP:
-		// Move camera upwards, forces all matrix calculations to move correspondingly
-		glTranslatef(0.0, -move, 0.0);
-        break;
-    case GLUT_KEY_DOWN:
-		// Move camera downwards, forces all matrix calculations to move correspondingly
-		glTranslatef(0.0, move, 0.0);
-        break;
 	}
     glutPostRedisplay();
 }
 
-// Handle rotations using "a" and "d", update ortho matrix
-/*
-void rotationHandler(unsigned char key, int x, int y) {
-	float rot = 0.5f; // Rotation amount
-	if (key == 'a') {
-		// Rotate left
-		glRotatef(rot, 0.0, 0.0, -0.5);
-	} else if (key == 'd') {
-		// Rotate right
-		glRotatef(rot, 0.0, 0.0, 0.5);
-	}
+void update(int value)
+{
+glutPostRedisplay();
+glutTimerFunc(100,update,0);
 }
-*/
+
+
+void special(unsigned char key, int, int) {
+  switch (key) {
+    case 'a': break;
+    case 'd': break;
+    case 'k': break;
+  }
+  glutPostRedisplay();
+}
+
 
 //<<<<<<<<<<<<<<<<<<<<<<<< main >>>>>>>>>>>>>>>>>>>>>>
 int main(int argc, char** argv)
@@ -177,7 +175,8 @@ int main(int argc, char** argv)
 	glutCreateWindow("Andrew and Evan's Galiga"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register redraw function
 	glutSpecialFunc(cameraMovement); // Handle GLUT keys for special inputs
-	// glutKeyboardFunc(rotationHandler); // Handle non GLUT special key inputs
+    glutKeyboardFunc(special);
+	glutTimerFunc(100,update,0);
 	myInit();						// Call init function            
 	glutMainLoop(); 		     // go into a perpetual loop
 }
