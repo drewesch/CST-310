@@ -1,5 +1,7 @@
+#include<iostream>
 #include <GL/glut.h>
 #include <SOIL/SOIL.h>
+
 
 void createEnemy(GLuint _textureEnemy, GLfloat x, GLfloat y){
     // Push textures to a new matrix
@@ -63,26 +65,16 @@ void createShip(GLuint _textureSpaceship, GLfloat xpos){
 	glPopMatrix();
 }
 
-void createSwarm(GLuint _textureEnemy){
-	GLfloat xpos = 0;
-    int counter = 0;
-    GLfloat ypos = 0;
-    int m,k = 1;
-    
- 	for (int i = 8; i >= 1; i--){
 
-        for (int j = 1; j <= m; j++){
-            xpos += 50;
-        }
-
-        for (k = 1; k <= (2 * i -1); k++){
-            createEnemy(_textureEnemy,xpos,ypos);
-            xpos += 50;
-        }
-        m++;
-        //xpos = counter * 50;
-        xpos = 0;
-        ypos -= 50;
-    }
+void drawStars(int x[50], int y[50], int w[50], int h[50]) {
+	for(int i = 0; i < 50; i++){
+		glColor3f(1,1,1);
+			glBegin(GL_QUADS);  // Floor
+				glTexCoord3f(0,0,0);  glVertex3f(x[i]-w[i],y[i]-h[i], 0.0f); //bottom left
+				glTexCoord3f(0,1,0);  glVertex3f(x[i]-w[i],y[i]+h[i], 0.0f);   //top left
+				glTexCoord3f(1,1,0); glVertex3f(x[i]+w[i],y[i]+h[i], 0.0f);   	//Top Right
+				glTexCoord3f(1,0,0);  glVertex3f(x[i]+w[i],y[i]-h[i], 0.0f);		//bottom right
+			glEnd();
+	}
 }
 

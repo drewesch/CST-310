@@ -4,6 +4,7 @@
 #include <GL/glut.h>
 #include <SOIL/SOIL.h>
 #include <stdio.h>
+#include<iostream>
 #include "objects.h"
 
 using namespace std;
@@ -14,6 +15,13 @@ GLuint _textureEnemy;					// value for storing TV texture
 GLuint _textureSpaceship;				// value for storing floor texture
 GLfloat xShip = 50;
 int laserNum = 0;
+
+
+const int NUM_OF_STARS = 50;
+int starX[NUM_OF_STARS];
+int starY[NUM_OF_STARS];
+int starW[NUM_OF_STARS];
+int starH[NUM_OF_STARS];
 
 
 // Function call to load textures using SOIL and shaders
@@ -107,8 +115,14 @@ Laser laserArr[5]; //create a array to hold laser objects
 		 C = D = screenHeight / 2.0;
 	_textureEnemy = loadTex("./enemy.png"); // load TV screen texture
 	_textureSpaceship = loadTex("./spaceship.png"); // load floor texture
-
     
+    srand(time(0));
+	for(int i = 0; i < NUM_OF_STARS; i++){
+		starX[i] = rand()%screenWidth;
+		starY[i] = rand()%screenHeight;
+	    starW[i] = rand()%3;
+		starH[i] = rand()%3;
+    }
     
 }
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
@@ -146,6 +160,7 @@ createShip(_textureSpaceship,xShip);
 for (int i = 0; i < laserNum; i++){
     laserArr[i].drawLaser();
 }
+drawStars(starX,starY,starW,starH);
 
 		
 		
@@ -180,6 +195,16 @@ void update(int value)
 {
 glutPostRedisplay();
 glutTimerFunc(25,update,0);
+
+    for(int i = 0; i < NUM_OF_STARS; i++){
+		starY[i]--;
+        if (starY[i] < 0){
+            starY[i] += 900;
+        }
+    }
+
+
+
 }
 
 
@@ -187,6 +212,7 @@ void special(unsigned char key, int, int) {
   switch (key) {
     case 's': laserArr[laserNum] = Laser(425+xShip,155.0f); laserNum++; break;
   }
+  
   glutPostRedisplay();
 }
 
