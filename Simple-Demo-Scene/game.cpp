@@ -5,7 +5,7 @@
 #include <SOIL/SOIL.h>
 #include <stdio.h>
 #include <cmath>
-#include<iostream>
+#include <iostream>
 #include "objects.h"
 
 using namespace std;
@@ -99,10 +99,8 @@ class Laser {
 };
 
 Laser laserArr[5]; //create a array to hold laser objects
-int count = 12;
-int xposArr[12] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550};
-int yposArr[12] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200};
-
+float enemyXPosArr[12] = {-50.0, 150.0, 350.0, 550.0, 750.0, 50.0, 250.0, 450.0, 650.0, 150.0, 350.0, 550.0};
+float enemyYPosArr[12] = {0.0, 0.0, 0.0, 0.0, 0.0, -100.0, -100.0, -100.0, -100.0, -200.0, -200.0, -200.0};
 float gamePosX = 0.0;
 
 //<<<<<<<<<<<<<<<<<<<<<<< myInit >>>>>>>>>>>>>>>>>>>>
@@ -151,9 +149,9 @@ void myDisplay(void)
     //------------------------------------------------------------------
 
     // Create Swarm of Enemy Spaceship Objects
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < 12; i++) {
         
-        createEnemy(_textureEnemy,xposArr[i],yposArr[i]);
+        createEnemy(_textureEnemy,enemyXPosArr[i],enemyYPosArr[i]);
     }
 
 
@@ -203,15 +201,15 @@ void update(int value)
     for (int i = 0; i < 12; i++) {
         // Move enemies and right and left continuously
         // Use the cosine function to generate this movement mathematically
-        float newPos = 10*sin(gamePosX) + xposArr[i];
-        xposArr[i] = newPos;
+        float newPos = 5*cos(gamePosX);
+        enemyXPosArr[i] += newPos;
 
         // Move enemies down over time, until they reach a certain point
-        yposArr[i]--;
+        enemyYPosArr[i]--;
 
         // If they reach the bottom limit, send them to the top of the screen
-        if (yposArr[i] < -550.0) {
-            yposArr[i] += 700.0;
+        if (enemyYPosArr[i] < -550.0) {
+            enemyYPosArr[i] += 700.0;
         }
     }
 
