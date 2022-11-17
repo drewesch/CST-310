@@ -12,6 +12,8 @@ const int screenHeight = 800;	   // height of screen window in pixels
 GLdouble A, B, C, D;               // values used for scaling and shifting
 GLuint _textureEnemy;					// value for storing TV texture
 GLuint _textureSpaceship;				// value for storing floor texture
+GLfloat xShip = 0;
+
 
 // Function call to load textures using SOIL and shaders
 GLuint loadTex(const char* texname)
@@ -76,6 +78,7 @@ GLuint loadTex(const char* texname)
 	_textureSpaceship = loadTex("./spaceship.png"); // load floor texture
 
     
+    
 }
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 void myDisplay(void)
@@ -97,7 +100,8 @@ void myDisplay(void)
     //------------------------------------------------------------------
     
  //createSwarm(_textureEnemy);
- GLfloat xpos = 0;
+    /*
+    GLfloat xpos = 0;
     int counter = 0;
     GLfloat ypos = 0;
     int m,k = 1;
@@ -117,9 +121,11 @@ void myDisplay(void)
         xpos = 0;
         ypos -= 50;
     }
+    */
+    
 
 //createEnemy(_textureEnemy,500,500);
-createShip(_textureSpaceship);
+createShip(_textureSpaceship,xShip);
 	
 
 		
@@ -133,16 +139,19 @@ createShip(_textureSpaceship);
 }
 
 // Handle camera movement using arrow key inputs
-void cameraMovement(int key, int x, int y){
-	float move = 2.0f;
+void shipMovement(int key, int x, int y){
     switch (key) {
     case GLUT_KEY_RIGHT:
 		// Move camera to the right, forces all matrix calculations to move correspondingly
-		glTranslatef(-move, 0.0, 0.0);
+		if(xShip <= screenWidth/2 + 15){
+            xShip += 9.0f;
+        }
         break;
     case GLUT_KEY_LEFT:
 		// Move camera to the left, forces all matrix calculations to move correspondingly
-		glTranslatef(move, 0.0, 0.0);
+		if(xShip >= -(screenWidth/2) + 85){
+            xShip -= 9.0f;
+        }
         break;
 	}
     glutPostRedisplay();
@@ -151,7 +160,7 @@ void cameraMovement(int key, int x, int y){
 void update(int value)
 {
 glutPostRedisplay();
-glutTimerFunc(100,update,0);
+glutTimerFunc(25,update,0);
 }
 
 
@@ -169,14 +178,14 @@ void special(unsigned char key, int, int) {
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);          // initialize the toolkit
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB); // set display mode
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // set display mode
 	glutInitWindowSize(screenWidth, screenHeight); // set window size
 	glutInitWindowPosition(100, 150); // set window position on screen
 	glutCreateWindow("Andrew and Evan's Galiga"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register redraw function
-	glutSpecialFunc(cameraMovement); // Handle GLUT keys for special inputs
+	glutSpecialFunc(shipMovement); // Handle GLUT keys for special inputs
     glutKeyboardFunc(special);
-	glutTimerFunc(100,update,0);
+	glutTimerFunc(25,update,0);
 	myInit();						// Call init function            
 	glutMainLoop(); 		     // go into a perpetual loop
 }
