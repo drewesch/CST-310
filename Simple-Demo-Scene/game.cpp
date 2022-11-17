@@ -12,7 +12,7 @@ const int screenHeight = 800;	   // height of screen window in pixels
 GLdouble A, B, C, D;               // values used for scaling and shifting
 GLuint _textureEnemy;					// value for storing TV texture
 GLuint _textureSpaceship;				// value for storing floor texture
-GLfloat xShip = 0;
+GLfloat xShip = 50;
 
 
 // Function call to load textures using SOIL and shaders
@@ -98,38 +98,19 @@ void myDisplay(void)
     glEnd();
 
     //------------------------------------------------------------------
-    
- //createSwarm(_textureEnemy);
-    /*
-    GLfloat xpos = 0;
-    int counter = 0;
-    GLfloat ypos = 0;
-    int m,k = 1;
-    
- 	for (int i = 2; i >= 1; i--){
 
-        for (int j = 1; j <= m; j++){
-            xpos += 50;
-        }
+    // Create Swarm of Enemy Spaceship Objects
+    int count = 12;
+    int xposArr[count] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550};
+    int yposArr[count] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200};
 
-        for (k = 1; k <= (2 * i -1); k++){
-            createEnemy(_textureEnemy,xpos,ypos);
-            xpos += 50;
-        }
-        m++;
-        //xpos = counter * 50;
-        xpos = 0;
-        ypos -= 50;
+    for (int i = 0; i < count; i++) {
+        createEnemy(_textureEnemy,xposArr[i],yposArr[i]);
     }
-    */
-    
 
-//createEnemy(_textureEnemy,500,500);
-createShip(_textureSpaceship,xShip);
-	
 
-		
-		
+    // Create Interactive Player Spaceship Object
+    createShip(_textureSpaceship,xShip);
 
 
 //--------------------------------------------------
