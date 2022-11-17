@@ -4,6 +4,7 @@
 #include <GL/glut.h>
 #include <SOIL/SOIL.h>
 #include <stdio.h>
+#include <cmath>
 #include<iostream>
 #include "objects.h"
 
@@ -98,6 +99,11 @@ class Laser {
 };
 
 Laser laserArr[5]; //create a array to hold laser objects
+int count = 12;
+int xposArr[12] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550};
+int yposArr[12] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200};
+
+float gamePosX = 0.0;
 
 //<<<<<<<<<<<<<<<<<<<<<<< myInit >>>>>>>>>>>>>>>>>>>>
  void myInit(void)
@@ -145,11 +151,8 @@ void myDisplay(void)
     //------------------------------------------------------------------
 
     // Create Swarm of Enemy Spaceship Objects
-    int count = 12;
-    int xposArr[count] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550};
-    int yposArr[count] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200};
-
     for (int i = 0; i < count; i++) {
+        
         createEnemy(_textureEnemy,xposArr[i],yposArr[i]);
     }
 
@@ -193,18 +196,33 @@ void shipMovement(int key, int x, int y){
 
 void update(int value)
 {
-glutPostRedisplay();
-glutTimerFunc(25,update,0);
+    // Update enemy game position variable
+    gamePosX += 0.04;
 
-    for(int i = 0; i < NUM_OF_STARS; i++){
+    // Update all enemy spaceship positions
+    for (int i = 0; i < 12; i++) {
+        // Move enemies and right and left continuously
+        // Use the cosine function to generate this movement mathematically
+        float newPos = 10*sin(gamePosX) + xposArr[i];
+        xposArr[i] = newPos;
+
+        // Move enemies down over time, until they reach a certain point
+        yposArr[i]--;
+
+        // If they reach the bottom limit, send them to the top of the screen
+        if (yposArr[i] < -550.0) {
+            yposArr[i] += 700.0;
+        }
+    }
+
+        for(int i = 0; i < NUM_OF_STARS; i++){
 		starY[i]--;
         if (starY[i] < 0){
             starY[i] += 900;
         }
     }
-
-
-
+    glutPostRedisplay();
+    glutTimerFunc(25,update,0);
 }
 
 
