@@ -16,6 +16,7 @@ GLuint _textureEnemy;					// value for storing TV texture
 GLuint _textureSpaceship;				// value for storing floor texture
 GLfloat xShip = 50;
 int laserNum = 0;
+float laserCooldown = 0.0f;
 
 
 const int NUM_OF_STARS = 50;
@@ -76,7 +77,7 @@ class Laser {
 
     public:
         Laser() {}
-        Laser(float x, float y): xpos(x), ypos(y){}
+        Laser(float x, float y): xpos(x), ypos(y){laserCooldown = 1.0f;}
         ~Laser(){}
     
     void drawLaser(){
@@ -102,6 +103,7 @@ class Laser {
                                                                           //and yposition of laser alligns with enemy height
                 if (ypos >= yEnemy[i] + 700.0f && ypos <= yEnemy[i]+ 750.0f){
                     cout << "X-COLLISION and Y-COLLISION!" << endl;
+                    ypos += 1000;
                 return i;
                 }
                 
@@ -170,28 +172,27 @@ void myDisplay(void)
 
     // Create Swarm of Enemy Spaceship Objects
     for (int i = 0; i < 12; i++) {
-        
         createEnemy(_textureEnemy,enemyXPosArr[i],enemyYPosArr[i]);
     }
 
 
-//createEnemy(_textureEnemy,500,500);
-createShip(_textureSpaceship,xShip);
+    //createEnemy(_textureEnemy,500,500);
+    createShip(_textureSpaceship,xShip);
 
-for (int i = 0; i < laserNum; i++){
-    laserArr[i].drawLaser();
-    int enemyIndexHit = laserArr[i].laserCollision(enemyXPosArr,enemyYPosArr);
-    if ( enemyIndexHit != -1){
-        enemyYPosArr[enemyIndexHit] -= 10000;
+    for (int i = 0; i < laserNum; i++){
+        laserArr[i].drawLaser();
+        int enemyIndexHit = laserArr[i].laserCollision(enemyXPosArr,enemyYPosArr);
+        if ( enemyIndexHit != -1){
+            enemyYPosArr[enemyIndexHit] -= 10000;
+        }
     }
-}
-drawStars(starX,starY,starW,starH);
+    drawStars(starX,starY,starW,starH);
 
 		
 		
 
 
-//--------------------------------------------------
+    //--------------------------------------------------
 
 	glFlush();
 	glutSwapBuffers();		   // send all output to display 
@@ -219,13 +220,16 @@ void shipMovement(int key, int x, int y){
 void update(int value)
 {
     // Update enemy game position variable
-    gamePosX += 0.04;
+    gamePosX += 0.04f;
+    if (laserCooldown > 0){
+        laserCooldown -= .02f;
+    }
 
     // Update all enemy spaceship positions
     for (int i = 0; i < 12; i++) {
         // Move enemies and right and left continuously
         // Use the cosine function to generate this movement mathematically
-        float newPos = 5*cos(gamePosX);
+        float newPos = 3*cos(gamePosX);
         enemyXPosArr[i] += newPos;
 
         // Move enemies down over time, until they reach a certain point
@@ -255,7 +259,7 @@ void update(int value)
 
 void special(unsigned char key, int, int) {
   switch (key) {
-    case 's': laserArr[laserNum] = Laser(425+xShip,155.0f); laserNum++; break;
+    case 's': if (laserCooldown <= 0.0f) {laserArr[laserNum] = Laser(425+xShip,155.0f); laserNum++;} break;
   }
   
   glutPostRedisplay();
