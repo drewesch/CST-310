@@ -95,17 +95,16 @@ class Laser {
         
     }
 
-    int laserCollision(int xEnemy[12], int yEnemy[12]){
+    int laserCollision(float xEnemy[12], float yEnemy[12]){
         //cout << ypos << endl;
         for (int i = 0; i< 12; i++){
-            if(xpos >= xEnemy[i] + 400 && xpos <= xEnemy[i]+ 450){ //if xposition of laser alligns with enemy width 
-                                                                                                        //and yposition of laser alligns with enemy height
-                //cout << "X-COLLISION!" << endl;
-                if (ypos >= yEnemy[i]+ 400 && ypos <= yEnemy[i]+ 450){
-                    //cout << "X-COLLISION and Y-COLLISION!" << endl;
+            if(xpos >= xEnemy[i] + 100.0f && xpos <= xEnemy[i] + 150.0f){ //if xposition of laser alligns with enemy width 
+                                                                          //and yposition of laser alligns with enemy height
+                if (ypos >= yEnemy[i] + 700.0f && ypos <= yEnemy[i]+ 750.0f){
+                    cout << "X-COLLISION and Y-COLLISION!" << endl;
+                return i;
                 }
                 
-                return i;
             }
         
         }
@@ -204,13 +203,13 @@ void shipMovement(int key, int x, int y){
     case GLUT_KEY_RIGHT:
 		// Move camera to the right, forces all matrix calculations to move correspondingly
 		if(xShip <= screenWidth/2 + 15){
-            xShip += 9.0f;
+            xShip += 15.0f;
         }
         break;
     case GLUT_KEY_LEFT:
 		// Move camera to the left, forces all matrix calculations to move correspondingly
 		if(xShip >= -(screenWidth/2) + 85){
-            xShip -= 9.0f;
+            xShip -= 15.0f;
         }
         break;
 	}
