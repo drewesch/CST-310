@@ -89,8 +89,7 @@ class Laser {
     
     void drawLaser(){
         glColor3f(.8,.1,.1);
-        glPushMatrix();
-        
+        glPushMatrix();       
         glBegin(GL_QUADS);
             glVertex3f(xpos-3, ypos-8, 0); //bottom left
             glVertex3f(xpos-3, ypos+8, 0); //top left
@@ -98,9 +97,7 @@ class Laser {
             glVertex3f(xpos+3, ypos-8, 0);   //bottom right
         glEnd();
         glPopMatrix();
-
-        ypos += velocity;
-        
+        ypos += velocity;    
     }
 
     int laserCollision(float xEnemy[12], float yEnemy[12]){
@@ -120,16 +117,11 @@ class Laser {
                     }
 
                     return i;
-                }
-                
-            }
-        
+                }   
+            }   
         }
         return -1;
-
     }
-
-
 };
 
 Laser laserArr[5]; //create a array to hold laser objects
@@ -223,13 +215,13 @@ void shipMovement(int key, int x, int y){
     switch (key) {
     case GLUT_KEY_RIGHT:
 		// Move camera to the right, forces all matrix calculations to move correspondingly
-		if(xShip <= screenWidth/2 + 15){
+		if(xShip <= screenWidth/2 + 15 && winCondition == 0){
             xShip += 15.0f;
         }
         break;
     case GLUT_KEY_LEFT:
 		// Move camera to the left, forces all matrix calculations to move correspondingly
-		if(xShip >= -(screenWidth/2) + 85){
+		if(xShip >= -(screenWidth/2) + 85 && winCondition == 0){
             xShip -= 15.0f;
         }
         break;
@@ -247,20 +239,22 @@ void update(int value)
 
     // Update all enemy spaceship positions
     for (int i = 0; i < 12; i++) {
-        // Move enemies and right and left continuously
-        // Use the cosine function to generate this movement mathematically
-        float newPos = 3*cos(gamePosX);
-        enemyXPosArr[i] += newPos;
+        if (winCondition == 0){
+            // Move enemies and right and left continuously
+            // Use the cosine function to generate this movement mathematically
+            float newPos = 3*cos(gamePosX);
+            enemyXPosArr[i] += newPos;
 
-        // Move enemies down over time, until they reach a certain point
-        enemyYPosArr[i] -= 0.4;
-
+            // Move enemies down over time, until they reach a certain point
+            enemyYPosArr[i] -= 0.4;
+        }
         // If they reach the bottom limit, send the enemy spaceship to the top of the screen
         if (enemyYPosArr[i] < -550.0 && enemyYPosArr[i] > -850.0) {
             // If this is the first time an enemy hits the bottom, turn on red screen
             if (!isRedScreen) {
                 isRedScreen = 1;
                 printf("Game over!\n");
+                winCondition = 1;
                 redColor = 1;
             }
         }
@@ -281,7 +275,7 @@ void update(int value)
 
 void special(unsigned char key, int, int) {
   switch (key) {
-    case 's': if (laserCooldown <= 0.0f) {laserArr[laserNum] = Laser(425+xShip,155.0f); laserNum++;} break;
+    case 's': if (laserCooldown <= 0.0f && winCondition == 0) {laserArr[laserNum] = Laser(425+xShip,155.0f); laserNum++;} break;
   }
   
   glutPostRedisplay();
