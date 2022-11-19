@@ -182,7 +182,7 @@ for (int i = 0; i < laserNum; i++){
     laserArr[i].drawLaser();
     int enemyIndexHit = laserArr[i].laserCollision(enemyXPosArr,enemyYPosArr);
     if ( enemyIndexHit != -1){
-        enemyYPosArr[enemyIndexHit] += 10000;
+        enemyYPosArr[enemyIndexHit] -= 10000;
     }
 }
 drawStars(starX,starY,starW,starH);
@@ -232,9 +232,7 @@ void update(int value)
         enemyYPosArr[i] -= 0.4;
 
         // If they reach the bottom limit, send the enemy spaceship to the top of the screen
-        if (enemyYPosArr[i] < -550.0) {
-            enemyYPosArr[i] += 700.0;
-
+        if (enemyYPosArr[i] < -550.0 && enemyYPosArr[i] > -850.0) {
             // If this is the first time an enemy hits the bottom, turn on red screen
             if (!isRedScreen) {
                 isRedScreen = 1;
