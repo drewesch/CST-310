@@ -95,13 +95,32 @@ class Laser {
         
     }
 
+    int laserCollision(int xEnemy[12], int yEnemy[12]){
+        //cout << ypos << endl;
+        for (int i = 0; i< 12; i++){
+            if(xpos >= xEnemy[i] + 400 && xpos <= xEnemy[i]+ 450){ //if xposition of laser alligns with enemy width 
+                                                                                                        //and yposition of laser alligns with enemy height
+                //cout << "X-COLLISION!" << endl;
+                if (ypos >= yEnemy[i]+ 400 && ypos <= yEnemy[i]+ 450){
+                    //cout << "X-COLLISION and Y-COLLISION!" << endl;
+                }
+                
+                return i;
+            }
+        
+        }
+        return -1;
+
+    }
+
 
 };
 
 Laser laserArr[5]; //create a array to hold laser objects
+
 int count = 12;
-int xposArr[12] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550};
-int yposArr[12] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200};
+int enemyXPosArr[12] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550}; //Enemy x position array
+int enemyYPosArr[12] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200}; //Enemy y position array
 
 float gamePosX = 0.0;
 
@@ -153,7 +172,7 @@ void myDisplay(void)
     // Create Swarm of Enemy Spaceship Objects
     for (int i = 0; i < count; i++) {
         
-        createEnemy(_textureEnemy,xposArr[i],yposArr[i]);
+        createEnemy(_textureEnemy,enemyXPosArr[i],enemyYPosArr[i]);
     }
 
 
@@ -162,6 +181,10 @@ createShip(_textureSpaceship,xShip);
 
 for (int i = 0; i < laserNum; i++){
     laserArr[i].drawLaser();
+    int enemyIndexHit = laserArr[i].laserCollision(enemyXPosArr,enemyYPosArr);
+    if ( enemyIndexHit != -1){
+        enemyYPosArr[enemyIndexHit] += 10000;
+    }
 }
 drawStars(starX,starY,starW,starH);
 
@@ -203,15 +226,15 @@ void update(int value)
     for (int i = 0; i < 12; i++) {
         // Move enemies and right and left continuously
         // Use the cosine function to generate this movement mathematically
-        float newPos = 10*sin(gamePosX) + xposArr[i];
-        xposArr[i] = newPos;
+        float newPos = 10*sin(gamePosX) + enemyXPosArr[i];
+        enemyXPosArr[i] = newPos;
 
         // Move enemies down over time, until they reach a certain point
-        yposArr[i]--;
+        enemyYPosArr[i]--;
 
         // If they reach the bottom limit, send them to the top of the screen
-        if (yposArr[i] < -550.0) {
-            yposArr[i] += 700.0;
+        if (enemyYPosArr[i] < -550.0) {
+            enemyYPosArr[i] += 700.0;
         }
     }
 

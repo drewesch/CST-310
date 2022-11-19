@@ -77,4 +77,3 @@ void drawStars(int x[50], int y[50], int w[50], int h[50]) {
 			glEnd();
 	}
 }
-
