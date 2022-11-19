@@ -65,7 +65,6 @@ void createShip(GLuint _textureSpaceship, GLfloat xpos){
 	glPopMatrix();
 }
 
-
 void drawStars(int x[50], int y[50], int w[50], int h[50]) {
 	for(int i = 0; i < 50; i++){
 		glColor3f(1,1,1);

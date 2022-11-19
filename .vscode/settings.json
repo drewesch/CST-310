@@ -5,6 +5,7 @@
         "initializer_list": "cpp",
         "utility": "cpp",
         "map": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "iostream": "cpp"
     }
 }
