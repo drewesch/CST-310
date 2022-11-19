@@ -17,6 +17,13 @@ GLuint _textureSpaceship;				// value for storing floor texture
 GLfloat xShip = 50;
 int laserNum = 0;
 
+float gamePosX = 0.0;
+int isRedScreen = 0;
+float redColor = 0.05;
+float greenColor = 0.05;
+int winCondition = 0;
+int totalDestroyed = 0;
+
 
 const int NUM_OF_STARS = 50;
 int starX[NUM_OF_STARS];
@@ -100,9 +107,17 @@ class Laser {
         for (int i = 0; i< 12; i++){
             if(xpos >= xEnemy[i] + 100.0f && xpos <= xEnemy[i] + 150.0f){ //if xposition of laser alligns with enemy width 
                                                                           //and yposition of laser alligns with enemy height
-                if (ypos >= yEnemy[i] + 700.0f && ypos <= yEnemy[i]+ 750.0f){
+                if (ypos >= yEnemy[i] + 700.0f && ypos <= yEnemy[i]+ 750.0f) {
                     cout << "X-COLLISION and Y-COLLISION!" << endl;
-                return i;
+                    totalDestroyed++;
+                    
+                    // Once the game detects that all 12 enemies are destroyed, turn the screen green
+                    if (totalDestroyed >= 12) {
+                        printf("Win!\n");
+                        greenColor = 1;
+                    }
+
+                    return i;
                 }
                 
             }
@@ -118,10 +133,6 @@ class Laser {
 Laser laserArr[5]; //create a array to hold laser objects
 float enemyXPosArr[12] = {-50.0, 150.0, 350.0, 550.0, 750.0, 50.0, 250.0, 450.0, 650.0, 150.0, 350.0, 550.0};
 float enemyYPosArr[12] = {0.0, 0.0, 0.0, 0.0, 0.0, -100.0, -100.0, -100.0, -100.0, -200.0, -200.0, -200.0};
-float gamePosX = 0.0;
-int isRedScreen = 0;
-float redColor = 0.05;
-float greenColor = 0.05;
 
 //<<<<<<<<<<<<<<<<<<<<<<< myInit >>>>>>>>>>>>>>>>>>>>
  void myInit(void)
@@ -158,7 +169,7 @@ void myDisplay(void)
 
     //---------------------Background--------------------------------
 
-    glColor3f(redColor,0.05f,0.05f);
+    glColor3f(redColor, greenColor, 0.05f);
     glBegin(GL_QUADS);
         glVertex3f(0.0f,0.0f, 0.0f);	            //Bottom Left
         glVertex3f(0.0f,screenHeight, 0.0f);	    //Top Left
@@ -181,13 +192,11 @@ createShip(_textureSpaceship,xShip);
 for (int i = 0; i < laserNum; i++){
     laserArr[i].drawLaser();
     int enemyIndexHit = laserArr[i].laserCollision(enemyXPosArr,enemyYPosArr);
-    if ( enemyIndexHit != -1){
+    if (enemyIndexHit != -1){
         enemyYPosArr[enemyIndexHit] -= 10000;
     }
 }
-drawStars(starX,starY,starW,starH);
-
-		
+drawStars(starX,starY,starW,starH);		
 		
 
 
@@ -195,6 +204,15 @@ drawStars(starX,starY,starW,starH);
 
 	glFlush();
 	glutSwapBuffers();		   // send all output to display 
+}
+
+int isAllEnemiesDestroyed() {
+	for (int i = 0; i < 12; i++) {
+		if (enemyYPosArr[i] > -5000.0) {
+			return 0;
+		}
+	}
+	return 1;
 }
 
 // Handle camera movement using arrow key inputs
@@ -242,12 +260,14 @@ void update(int value)
         }
     }
 
-        for(int i = 0; i < NUM_OF_STARS; i++){
+    for(int i = 0; i < NUM_OF_STARS; i++){
 		starY[i]--;
         if (starY[i] < 0){
             starY[i] += 900;
         }
     }
+
+
     glutPostRedisplay();
     glutTimerFunc(25,update,0);
 }
