@@ -5,7 +5,7 @@
 #include <SOIL/SOIL.h>
 #include <stdio.h>
 #include <cmath>
-#include<iostream>
+#include <iostream>
 #include "objects.h"
 
 using namespace std;
@@ -117,12 +117,12 @@ class Laser {
 };
 
 Laser laserArr[5]; //create a array to hold laser objects
-
-int count = 12;
-int enemyXPosArr[12] = {-50, 150, 350, 550, 750, 50, 250, 450, 650, 150, 350, 550}; //Enemy x position array
-int enemyYPosArr[12] = {0, 0, 0, 0, 0, -100, -100, -100, -100, -200, -200, -200}; //Enemy y position array
-
+float enemyXPosArr[12] = {-50.0, 150.0, 350.0, 550.0, 750.0, 50.0, 250.0, 450.0, 650.0, 150.0, 350.0, 550.0};
+float enemyYPosArr[12] = {0.0, 0.0, 0.0, 0.0, 0.0, -100.0, -100.0, -100.0, -100.0, -200.0, -200.0, -200.0};
 float gamePosX = 0.0;
+int isRedScreen = 0;
+float redColor = 0.05;
+float greenColor = 0.05;
 
 //<<<<<<<<<<<<<<<<<<<<<<< myInit >>>>>>>>>>>>>>>>>>>>
  void myInit(void)
@@ -159,7 +159,7 @@ void myDisplay(void)
 
     //---------------------Background--------------------------------
 
-    glColor3f(0.05f,0.05f,0.05f);
+    glColor3f(redColor,0.05f,0.05f);
     glBegin(GL_QUADS);
         glVertex3f(0.0f,0.0f, 0.0f);	            //Bottom Left
         glVertex3f(0.0f,screenHeight, 0.0f);	    //Top Left
@@ -170,7 +170,7 @@ void myDisplay(void)
     //------------------------------------------------------------------
 
     // Create Swarm of Enemy Spaceship Objects
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < 12; i++) {
         
         createEnemy(_textureEnemy,enemyXPosArr[i],enemyYPosArr[i]);
     }
@@ -226,15 +226,22 @@ void update(int value)
     for (int i = 0; i < 12; i++) {
         // Move enemies and right and left continuously
         // Use the cosine function to generate this movement mathematically
-        float newPos = 10*sin(gamePosX) + enemyXPosArr[i];
-        enemyXPosArr[i] = newPos;
+        float newPos = 5*cos(gamePosX);
+        enemyXPosArr[i] += newPos;
 
         // Move enemies down over time, until they reach a certain point
-        enemyYPosArr[i]--;
+        enemyYPosArr[i] -= 0.4;
 
-        // If they reach the bottom limit, send them to the top of the screen
+        // If they reach the bottom limit, send the enemy spaceship to the top of the screen
         if (enemyYPosArr[i] < -550.0) {
             enemyYPosArr[i] += 700.0;
+
+            // If this is the first time an enemy hits the bottom, turn on red screen
+            if (!isRedScreen) {
+                isRedScreen = 1;
+                printf("Game over!\n");
+                redColor = 1;
+            }
         }
     }
 
