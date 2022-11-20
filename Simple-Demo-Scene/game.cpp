@@ -289,7 +289,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // set display mode
 	glutInitWindowSize(screenWidth, screenHeight); // set window size
 	glutInitWindowPosition(100, 150); // set window position on screen
-	glutCreateWindow("Andrew and Evan's Galiga"); // open the screen window
+	glutCreateWindow("Andrew and Evan's Galaga"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register redraw function
 	glutSpecialFunc(shipMovement); // Handle GLUT keys for special inputs
     glutKeyboardFunc(special);
