@@ -44,3 +44,8 @@ A new compiled file will appear within the directory that the user is currently 
 
 To run the program after compiling it, change the terminal directory to match the directory location of the compiled file and use the following to run it:
 - ./run
+
+## Player Spaceship Keyboard Controls
+- Left Arrow Key: Move Left
+- Right Arrow Key: Move Right
+- "S" Key: Shoot the laser projectile
