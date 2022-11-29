@@ -103,10 +103,11 @@ public:
 // Global variables: a camera, a checkerboard and some balls.
 Checkerboard checkerboard(8, 8);
 Camera camera;
-Ball balls[] = {
-  // Ball(1.5, MAGENTA, 6, 3, 4),
-  // Ball(0.4, WHITE, 5, 1, 7)
-};
+Ball balls(1, GREEN, 1, 6, 1);
+// Ball balls[] = {
+//   // Ball(1.5, MAGENTA, 6, 3, 4),
+//   // Ball(0.4, WHITE, 5, 1, 7)
+// };
 
 
 // Application-specific initialization: Set up global lighting parameters
@@ -131,9 +132,10 @@ void display() {
             checkerboard.centerx(), 0.0, checkerboard.centerz(),
             0.0, 1.0, 0.0);
   checkerboard.draw();
-  for (int i = 0; i < sizeof balls / sizeof(Ball); i++) {
-    balls[i].update();
-  }
+  balls.update();
+  // for (int i = 0; i < sizeof balls / sizeof(Ball); i++) {
+  //   balls[i].update();
+  // }
   glFlush();
   glutSwapBuffers();
 }
