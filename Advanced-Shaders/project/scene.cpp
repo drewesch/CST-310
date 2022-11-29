@@ -6,6 +6,8 @@
 #include <GL/glut.h>
 #include <cmath>
 
+#define PI 3.1415927
+
 // Colors
 GLfloat WHITE[] = {1, 1, 1};
 GLfloat RED[] = {1, 0, 0};
@@ -48,18 +50,48 @@ public:
       y(h), x(x), z(z) {
   }
   void update() {
-    // y += direction * 0.05;
-    // if (y > maximumHeight) {
-    //   y = maximumHeight; direction = -1;
-    // } else if (y < radius) {
-    //   y = radius; direction = 1;
-    // }
     glPushMatrix();
     glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color);
     glTranslated(x, y, z);
     glutSolidSphere(radius, 30, 30);
     glPopMatrix();
   }
+};
+
+class Cube {
+float xpos;
+float ypos;
+float zpos;
+float velocity = .1f;
+
+GLint vertices[8][3] = {
+  {0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1},
+  {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}};
+
+GLint faces[6][4] = {
+  {1, 5, 7, 3}, {5, 4, 6, 7}, {4, 0, 2, 6},
+  {3, 7, 6, 2}, {0, 1, 3, 2}, {0, 4, 5, 1}};
+
+GLfloat vertexColors[8][3] = {
+  {0.80, 1.0, 0.80}, {1.0, 0.50, 1.0}, {0.30, 1.0, 0.70}, {0.80, 0.70, 0.40},
+  {1.0, 0.80, 1.0}, {1.0, 0.50, 1.0}, {1.0, 0.90, 0.90}, {1.0, 0.80, 1.0}};
+
+public:
+  Cube(float x, float y, float z): xpos(x), ypos(y), zpos(z) {}
+
+void draw() {
+  glTranslatef(xpos,ypos,zpos);
+  glPushMatrix();
+  glBegin(GL_QUADS);
+  for (int i = 0; i < 6; i++) {
+    for (int j = 0; j < 4; j++) {
+      glColor3fv((GLfloat*)&vertexColors[faces[i][j]]);
+      glVertex3iv((GLint*)&vertices[faces[i][j]]);
+    }
+  }
+  glEnd();
+  glPopMatrix();
+}
 };
 
 // A checkerboard class.  A checkerboard has alternating red and white
@@ -100,15 +132,51 @@ public:
   }
 };
 
+void draw_cylinder(GLfloat radius,
+                   GLfloat height,
+                   GLubyte R,
+                   GLubyte G,
+                   GLubyte B)
+{
+    GLfloat x = 0.0;
+    GLfloat y = 0.0;
+    GLfloat angle = 0.0;
+    GLfloat angle_stepsize = 0.1;
+
+    /** Draw the tube */
+    glColor3ub(R-40,G-40,B-40);
+    glBegin(GL_QUAD_STRIP);
+    angle = 0.0;
+        while( angle < 2*PI ) {
+            x = radius * cos(angle);
+            y = radius * sin(angle);
+            glVertex3f(x, y , height);
+            glVertex3f(x, y , 0.0);
+            angle = angle + angle_stepsize;
+        }
+        glVertex3f(radius, 0.0, height);
+        glVertex3f(radius, 0.0, 0.0);
+    glEnd();
+
+    /** Draw the circle on top of cylinder */
+    glColor3ub(R,G,B);
+    glBegin(GL_POLYGON);
+    angle = 0.0;
+        while( angle < 2 * PI ) {
+            x = radius * cos(angle);
+            y = radius * sin(angle);
+            glVertex3f(x, y , height);
+            angle = angle + angle_stepsize;
+        }
+        glVertex3f(radius, 0.0, height);
+    glEnd();
+}
+
 // Global variables: a camera, a checkerboard and some balls.
 Checkerboard checkerboard(8, 8);
 Camera camera;
-Ball balls(1, GREEN, 1, 6, 1);
-// Ball balls[] = {
-//   // Ball(1.5, MAGENTA, 6, 3, 4),
-//   // Ball(0.4, WHITE, 5, 1, 7)
-// };
-
+Ball ball(1, GREEN, 1, 5.5, 2);
+Cube cube(3, 0, 1.5);
 
 // Application-specific initialization: Set up global lighting parameters
 // and create display lists.
@@ -132,10 +200,16 @@ void display() {
             checkerboard.centerx(), 0.0, checkerboard.centerz(),
             0.0, 1.0, 0.0);
   checkerboard.draw();
-  balls.update();
-  // for (int i = 0; i < sizeof balls / sizeof(Ball); i++) {
-  //   balls[i].update();
-  // }
+  ball.update();
+  cube.draw();
+
+  // Generate cylinder in scene
+  glPushMatrix();
+  glRotatef(-90.0, 1, 0, 0);
+  draw_cylinder(1.0, 3.0, 255, 160, 100);
+  glEnd();
+  glPopMatrix();
+
   glFlush();
   glutSwapBuffers();
 }
