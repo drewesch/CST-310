@@ -48,12 +48,12 @@ public:
       y(h), x(x), z(z) {
   }
   void update() {
-    y += direction * 0.05;
-    if (y > maximumHeight) {
-      y = maximumHeight; direction = -1;
-    } else if (y < radius) {
-      y = radius; direction = 1;
-    }
+    // y += direction * 0.05;
+    // if (y > maximumHeight) {
+    //   y = maximumHeight; direction = -1;
+    // } else if (y < radius) {
+    //   y = radius; direction = 1;
+    // }
     glPushMatrix();
     glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color);
     glTranslated(x, y, z);
@@ -104,9 +104,8 @@ public:
 Checkerboard checkerboard(8, 8);
 Camera camera;
 Ball balls[] = {
-  Ball(1, GREEN, 7, 6, 1),
-  Ball(1.5, MAGENTA, 6, 3, 4),
-  Ball(0.4, WHITE, 5, 1, 7)
+  // Ball(1.5, MAGENTA, 6, 3, 4),
+  // Ball(0.4, WHITE, 5, 1, 7)
 };
 
 
@@ -172,7 +171,7 @@ int main(int argc, char** argv) {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowPosition(80, 80);
   glutInitWindowSize(800, 600);
-  glutCreateWindow("Bouncing Balls");
+  glutCreateWindow("Advanced Shaders");
   glutDisplayFunc(display);
   glutReshapeFunc(reshape);
   glutSpecialFunc(special);
