@@ -154,7 +154,7 @@ int main() {
         glfwPollEvents(); // Callback glfwPollEvents to check for events
         do_movement(); // Callback do_movement()
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set background color
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear buffers
 
         
@@ -187,7 +187,7 @@ int main() {
         for (int i = 0; i < 8; i++) { // For 8 rows
             for (int j = 0; j < 8; j++) { // For 8 columns
                 if ((i+j) % 2 == 0) { // Check if i+j is odd or even for color purposes
-                    glUniform3f(squareColorLoc, 1.0f, 0.0f, 1.0f); // If even square color is purple --> pass purple to uniform
+                    glUniform3f(squareColorLoc, 1.0f, 0.0f, 0.0f); // If even square color is purple --> pass purple to uniform
                 } else {
                     glUniform3f(squareColorLoc, 1.0f, 1.0f, 1.0f); // If even square color is white --> pas white to uniform
                 }
