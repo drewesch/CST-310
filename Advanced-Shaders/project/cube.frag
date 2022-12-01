@@ -11,17 +11,17 @@ uniform vec3 cubeColor; // Unifor loc for cubeColor vec3
 
 void main() {
     // ambient
-    float ambientStrengh = 0.8; // Set ambient strength
+    float ambientStrengh = 0.55; // Set ambient strength
     vec3 ambient = ambientStrengh * lightColor; // Sets ambient
     
     // diffuse
     vec3 norm = normalize(Normal); // Normalizes normal
     vec3 lightDir = normalize(lightPos - FragPos); // Gets lightDir
     float diff = max(dot(norm, lightDir), 0.0); // Gets diff
-    vec3 diffuse = diff * lightColor; // Sets diffuse
+    vec3 diffuse = 1.8 * diff * lightColor; // Sets diffuse
 
     // specular
-    float specularStrength = 0.25f; // Sets specularStrength
+    float specularStrength = 0.9f; // Sets specularStrength
     vec3 viewDir = normalize(viewPos - FragPos); // Gets viewDir
     vec3 reflectDir = reflect(-lightDir, norm); // Gets reflectDir
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 8); // Gets spec
