@@ -31,7 +31,7 @@ GLfloat lastX = WIDTH / 2.0; // Used for camera motion
 GLfloat lastY = HEIGHT / 2.0; // Used for camera motion
 bool keys[1024]; // Allowable number of key strokes
 
-glm::vec3 lightPos(0.0f, 2.0f, 5.0f); // Sets light position
+glm::vec3 lightPos(0.0f, 2.0f, 4.0f); // Sets light position
 
 GLfloat deltaTime = 0.0f; // Initialize deltaTime for camera movement
 GLfloat lastFrame = 0.0f; // Initialize lastFrame for camera movement

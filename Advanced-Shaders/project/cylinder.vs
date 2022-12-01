@@ -1,6 +1,6 @@
 #version 330 core
 layout (location = 0) in vec3 aPos; // Receives aPos
-layout (location = 4) in vec3 aNormal; // Receives aNormal
+layout (location = 2) in vec3 aNormal; // Receives aNormal
 
 out vec3 FragPos; // Returns FragPos
 out vec3 Normal; // Returns Normal
