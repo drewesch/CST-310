@@ -214,7 +214,7 @@ int main() {
         viewPosLoc = glGetUniformLocation(cubeShader.Program, "viewPos"); // Reset uniform location for cubeShader
 
         // Pass to shaders
-        glUniform3f(cubeColorLoc, 1.0f, 0.0f, 0.0f); // Pass cube color to uniform
+        glUniform3f(cubeColorLoc, 1.0f, 0.2f, 1.0f); // Pass cube color to uniform
         glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f); // Pass light color to uniform
         glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z); // Pass light position to uniform
         glUniform3f(viewPosLoc, camera.Position.x, camera.Position.y, camera.Position.z); // Pass camera position to uniform
@@ -253,7 +253,7 @@ int main() {
         projLoc = glGetUniformLocation(cylinderShader.Program, "projection"); // Reset view location for cylinderShader
 
         glm::mat4 view_cylinder = view; // Create mat4 view_cylinder using generic view identity
-        view_cylinder = glm::translate(view_cylinder, glm::vec3(1.2f, -3.0f, -5.5f)); // Translate cylinder back, to the right, and down
+        view_cylinder = glm::translate(view_cylinder, glm::vec3(-1.8f, -3.0f, -5.5f)); // Translate cylinder back, to the right, and down
         view_cylinder = glm::scale(view_cylinder, glm::vec3(0.5, 3.0, 0.5)); // Increase height of cylinder
 
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view_cylinder)); // Pass view_cylinder to shader
