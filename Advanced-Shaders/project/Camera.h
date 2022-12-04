@@ -93,22 +93,22 @@ public:
 		if (direction == DOWN) // If down
 			Position -= Up * velocity; // Subtract up * velocity to position
 		if (direction == UPPITCH) // If up pitch
-			Pitch += 2.0f; // Increment pitch by 2 [degrees]
+			Pitch += 1.0f; // Increment pitch by 2 [degrees]
 			updateCameraVectors(); // Update rotation using callback
 		if (direction == DOWNPITCH) // If down pitch
-			Pitch -= 2.0f; // Decrement pitch by 2 [degrees]
+			Pitch -= 0.5f; // Decrement pitch by 2 [degrees]
 			updateCameraVectors(); // Update rotation using callback
 		if (direction == UPYAW) // If up yaw
-			Yaw += 2.0f; // Increment yaw by 2 [degrees]
+			Yaw += 0.5f; // Increment yaw by 2 [degrees]
 			updateCameraVectors(); // Update rotation using callback
 		if (direction == DOWNYAW) // If down yaw
-			Yaw -= 2.0f; // Decrement yaw by 2 [degrees]
+			Yaw -= 0.5f; // Decrement yaw by 2 [degrees]
 			updateCameraVectors(); // Update rotation using callback
 		if (direction == UPROLL) // If up roll
-			Roll += 2.0f; // Increment roll by 2 [degrees]
+			Roll += 0.5f; // Increment roll by 2 [degrees]
 			updateCameraVectors(); // Update rotation using callback
 		if (direction == DOWNROLL) // If down roll
-			Roll -= 2.0f; // Decrement roll by 2 [degrees]
+			Roll -= 0.5f; // Decrement roll by 2 [degrees]
 			updateCameraVectors(); // Update rotation using callback
 	}
 
