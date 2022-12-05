@@ -187,7 +187,7 @@ int main() {
         for (int i = 0; i < 8; i++) { // For 8 rows
             for (int j = 0; j < 8; j++) { // For 8 columns
                 if ((i+j) % 2 == 0) { // Check if i+j is odd or even for color purposes
-                    glUniform3f(squareColorLoc, 1.0f, 0.0f, 0.0f); // If even square color is purple --> pass purple to uniform
+                    glUniform3f(squareColorLoc, 1.0f, 0.0f, 0.0f); // If even square color is red --> pass purple to uniform
                 } else {
                     glUniform3f(squareColorLoc, 1.0f, 1.0f, 1.0f); // If even square color is white --> pas white to uniform
                 }
