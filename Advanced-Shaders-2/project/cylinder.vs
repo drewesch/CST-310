@@ -16,5 +16,5 @@ void main()
     gl_Position = projection * view * vec4(aPos, 1.0f);  // Implements transformations - multiplies transformation vectors
     FragPos = vec3(model * vec4(aPos, 1.0));  // Sets fragment position
     // Normal = mat3(transpose(inverse(model))) * aNormal;  // Normalizes
-    TexCoord = vec2(texCoord.x, 1.0 - texCoord.y);
+    TexCoord = vec2(texCoord.x, texCoord.y);
 }

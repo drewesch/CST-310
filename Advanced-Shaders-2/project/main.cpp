@@ -216,10 +216,10 @@ int main() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
-    image = SOIL_load_image("Bump-Picture.jpg", &width, &height, 0, SOIL_LOAD_RGB);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+    unsigned char* image2 = SOIL_load_image("Bump-Picture.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
     glGenerateMipmap(GL_TEXTURE_2D);
-    SOIL_free_image_data(image);
+    SOIL_free_image_data(image2);
     glBindTexture(GL_TEXTURE_2D, 0);
 
 
@@ -325,15 +325,15 @@ int main() {
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection)); // Pass projection to shader
         // Draw cube
         glBindVertexArray(VAO); // Bind vertex arrays
-        glActiveTexture(GL_TEXTURE0); // NEW: Activate textures
-        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture); // NEW: BIND CUBEMAP TEXTURES
+        // glActiveTexture(GL_TEXTURE0); // NEW: Activate textures
+        // glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture); // NEW: BIND CUBEMAP TEXTURES
         glDrawArrays(GL_TRIANGLES, 0, 36); // Draw cube
 
         // CYLINDER
 
         // Bind textures
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, cylinderTexture);
+        glBindTexture(GL_TEXTURE_2D, sphereTexture);
         glUniform1i(glGetUniformLocation(cylinderShader.Program, "ourTexture"), 0);
 
         cylinderShader.Use(); // Activate cylinder shader
@@ -366,9 +366,9 @@ int main() {
         // SPHERE
 
         // Bind textures
-        // glActiveTexture(GL_TEXTURE1);
-        // glBindTexture(GL_TEXTURE_2D, texture2);
-        // glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, cylinderTexture);
+        glUniform1i(glGetUniformLocation(sphereShader.Program, "ourTexture"), 1);
 
         sphereShader.Use(); // Activate sphereShader
 
