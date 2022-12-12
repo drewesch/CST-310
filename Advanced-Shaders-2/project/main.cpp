@@ -181,9 +181,31 @@ int main() {
     glBindVertexArray(0); // Unbind VAO
 
     // DEFINE TEXTURES HERE Project 10 --> NOTE FOR PROJECT 10
-    // Path right = "./Cube-Mapping/negz.jpg";
+    
+    // Load the set of textures for the cubemap
+    // vector<std::string> faces
+    // {
+    //     "negz.jpg",
+    //     "negx.jpg",
+    //     "posy.jpg",
+    //     "negy.jpg",
+    //     "posx.jpg",
+    //     "posz.jpg"
+    // };
 
-    // Load and create a texture 
+    vector<std::string> faces
+    {
+        "right.jpg",
+        "left.jpg",
+        "top.jpg",
+        "bottom.jpg",
+        "front.jpg",
+        "back.jpg"
+    };
+    unsigned int cubemapTexture = loadCubemap(faces);
+
+
+    // Load and create the textures for the cylinder and sphere
     GLuint cylinderTexture;
     GLuint sphereTexture;
     // ====================
@@ -223,19 +245,6 @@ int main() {
     glBindTexture(GL_TEXTURE_2D, 0);
 
 
-
-    vector<std::string> faces
-    {
-        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/negz.jpg",
-        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/negx.jpg",
-        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/posy.jpg",
-        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/negy.jpg",
-        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/posx.jpg",
-        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/posz.jpg"
-    };
-    unsigned int cubemapTexture = loadCubemap(faces);
-
-
     // Game Loop
     while (!glfwWindowShouldClose(window)) {
         // Calculate deltaTime for camera movement
@@ -256,8 +265,6 @@ int main() {
         view = camera.GetViewMatrix(); // Set view based on camera
         glm::mat4 projection = glm::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f); // Initialize projection using initial values
         glm::mat4 model = glm::mat4(1.0f); // Initialize model to be 4x4 identity
-
-        // BIND TEXTURES HERE PROJECT 10
 
         // CHECKERBOARD
         checkerboardShader.Use(); // Use checkerboard shader
@@ -298,6 +305,7 @@ int main() {
         }
 
         // CUBE
+        glDepthMask(GL_FALSE);
         cubeShader.Use(); // Activate cube shader
 
         // Set uniform locations
@@ -314,6 +322,10 @@ int main() {
 
         glm::mat4 view_cube = view; // Create mat4 view_cube equal to identity view
         view_cube = glm::translate(view_cube, glm::vec3(0.0f, 0.0f, -5.0f)); // Translate cube back
+        
+        // Uncomment this to make it a skybox
+        // view_cube = glm::scale(view_cube, glm::vec3(100.0, 100.0, 100.0)); // Increase height of cylinder
+
 
         // Get uniform location
         modelLoc = glGetUniformLocation(cubeShader.Program, "model"); // Reset modelLoc using cubeShader
@@ -325,9 +337,9 @@ int main() {
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection)); // Pass projection to shader
         // Draw cube
         glBindVertexArray(VAO); // Bind vertex arrays
-        // glActiveTexture(GL_TEXTURE0); // NEW: Activate textures
-        // glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture); // NEW: BIND CUBEMAP TEXTURES
+        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
         glDrawArrays(GL_TRIANGLES, 0, 36); // Draw cube
+        glDepthMask(GL_TRUE);
 
         // CYLINDER
 
