@@ -15,6 +15,12 @@
 #include <glm/gtc/matrix_transform.hpp> // glm matrix math include
 #include <glm/gtc/type_ptr.hpp> // glm gtc include
 
+// Images
+#include "stb_image.h" // stb image include
+
+// Filesystem
+#include <filesystem> // filesystem include
+
 // Other includes
 #include "shader.h" // Include shader class
 #include "Camera.h" // Include Camera class
@@ -35,6 +41,39 @@ glm::vec3 lightPos(0.0f, 2.0f, 4.0f); // Sets light position
 
 GLfloat deltaTime = 0.0f; // Initialize deltaTime for camera movement
 GLfloat lastFrame = 0.0f; // Initialize lastFrame for camera movement
+
+unsigned int loadCubemap(vector<std::string> faces);
+
+
+unsigned int loadCubemap(vector<std::string> faces)
+{
+    unsigned int textureID;
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+    int width, height, nrChannels;
+    for (unsigned int i = 0; i < faces.size(); i++)
+    {
+        unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+        if (data)
+        {
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            stbi_image_free(data);
+        }
+        else
+        {
+            std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
+            stbi_image_free(data);
+        }
+    }
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+    return textureID;
+}
 
 int main() {
     // Init GLFW
@@ -142,6 +181,60 @@ int main() {
     glBindVertexArray(0); // Unbind VAO
 
     // DEFINE TEXTURES HERE Project 10 --> NOTE FOR PROJECT 10
+    // Path right = "./Cube-Mapping/negz.jpg";
+
+    // Load and create a texture 
+    GLuint cylinderTexture;
+    GLuint sphereTexture;
+    // ====================
+    // Cylinder Texture
+    // ====================
+    glGenTextures(1, &cylinderTexture);
+    glBindTexture(GL_TEXTURE_2D, cylinderTexture); // All upcoming GL_TEXTURE_2D operations now have effect on our texture object
+    // Set our texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Set texture wrapping to GL_REPEAT
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // Set texture filtering
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // Load, create texture and generate mipmaps
+    int width, height;
+    unsigned char* image = SOIL_load_image("Bump-Map.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    SOIL_free_image_data(image);
+    glBindTexture(GL_TEXTURE_2D, 0); // Unbind texture when done, so we won't accidentily mess up our texture.
+    // ===================
+    // Sphere Texture
+    // ===================
+    glGenTextures(1, &sphereTexture);
+    glBindTexture(GL_TEXTURE_2D, sphereTexture);
+    // Set our texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // Set texture filtering
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // Load, create texture and generate mipmaps
+    image = SOIL_load_image("Bump-Picture.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    SOIL_free_image_data(image);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+
+
+    vector<std::string> faces
+    {
+        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/negz.jpg",
+        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/negx.jpg",
+        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/posy.jpg",
+        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/negy.jpg",
+        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/posx.jpg",
+        "/home/droo/CST-310/Advanced-Shaders-2/project/Cube-Mapping/posz.jpg"
+    };
+    unsigned int cubemapTexture = loadCubemap(faces);
+
 
     // Game Loop
     while (!glfwWindowShouldClose(window)) {
@@ -232,10 +325,17 @@ int main() {
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection)); // Pass projection to shader
         // Draw cube
         glBindVertexArray(VAO); // Bind vertex arrays
+        glActiveTexture(GL_TEXTURE0); // NEW: Activate textures
+        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture); // NEW: BIND CUBEMAP TEXTURES
         glDrawArrays(GL_TRIANGLES, 0, 36); // Draw cube
 
-        
         // CYLINDER
+
+        // Bind textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, cylinderTexture);
+        glUniform1i(glGetUniformLocation(cylinderShader.Program, "ourTexture"), 0);
+
         cylinderShader.Use(); // Activate cylinder shader
 
         GLint cylinderColorLoc = glGetUniformLocation(cylinderShader.Program, "cylinderColor"); // Retrieve cylinderColor location
@@ -264,6 +364,12 @@ int main() {
 
         
         // SPHERE
+
+        // Bind textures
+        // glActiveTexture(GL_TEXTURE1);
+        // glBindTexture(GL_TEXTURE_2D, texture2);
+        // glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
+
         sphereShader.Use(); // Activate sphereShader
 
         GLint sphereColorLoc = glGetUniformLocation(sphereShader.Program, "sphereColor"); // Retrieve sphereColor location
