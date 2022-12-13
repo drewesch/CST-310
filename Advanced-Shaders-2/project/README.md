@@ -1,7 +1,7 @@
-# Project 9: Advanced Shaders 1
+# Project 10: Advanced Shaders 2
 Authors: Andrew Esch and Evan Lee
 
-Date: 12-4-2022
+Date: 12-18-2022
 
 ## Software Requirements and Installation Guide
 This program is designed to run in C on the Linux platform. To compile and run the program in Ubuntu 20.04, install the latest version of the g++ compiler, run the following command in an terminal window (with sudo permissions):
