@@ -181,18 +181,6 @@ int main() {
     glBindVertexArray(0); // Unbind VAO
 
     // DEFINE TEXTURES HERE Project 10 --> NOTE FOR PROJECT 10
-    
-    // Load the set of textures for the cubemap
-    // vector<std::string> faces
-    // {
-    //     "negz.jpg",
-    //     "negx.jpg",
-    //     "posy.jpg",
-    //     "negy.jpg",
-    //     "posx.jpg",
-    //     "posz.jpg"
-    // };
-
     vector<std::string> faces
     {
         "right.jpg",
