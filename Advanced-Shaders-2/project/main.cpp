@@ -18,8 +18,7 @@
 // Images
 #include "stb_image.h" // stb image include
 
-// Filesystem
-#include <filesystem> // filesystem include
+// No filesystem include
 
 // Other includes
 #include "shader.h" // Include shader class
